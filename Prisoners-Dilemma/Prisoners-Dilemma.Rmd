@@ -140,7 +140,7 @@ Here are the articles that i have downloaded and are in the sources folder. You 
 
 # Game Construction
 
-Ideally have a round robin type of tournement, the number of rounds played still needs to be decided but one of the paper's i saw had 25 rounds. We need to also define how we aim to evaluate games and strategies - typically we go by overall utility rather than amount of games won. This is a utilitarian approach in the philosophical ethics systems of the word. 
+Ideally have a round robin type of tournament, the number of rounds played still needs to be decided but one of the paper's i saw had 25 rounds. We need to also define how we aim to evaluate games and strategies - typically we go by overall utility rather than amount of games won. This is a utilitarian approach in the philosophical ethics systems of the word. 
 
 Basing the results on utilitarian principles of maximum welfare makes us really have to consider the pay-off values for our prisoners dilemma game, possibly could play around with different values, as well as include two payoff values in our results.  (we need to consider how much better is mutual cooperation than mutual defection). 
 

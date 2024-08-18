@@ -140,6 +140,28 @@ Here are the articles that i have downloaded and are in the sources folder. You 
 
 # Game Construction
 
+Ideally have a round robin type of tournement, the number of rounds played still needs to be decided but one of the paper's i saw had 25 rounds. We need to also define how we aim to evaluate games and strategies - typically we go by overall utility rather than amount of games won. This is a utilitarian approach in the philosophical ethics systems of the word. 
+
+Basing the results on utilitarian principles of maximum welfare makes us really have to consider the pay-off values for our prisoners dilemma game, possibly could play around with different values, as well as include two payoff values in our results.  (we need to consider how much better is mutual cooperation than mutual defection). 
+
+More importantly we need to select which strategies to include, ideally have the basic ones in there, and then create a few interesting ones which we can explain and add more depth to the paper with the complex ones:
+
+Basic Strategies:
+Always Cooperate: This strategy always cooperates, regardless of the opponent's previous moves.
+Always Defect: This strategy always defects, regardless of the opponent's previous moves.
+Tit-for-Tat (TFT): Cooperates on the first move, then mimics the opponent's last move in subsequent rounds.
+Grim Trigger: Cooperates until the opponent defects once, then defects forever.
+Random: Randomly chooses to cooperate or defect with some probability.
+Tit-for-Two-Tats: Similar to Tit-for-Tat but defects only after two consecutive defections by the available player.
+Pavlov (Win-Stay, Lose-Shift): Cooperates if the last round was a success (mutual cooperation or mutual defection), otherwise defects.
+
+More Complex Strategies:
+Generous Tit-for-Tat: Similar to Tit-for-Tat, but occasionally forgives a defection.
+Tit-for-Tat with Randomization: A variant of Tit-for-Tat where the player may defect or cooperate with a certain probability after the opponent defects.
+Tit-for-Tat with Forgiveness: Like TFT but occasionally forgives a defection, returning to cooperation.
+
+Of course there are more strategies that can deal with memory length and what not, and maybe change startegies based on the past behaviour of the opponent. 
+
 ```{r}
 # Payoffs
 T <- 5  # Temptation to defect

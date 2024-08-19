@@ -122,6 +122,8 @@ library(tidyverse)
 
 Here are the articles that i have downloaded and are in the sources folder. You might need to look at the bibref doc in "/Tex" to know which abbreviated document name is which doc in the sources folder, however the dates can help. Or you can knit the doc and then you should be able to see. Lets compare and rate each source for its usefulness. I still need to look over them and to select which one to incoporate in the coding and essay. 
 
+This first paper is basically what we are trying to do (recreate) @{axelrod1980effective}. How can we improve on it? New strategies maybe? 
+
 @{lange2007teaching},
 @{farrell1988evolutionary},
 @{kreps1982rational},
@@ -133,7 +135,9 @@ Here are the articles that i have downloaded and are in the sources folder. You 
 @{embrey2017cooperation},
 
 
+I guess when we also need to provide good notation and formatting for the strategies we end up doing, lets be the neatest and the easiest to understand. 
 
+I am also thinking on how the changing of the payoffs might change the outcomes of our results, so to have two sections with different payoffs might be beneficial. 
 
 # Literature Review\label{litreview}
 

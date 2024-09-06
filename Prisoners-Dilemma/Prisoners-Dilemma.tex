@@ -317,24 +317,45 @@ have the basic ones in there, and then create a few interesting ones
 which we can explain and add more depth to the paper with the complex
 ones:
 
-Basic Strategies: Always Cooperate: This strategy always cooperates,
-regardless of the opponent's previous moves. Always Defect: This
-strategy always defects, regardless of the opponent's previous moves.
-Tit-for-Tat (TFT): Cooperates on the first move, then mimics the
-opponent's last move in subsequent rounds. Grim Trigger: Cooperates
-until the opponent defects once, then defects forever. Random: Randomly
-chooses to cooperate or defect with some probability. Tit-for-Two-Tats:
-Similar to Tit-for-Tat but defects only after two consecutive defections
-by the available player. Pavlov (Win-Stay, Lose-Shift): Cooperates if
-the last round was a success (mutual cooperation or mutual defection),
-otherwise defects.
+Basic Strategies:
 
-More Complex Strategies: Generous Tit-for-Tat: Similar to Tit-for-Tat,
-but occasionally forgives a defection. Tit-for-Tat with Randomization: A
-variant of Tit-for-Tat where the player may defect or cooperate with a
-certain probability after the opponent defects. Tit-for-Tat with
-Forgiveness: Like TFT but occasionally forgives a defection, returning
-to cooperation.
+\begin{itemize}
+\item
+  Always Cooperate: This strategy always cooperates, regardless of the
+  opponent's previous moves.
+\item
+  Always Defect: This strategy always defects, regardless of the
+  opponent's previous moves.
+\item
+  Tit-for-Tat (TFT): Cooperates on the first move, then mimics the
+  opponent's last move in subsequent rounds.
+\item
+  Grim Trigger: Cooperates until the opponent defects once, then defects
+  forever.
+\item
+  Random: Randomly chooses to cooperate or defect with some probability.
+\item
+  Tit-for-Two-Tats: Similar to Tit-for-Tat but defects only after two
+  consecutive defections by the available player.
+\item
+  Pavlov (Win-Stay, Lose-Shift): Cooperates if the last round was a
+  success (mutual cooperation or mutual defection), otherwise defects.
+\end{itemize}
+
+More Complex Strategies:
+
+\begin{itemize}
+\item
+  Generous Tit-for-Tat: Similar to Tit-for-Tat, but occasionally
+  forgives a defection.
+\item
+  Tit-for-Tat with Randomization: A variant of Tit-for-Tat where the
+  player may defect or cooperate with a certain probability after the
+  opponent defects.
+\item
+  Tit-for-Tat with Forgiveness: Like TFT but occasionally forgives a
+  defection, returning to cooperation.
+\end{itemize}
 
 Of course there are more strategies that can deal with memory length and
 what not, and maybe change startegies based on the past behaviour of the

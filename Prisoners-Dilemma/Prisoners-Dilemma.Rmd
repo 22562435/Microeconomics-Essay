@@ -3,7 +3,7 @@
 # Remove comments and add values where applicable.
 # The descriptions below should be self-explanatory
 
-title: "Beyond Tit-for-Tat"
+title: "Beyond Tit-for-Tat Proposal - Melt"
 #subtitle: "This will appear as Right Header"
 
 documentclass: "elsarticle"
@@ -119,11 +119,130 @@ library(tidyverse)
 
 # Introduction \label{Introduction}
 
+The phrase horses for courses alludes to the fact that a racehorse performs best on a racecourse to which it is specifically suited. More generally this idiom is used to express that certain tools and strategies are better suited over others depending on the task or situations at hand. In the context of the repeated prisoners' dilemma, the strategy of tit-for-tat, where one mimics their opponent's previous move, reigns supreme and is best suited over others for the situation at hand^[The tic-for-tat strategy is the dominant strategy in @{axelrod1980effective}]. 
 
-Here are the articles that i have downloaded and are in the sources folder. You might need to look at the bibref doc in "/Tex" to know which abbreviated document name is which doc in the sources folder, however the dates can help. Or you can knit the doc and then you should be able to see. Lets compare and rate each source for its usefulness. I still need to look over them and to select which one to incoporate in the coding and essay. 
+The question this paper aims to answer is as to which situations is tit-for-tat not the dominant strategy. To do this we have to venture down two potential avenues. The first is the adjustment of pay-off values within games, and the second is adjusting pay-off values from games. Consider a standard prisoners’ dilemma pay-off table:
 
-This first paper is basically what we are trying to do (recreate) @{axelrod1980effective}. How can we improve on it? New strategies maybe? 
 
+```{=latex}
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Player 1 / Player 2} & \textbf{C (Cooperate)} & \textbf{D (Defect)} \\
+\hline
+\textbf{C (Cooperate)} & $(R, R)$ & $(S, T)$ \\
+\hline
+\textbf{D (Defect)} & $(T, S)$ & $(P, P)$ \\
+\hline
+\end{tabular}
+\caption{Prisoner's Dilemma Payoff Matrix with $R$, $P$, $S$, and $T$ Outcomes}
+\end{table}
+
+```
+
+Adjusting the values of R (Reward for mutual cooperation), P (Punishment for mutual defection), S (Sucker’s pay-off for cooperating while the other defects), and T (Temptation to defect when the other cooperates) is an example of within game pay-off adjustments. These adjustments might produce a new dominant strategy and our analysis aims to find if it does.
+
+From-game adjustments are a bit different and it considers the utility a player gets from the payoffs of its opponent. 
+
+```{=latex}
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Player 1 / Player 2} & \textbf{C (Cooperate)} & \textbf{D (Defect)} \\
+\hline
+\textbf{C (Cooperate)} & $(R(1-p) + Rp,     R(1-p) + Rp)$ & $(S(1-p) + Tp,     T(1-p)+Sp)$ \\
+\hline
+\textbf{D (Defect)} & $(T(1-p) + Sp,    S(1-p) + Tp)$ & $(P(1-p) + Pp,     P(1-p) + P)$ \\
+\hline
+\end{tabular}
+\caption{Prisoner's Dilemma Payoff Matrix}
+\end{table}
+```
+
+
+The level _p_ here is adapted from Charness & Rabin (2002) who created a utility function that captures various social preferences. In essence, _p_ is how much you care about your opponent's pay-offs as well as your own. In standard prisoners’ dilemma games, this is 0 and thus people are purely self-interested. If we let our pay-offs be R = 3, T = 5, S = 0, and P = 3, then this situation in strategic form would look like:
+
+```{=latex}
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Player 1 / Player 2} & \textbf{C (Cooperate)} & \textbf{D (Defect)} \\
+\hline
+\textbf{C (Cooperate)} & $(3, 3)$ & $(0, 5)$ \\
+\hline
+\textbf{D (Defect)} & $(5, 0)$ & $(1, 1)$ \\
+\hline
+\end{tabular}
+\caption{Prisoner's Dilemma Payoff Matrix for $p = 0$ (Self-interested person)}
+\end{table}
+```
+
+
+However we can adjust the value of _p_ for people who are partially considerate of other people's outcomes, or we can make people egalitarian who care just as much for others as they do for themselves.
+
+```{=latex}
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Player 1 / Player 2} & \textbf{C (Cooperate)} & \textbf{D (Defect)} \\
+\hline
+\textbf{C (Cooperate)} & $(3, 3)$ & $(1, 4)$ \\
+\hline
+\textbf{D (Defect)} & $(4, 1)$ & $(1, 1)$ \\
+\hline
+\end{tabular}
+\caption{Prisoner's Dilemma Payoff Matrix for $p = 0.2$ (Partially considers others' outcomes)}
+\end{table}
+```
+
+
+```{=latex}
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Player 1 / Player 2} & \textbf{C (Cooperate)} & \textbf{D (Defect)} \\
+\hline
+\textbf{C (Cooperate)} & $(3, 3)$ & $(2.5, 2.5)$ \\
+\hline
+\textbf{D (Defect)} & $(2.5, 2.5)$ & $(1, 1)$ \\
+\hline
+\end{tabular}
+\caption{Prisoner's Dilemma Payoff Matrix for $p = 0.5$ (Egalitarian person)}
+\end{table}
+```
+
+
+_p_ could also take a negative value, which indicates a person is status-seeking and actively wants to bring down their opponent. 
+
+```{=latex}
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Player 1 / Player 2} & \textbf{C (Cooperate)} & \textbf{D (Defect)} \\
+\hline
+\textbf{C (Cooperate)} & $(3.6, 3.6)$ & $(-1, 6)$ \\
+\hline
+\textbf{D (Defect)} & $(6, -1)$ & $(0.8, 0.8)$ \\
+\hline
+\end{tabular}
+\caption{Prisoner's Dilemma Payoff Matrix for $p = -0.2$ (Negative influence by others' outcomes)}
+\end{table}
+```
+
+
+It would be interesting to see under which values of _p_ the dominant strategy changes.
+
+
+# Literature Review\label{litreview}
+
+
+We aim to do a short literature review and provide insight from the following sources:
 @{lange2007teaching},
 @{farrell1988evolutionary},
 @{kreps1982rational},
@@ -132,23 +251,16 @@ This first paper is basically what we are trying to do (recreate) @{axelrod1980e
 @{breitmoser2015cooperation},
 @{gaudesi2016exploiting},
 @{garcia2018no},
-@{embrey2017cooperation},
+@{embrey2017cooperation}.
 
-
-I guess when we also need to provide good notation and formatting for the strategies we end up doing, lets be the neatest and the easiest to understand. 
-
-I am also thinking on how the changing of the payoffs might change the outcomes of our results, so to have two sections with different payoffs might be beneficial. 
-
-# Literature Review\label{litreview}
+Most importantly we aim to structure our output in tables similar to @{axelrod1980effective}. 
 
 
 # Game Construction
 
-Ideally have a round robin type of tournament, the number of rounds played still needs to be decided but one of the paper's i saw had 25 rounds. We need to also define how we aim to evaluate games and strategies - typically we go by overall utility rather than amount of games won. This is a utilitarian approach in the philosophical ethics systems of the word. 
+Game tournaments will take place in a round-robin format where all strategies play each other for _N_ number of games. Total utility is calculated over the whole tournament and the strategy with the greatest value will be the dominant strategy. The tournaments will not be evaluated on games won but this metric will be tracked. 
 
-Basing the results on utilitarian principles of maximum welfare makes us really have to consider the pay-off values for our prisoners dilemma game, possibly could play around with different values, as well as include two payoff values in our results.  (we need to consider how much better is mutual cooperation than mutual defection). 
-
-More importantly we need to select which strategies to include, ideally have the basic ones in there, and then create a few interesting ones which we can explain and add more depth to the paper with the complex ones:
+We have not limited ourselves to the number of strategies just yet, but we aim to include most of the following and potentially we create more along the way. 
 
 Basic Strategies:
 
@@ -170,32 +282,39 @@ More Complex Strategies:
 
 - Generous Tit-for-Tat: Similar to Tit-for-Tat, but occasionally forgives a defection.
 
-- Tit-for-Tat with Randomization: A variant of Tit-for-Tat where the player may defect or cooperate with a certain probability after the opponent defects.
+- Tit-for-Tat with Randomisation: A variant of Tit-for-Tat where the player may defect or cooperate with a certain probability after the opponent defects.
 
 - Tit-for-Tat with Forgiveness: Like TFT but occasionally forgives a defection, returning to cooperation.
 
-Of course there are more strategies that can deal with memory length and what not, and maybe change startegies based on the past behaviour of the opponent. 
 
-```{r}
-# Payoffs
-T <- 5  # Temptation to defect
-R <- 3  # Reward for mutual cooperation
-P <- 1  # Punishment for mutual defection
-S <- 0  # Sucker's payoff
+# Feedback
 
-payoff_matrix <- matrix(c(R, S, T, P), nrow = 2, byrow = TRUE,
-                        dimnames = list("Player 1" = c("Cooperate", "Defect"),
-                                        "Player 2" = c("Cooperate", "Defect")))
-payoff_matrix
+Any feedback would be greatly appreciated. 
+
+
+
+
+```{r,include=FALSE,echo=FALSE}
+# this function helps us calculate the payoffs
+calculate_payoffs <- function(p) {
+  C_C <- 3*(1-p) + 3*p
+  C_D <- 0 + 5*p
+  D_C <- 5*(1-p)
+  D_D <- 1*(1-p) + p
+  
+  return(list(C_C = C_C, C_D = C_D, D_C = D_C, D_D = D_D))
+}
+
+# Calculate payoffs for p = 0, p = 0.2, and p = 0.5
+payoffs_p0 <- calculate_payoffs(0)
+payoffs_p02 <- calculate_payoffs(0.2)
+payoffs_p05 <- calculate_payoffs(0.5)
+
 
 ```
 
 
 
-
-
-
-# Conclusion
 
 
 \newpage

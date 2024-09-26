@@ -109,6 +109,7 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width 
 if(!require("tidyverse")) install.packages("tidyverse")
 library(tidyverse)
 
+map(paste0("code/", list.files("code/", "*.R$")), source)  # source all your R scripts
 
 ```
 
@@ -312,6 +313,24 @@ payoffs_p05 <- calculate_payoffs(0.5)
 
 
 ```
+
+\newpage
+# Problem solving
+
+## the following is working out and should not be included in the paper
+
+From here I am just trying to figure out how to actually make the prisoners dillema tournament- guess the easiest is to start small and to grow the game larger. I will start with a function that takes two inputs person 1's action, player 2's action, and then returns. 
+
+```{r}
+prisoners_dilemma(random_strategy(),random_strategy())
+
+
+
+
+
+
+```
+
 
 
 

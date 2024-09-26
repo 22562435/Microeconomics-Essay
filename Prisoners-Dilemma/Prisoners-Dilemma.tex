@@ -164,6 +164,20 @@
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 
 %%% Include extra packages specified by user
+\usepackage{lscape}\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
 
 %%% Hard setting column skips for reports - this ensures greater consistency and control over the length settings in the document.
 %% page layout
@@ -465,6 +479,51 @@ More Complex Strategies:
 \section{Feedback}\label{feedback}
 
 Any feedback would be greatly appreciated.
+
+\newpage
+
+\begin{landscape}
+
+
+\begin{table}[!h]
+\centering
+\caption{\label{tab:unnamed-chunk-3}Tournament Payoff Matrix for p=0}
+\centering
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{10em}|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r}
+\hline
+  & Always\_Cooperate & Always\_Defect & Tit\_for\_Tat & Tit\_for\_Two\_Tats & Tit\_for\_Tat\_with\_Forgiveness & Tit\_for\_Tat\_with\_Randomisation & Random & Grim\_Trigger & Pavlov & Prober & Bully & Bounded\_Random\_Strategy & Gradient\_Cooperation & Total & Rank\\
+\hline
+\cellcolor{gray!10}{Always\_Cooperate} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{0} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{63} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{36} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{1599} & \cellcolor{gray!10}{10}\\
+\hline
+Always\_Defect & 250 & 50 & 54 & 58 & 82 & 54 & 158 & 54 & 54 & 250 & 98 & 54 & 250 & 1466 & 13\\
+\hline
+\cellcolor{gray!10}{Tit\_for\_Tat} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{49} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{118} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{85} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{1752} & \cellcolor{gray!10}{3}\\
+\hline
+Tit\_for\_Two\_Tats & 150 & 48 & 150 & 150 & 150 & 150 & 94 & 150 & 150 & 150 & 73 & 150 & 150 & 1715 & 7\\
+\hline
+\cellcolor{gray!10}{Tit\_for\_Tat\_with\_Forgiveness} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{42} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{113} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{84} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{1739} & \cellcolor{gray!10}{4}\\
+\hline
+Tit\_for\_Tat\_with\_Randomisation & 150 & 49 & 150 & 150 & 150 & 150 & 95 & 150 & 150 & 150 & 85 & 150 & 150 & 1729 & 6\\
+\hline
+\cellcolor{gray!10}{Random} & \cellcolor{gray!10}{206} & \cellcolor{gray!10}{22} & \cellcolor{gray!10}{121} & \cellcolor{gray!10}{153} & \cellcolor{gray!10}{122} & \cellcolor{gray!10}{114} & \cellcolor{gray!10}{102} & \cellcolor{gray!10}{35} & \cellcolor{gray!10}{37} & \cellcolor{gray!10}{210} & \cellcolor{gray!10}{72} & \cellcolor{gray!10}{104} & \cellcolor{gray!10}{190} & \cellcolor{gray!10}{1488} & \cellcolor{gray!10}{11}\\
+\hline
+Grim\_Trigger & 150 & 49 & 150 & 150 & 150 & 150 & 165 & 150 & 150 & 150 & 97 & 150 & 150 & 1811 & 1\\
+\hline
+\cellcolor{gray!10}{Pavlov} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{49} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{161} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{97} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{1807} & \cellcolor{gray!10}{2}\\
+\hline
+Prober & 150 & 0 & 150 & 150 & 150 & 150 & 72 & 150 & 150 & 150 & 36 & 150 & 150 & 1608 & 9\\
+\hline
+\cellcolor{gray!10}{Bully} & \cellcolor{gray!10}{226} & \cellcolor{gray!10}{38} & \cellcolor{gray!10}{90} & \cellcolor{gray!10}{138} & \cellcolor{gray!10}{98} & \cellcolor{gray!10}{90} & \cellcolor{gray!10}{111} & \cellcolor{gray!10}{42} & \cellcolor{gray!10}{42} & \cellcolor{gray!10}{226} & \cellcolor{gray!10}{74} & \cellcolor{gray!10}{82} & \cellcolor{gray!10}{226} & \cellcolor{gray!10}{1483} & \cellcolor{gray!10}{12}\\
+\hline
+Bounded\_Random\_Strategy & 150 & 49 & 150 & 150 & 150 & 150 & 111 & 150 & 150 & 150 & 79 & 150 & 150 & 1739 & 4\\
+\hline
+\cellcolor{gray!10}{Gradient\_Cooperation} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{0} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{78} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{36} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{1614} & \cellcolor{gray!10}{8}\\
+\hline
+\end{tabular}}
+\end{table}
+
+\end{landscape}
 
 \newpage
 

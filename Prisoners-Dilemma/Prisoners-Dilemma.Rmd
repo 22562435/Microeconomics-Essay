@@ -87,12 +87,15 @@ link-citations: TRUE            # This creates dynamic links to the papers in re
 
 output:
   pdf_document:
+    latex_engine: pdflatex
     keep_tex: TRUE
     template: Tex/TexDefault.txt
-    fig_width: 3.5 # Adjust default figure sizes. This can also be done in the chunks of the text.
+    fig_width: 3.5  # Adjust default figure sizes. This can also be done in the chunks of the text.
     fig_height: 3.5
+header-includes:
+  - \usepackage{lscape}
 abstract: |
-  Beyond Tit-for-tat: Set up a repeated prisoner's dilemma computer tournament, in which strategies compete against each other. Write a report on your findings.  
+  Beyond Tit-for-tat: Set up a repeated prisoner's dilemma computer tournament, in which strategies compete against each other. Write a report on your findings.
 ---
 
 <!-- First: Set your default preferences for chunk options: -->
@@ -108,10 +111,12 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width 
 # Lets load in example data, and see how this can be stored and later called from your 'data' folder.
 if(!require("tidyverse")) install.packages("tidyverse")
 library(tidyverse)
-
+library(knitr)
+library(kableExtra)
 map(paste0("code/", list.files("code/", "*.R$")), source)  # source all your R scripts
 
 ```
+
 
 
 <!-- ############################## -->
@@ -314,24 +319,65 @@ payoffs_p05 <- calculate_payoffs(0.5)
 
 ```
 
-\newpage
-# Problem solving
 
-## the following is working out and should not be included in the paper
 
-From here I am just trying to figure out how to actually make the prisoners dillema tournament- guess the easiest is to start small and to grow the game larger. I will start with a function that takes two inputs person 1's action, player 2's action, and then returns. 
 
 ```{r}
-prisoners_dilemma(random_strategy(),random_strategy())
+# Ensure your strategies are defined
+strategies <- list(
+    Always_Cooperate = always_cooperate, 
+    Always_Defect = always_defect, 
+    Tit_for_Tat = tit_for_tat,
+    Tit_for_Two_Tats=tit_for_two_tats,
+    Tit_for_Tat_with_Forgiveness=tit_for_tat_forgiveness,
+    Tit_for_Tat_with_Randomisation=tit_for_tat_randomisation,
+    Random = random_strategy,
+    Grim_Trigger=grim_trigger,
+    Pavlov = pavlov,
+    Prober=prober,
+    Bully= bully,
+    Bounded_Random_Strategy=bounded_random_strategy,
+    Gradient_Cooperation =gradient_cooperation
+)
+
+# Run the tournament payoff matrix function
+#tournament_payoff_matrix(strategies)
+
+symmetric_results <- tournament_payoff_matrix(strategies)
+```
+
+\newpage
+
+\begin{landscape}
 
 
+```{r}
+# Print the nicely formatted table using kable
+colnames(symmetric_results) <- gsub("_", "\\\\_", colnames(symmetric_results))
+rownames(symmetric_results) <- gsub("_", "\\\\_", rownames(symmetric_results))
+
+# Print the nicely formatted table using kable
+kable(symmetric_results, caption = "Tournament Payoff Matrix for p=0", format = "latex", escape = FALSE) %>%
+  kable_styling(latex_options = c("striped", "hold_position","scale_down")) %>%
+  column_spec(1, width = "10em")
+
+
+
+# %>%
+#   
+#   # Set a standard column width (e.g., 2cm) for all columns to maintain uniformity
+#   column_spec(1:ncol(symmetric_results), width = "2cm") %>%
+#    
+# #   # Apply \makecell to wrap long text in column names
+#    add_header_above(c(" " = 1, 
+#                     sapply(colnames(symmetric_results), function(x) paste0("\\makecell{", x, "}")))) 
 
 
 
 
 ```
 
-
+\end{landscape}
 
 
 

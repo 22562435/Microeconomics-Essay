@@ -35,10 +35,11 @@ head_to_head <- function(Strategy1, Strategy2, rounds, payoffs = c(3, 5, 0, 1), 
     }
 
     # Return a data frame with the results
-    return(data.frame(
-        "Strategy 1" = deparse(substitute(Strategy1)),
-        "Strategy 2" = deparse(substitute(Strategy2)),
-        "Total Player 1 Payoff" = total_payoff1,
-        "Total Player 2 Payoff" = total_payoff2
-    ))
+     return(c(total_payoff1, total_payoff2))
+    # return(data.frame(
+    #     "Strategy 1" = deparse(substitute(Strategy1)),
+    #     "Strategy 2" = deparse(substitute(Strategy2)),
+    #     "Total Player 1 Payoff" = total_payoff1,
+    #     "Total Player 2 Payoff" = total_payoff2
+    # ))
 }

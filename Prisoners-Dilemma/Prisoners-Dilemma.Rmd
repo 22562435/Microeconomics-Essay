@@ -325,19 +325,19 @@ payoffs_p05 <- calculate_payoffs(0.5)
 ```{r}
 # Ensure your strategies are defined
 strategies <- list(
-    Always_Cooperate = always_cooperate, 
-    Always_Defect = always_defect, 
-    Tit_for_Tat = tit_for_tat,
-    Tit_for_Two_Tats=tit_for_two_tats,
-    Tit_for_Tat_with_Forgiveness=tit_for_tat_forgiveness,
-    Tit_for_Tat_with_Randomisation=tit_for_tat_randomisation,
+    'Always Cooperate' = always_cooperate, 
+    'Always Defect' = always_defect, 
+    'Tit for Tat' = tit_for_tat,
+    'Tit for Two Tats'=tit_for_two_tats,
+    'Tit for Tat with Forgiveness'=tit_for_tat_forgiveness,
+    'Tit for Tat with Randomisation'=tit_for_tat_randomisation,
     Random = random_strategy,
-    Grim_Trigger=grim_trigger,
+    'Grim/Trigger'=grim_trigger,
     Pavlov = pavlov,
     Prober=prober,
     Bully= bully,
-    Bounded_Random_Strategy=bounded_random_strategy,
-    Gradient_Cooperation =gradient_cooperation
+    'Bounded Random Strategy'=bounded_random_strategy,
+    'Gradient Cooperation' =gradient_cooperation
 )
 
 # Run the tournament payoff matrix function
@@ -350,16 +350,43 @@ symmetric_results <- tournament_payoff_matrix(strategies)
 
 \begin{landscape}
 
-
 ```{r}
-# Print the nicely formatted table using kable
-colnames(symmetric_results) <- gsub("_", "\\\\_", colnames(symmetric_results))
-rownames(symmetric_results) <- gsub("_", "\\\\_", rownames(symmetric_results))
+
+
+# Remove the original column names
+colnames(symmetric_results) <- NULL
 
 # Print the nicely formatted table using kable
 kable(symmetric_results, caption = "Tournament Payoff Matrix for p=0", format = "latex", escape = FALSE) %>%
-  kable_styling(latex_options = c("striped", "hold_position","scale_down")) %>%
-  column_spec(1, width = "10em")
+    # Standardize the width of all columns (e.g., 10em)
+  column_spec(1:(ncol(symmetric_results)-2), width = "15em") %>%
+  
+  # Emphasize the last two columns by changing the background color and making text bold
+  column_spec((ncol(symmetric_results)):(ncol(symmetric_results)+1), 
+              width = "10em", bold = TRUE) %>%
+  # Standardize the width of all columns (e.g., 10em) and wrap long names in the header
+  # column_spec(1:ncol(symmetric_results), width = "10em") %>%
+  
+  # Add the column names in the header with wrapping using add_header_above
+  add_header_above(c(" " = 1, names(strategies),"Total","Rank")) %>% 
+    kable_styling(latex_options = c("striped", "hold_position", "scale_down"))
+
+```
+
+```{r}
+# Print the nicely formatted table using kable
+# colnames(symmetric_results) <- gsub("_", "\\\\_", colnames(symmetric_results))
+# rownames(symmetric_results) <- gsub("_", "\\\\_", rownames(symmetric_results))
+
+# # Print the nicely formatted table using kable
+# kable(symmetric_results, caption = "Tournament Payoff Matrix for p=0", format = "latex", escape = FALSE) %>%
+#   kable_styling(latex_options = c("striped", "hold_position","scale_down")) %>%
+#   
+#   # Standardize the width of all columns (e.g., 10em) and wrap long names in the header
+#   column_spec(1:ncol(symmetric_results), width = "10em") %>%
+#   
+#   # Modify the column names to use \makecell for wrapping long names
+#   add_header_above(c(" " = 1, colnames(symmetric_results)))
 
 
 

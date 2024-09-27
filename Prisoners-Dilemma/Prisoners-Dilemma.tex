@@ -484,44 +484,45 @@ Any feedback would be greatly appreciated.
 
 \begin{landscape}
 
-
 \begin{table}[!h]
 \centering
 \caption{\label{tab:unnamed-chunk-3}Tournament Payoff Matrix for p=0}
 \centering
 \resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{10em}|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{15em}|>{\raggedleft\arraybackslash}p{15em}|>{\raggedleft\arraybackslash}p{15em}|>{\raggedleft\arraybackslash}p{15em}|>{\raggedleft\arraybackslash}p{15em}|>{\raggedleft\arraybackslash}p{15em}|>{\raggedleft\arraybackslash}p{15em}|>{\raggedleft\arraybackslash}p{15em}|>{\raggedleft\arraybackslash}p{15em}|>{\raggedleft\arraybackslash}p{15em}|>{\raggedleft\arraybackslash}p{15em}|>{\raggedleft\arraybackslash}p{15em}|>{\raggedleft\arraybackslash}p{15em}|r|>{\raggedleft\arraybackslash}p{10em}|>{\raggedleft\arraybackslash}p{10em}}
 \hline
-  & Always\_Cooperate & Always\_Defect & Tit\_for\_Tat & Tit\_for\_Two\_Tats & Tit\_for\_Tat\_with\_Forgiveness & Tit\_for\_Tat\_with\_Randomisation & Random & Grim\_Trigger & Pavlov & Prober & Bully & Bounded\_Random\_Strategy & Gradient\_Cooperation & Total & Rank\\
+\multicolumn{1}{c|}{ } & \multicolumn{1}{c|}{Always Cooperate} & \multicolumn{1}{c|}{Always Defect} & \multicolumn{1}{c|}{Tit for Tat} & \multicolumn{1}{c|}{Tit for Two Tats} & \multicolumn{1}{c|}{Tit for Tat with Forgiveness} & \multicolumn{1}{c|}{Tit for Tat with Randomisation} & \multicolumn{1}{c|}{Random} & \multicolumn{1}{c|}{Grim/Trigger} & \multicolumn{1}{c|}{Pavlov} & \multicolumn{1}{c|}{Prober} & \multicolumn{1}{c|}{Bully} & \multicolumn{1}{c|}{Bounded Random Strategy} & \multicolumn{1}{c|}{Gradient Cooperation} & \multicolumn{1}{c|}{Total} & \multicolumn{1}{c}{Rank} \\
+\cline{2-2} \cline{3-3} \cline{4-4} \cline{5-5} \cline{6-6} \cline{7-7} \cline{8-8} \cline{9-9} \cline{10-10} \cline{11-11} \cline{12-12} \cline{13-13} \cline{14-14} \cline{15-15} \cline{16-16}
+Always Cooperate & 150 & 0 & 150 & 150 & 150 & 150 & 66 & 150 & 150 & 150 & 36 & 150 & 150 & 1602 & 10\\
 \hline
-\cellcolor{gray!10}{Always\_Cooperate} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{0} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{63} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{36} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{1599} & \cellcolor{gray!10}{10}\\
+\cellcolor{gray!10}{Always Defect} & \cellcolor{gray!10}{250} & \cellcolor{gray!10}{50} & \cellcolor{gray!10}{54} & \cellcolor{gray!10}{58} & \cellcolor{gray!10}{82} & \cellcolor{gray!10}{54} & \cellcolor{gray!10}{158} & \cellcolor{gray!10}{54} & \cellcolor{gray!10}{54} & \cellcolor{gray!10}{250} & \cellcolor{gray!10}{98} & \cellcolor{gray!10}{54} & \cellcolor{gray!10}{250} & \cellcolor{gray!10}{\textbf{1466}} & \cellcolor{gray!10}{\textbf{13}}\\
 \hline
-Always\_Defect & 250 & 50 & 54 & 58 & 82 & 54 & 158 & 54 & 54 & 250 & 98 & 54 & 250 & 1466 & 13\\
+Tit for Tat & 150 & 49 & 150 & 150 & 150 & 150 & 107 & 150 & 150 & 150 & 85 & 150 & 150 & \textbf{1741} & \textbf{5}\\
 \hline
-\cellcolor{gray!10}{Tit\_for\_Tat} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{49} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{118} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{85} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{1752} & \cellcolor{gray!10}{3}\\
+\cellcolor{gray!10}{Tit for Two Tats} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{48} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{95} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{73} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{\textbf{1716}} & \cellcolor{gray!10}{\textbf{6}}\\
 \hline
-Tit\_for\_Two\_Tats & 150 & 48 & 150 & 150 & 150 & 150 & 94 & 150 & 150 & 150 & 73 & 150 & 150 & 1715 & 7\\
+Tit for Tat with Forgiveness & 150 & 46 & 150 & 150 & 150 & 150 & 95 & 150 & 150 & 150 & 72 & 150 & 150 & \textbf{1713} & \textbf{7}\\
 \hline
-\cellcolor{gray!10}{Tit\_for\_Tat\_with\_Forgiveness} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{42} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{113} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{84} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{1739} & \cellcolor{gray!10}{4}\\
+\cellcolor{gray!10}{Tit for Tat with Randomisation} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{49} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{119} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{85} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{\textbf{1753}} & \cellcolor{gray!10}{\textbf{3}}\\
 \hline
-Tit\_for\_Tat\_with\_Randomisation & 150 & 49 & 150 & 150 & 150 & 150 & 95 & 150 & 150 & 150 & 85 & 150 & 150 & 1729 & 6\\
+Random & 206 & 24 & 112 & 168 & 128 & 114 & 114 & 26 & 31 & 202 & 65 & 113 & 212 & \textbf{1515} & \textbf{12}\\
 \hline
-\cellcolor{gray!10}{Random} & \cellcolor{gray!10}{206} & \cellcolor{gray!10}{22} & \cellcolor{gray!10}{121} & \cellcolor{gray!10}{153} & \cellcolor{gray!10}{122} & \cellcolor{gray!10}{114} & \cellcolor{gray!10}{102} & \cellcolor{gray!10}{35} & \cellcolor{gray!10}{37} & \cellcolor{gray!10}{210} & \cellcolor{gray!10}{72} & \cellcolor{gray!10}{104} & \cellcolor{gray!10}{190} & \cellcolor{gray!10}{1488} & \cellcolor{gray!10}{11}\\
+\cellcolor{gray!10}{Grim/Trigger} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{49} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{145} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{97} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{\textbf{1791}} & \cellcolor{gray!10}{\textbf{2}}\\
 \hline
-Grim\_Trigger & 150 & 49 & 150 & 150 & 150 & 150 & 165 & 150 & 150 & 150 & 97 & 150 & 150 & 1811 & 1\\
+Pavlov & 150 & 49 & 150 & 150 & 150 & 150 & 153 & 150 & 150 & 150 & 97 & 150 & 150 & \textbf{1799} & \textbf{1}\\
 \hline
-\cellcolor{gray!10}{Pavlov} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{49} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{161} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{97} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{1807} & \cellcolor{gray!10}{2}\\
+\cellcolor{gray!10}{Prober} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{0} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{93} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{36} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{\textbf{1629}} & \cellcolor{gray!10}{\textbf{8}}\\
 \hline
-Prober & 150 & 0 & 150 & 150 & 150 & 150 & 72 & 150 & 150 & 150 & 36 & 150 & 150 & 1608 & 9\\
+Bully & 226 & 38 & 90 & 138 & 97 & 90 & 150 & 42 & 42 & 226 & 74 & 85 & 226 & \textbf{1524} & \textbf{11}\\
 \hline
-\cellcolor{gray!10}{Bully} & \cellcolor{gray!10}{226} & \cellcolor{gray!10}{38} & \cellcolor{gray!10}{90} & \cellcolor{gray!10}{138} & \cellcolor{gray!10}{98} & \cellcolor{gray!10}{90} & \cellcolor{gray!10}{111} & \cellcolor{gray!10}{42} & \cellcolor{gray!10}{42} & \cellcolor{gray!10}{226} & \cellcolor{gray!10}{74} & \cellcolor{gray!10}{82} & \cellcolor{gray!10}{226} & \cellcolor{gray!10}{1483} & \cellcolor{gray!10}{12}\\
+\cellcolor{gray!10}{Bounded Random Strategy} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{49} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{113} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{81} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{\textbf{1743}} & \cellcolor{gray!10}{\textbf{4}}\\
 \hline
-Bounded\_Random\_Strategy & 150 & 49 & 150 & 150 & 150 & 150 & 111 & 150 & 150 & 150 & 79 & 150 & 150 & 1739 & 4\\
-\hline
-\cellcolor{gray!10}{Gradient\_Cooperation} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{0} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{78} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{36} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{150} & \cellcolor{gray!10}{1614} & \cellcolor{gray!10}{8}\\
+Gradient Cooperation & 150 & 0 & 150 & 150 & 150 & 150 & 75 & 150 & 150 & 150 & 36 & 150 & 150 & \textbf{1611} & \textbf{9}\\
 \hline
 \end{tabular}}
 \end{table}
+
+
 
 \end{landscape}
 

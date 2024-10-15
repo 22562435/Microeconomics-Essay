@@ -8,7 +8,7 @@ library(dplyr)
 custom_colors <- c("#E41A1C", "#377EB8", "#4DAF4A", "#FF7F00", "#E9D100",
                    "#A65628", "#984EA3", "#999999", "#FF69B4", "#8B4513",
                    "#20B2AA", "#FF6347", "#4682B4", "#FFD700", "#4B3D31",
-                   "#F08080", "#00CED1")
+                   "#F08080", "#00CED1","black","wheat","wheat3")
 
 
 

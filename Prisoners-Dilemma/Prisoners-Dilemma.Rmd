@@ -79,7 +79,7 @@ toc: FALSE                       # Add a table of contents
 numbersections: TRUE             # Should sections (and thus figures and tables) be numbered?
 fontsize: 11pt                  # Set fontsize
 linestretch: 1.2                # Set distance between lines.
-link-citations: TRUE            # This creates dynamic links to the papers in reference list.
+link-citations: FALSE            # This creates dynamic links to the papers in reference list.
 
 ### Adding additional latex packages:
 # header-includes:
@@ -485,61 +485,52 @@ df300roundsp0reduced<-tournament_payoff_df(strategies, rounds =300)
 ```
 
 
-Creating a balanced split of strategies in a Prisoner’s Dilemma tournament is crucial for a fair evaluation, especially if you want to observe the relative strengths and weaknesses of different strategy types. Here’s a general guideline for how you might distribute **Tit-for-Tat and other cooperative strategies**, **defector strategies**, and **random strategies** to ensure a healthy and competitive environment:
+```{r}
+strategies <- list(
+    'Always Cooperate' = always_cooperate,
+    'Always Defect' = always_defect,
+    'Tit for Tat' = tit_for_tat,
+    'Tit for Two Tats' = tit_for_two_tats,
+    'Tit for Tat with Forgiveness' = tit_for_tat_forgiveness,
+    'Tit for Tat with Randomisation' = tit_for_tat_randomisation,
+    Pavlov = pavlov,
+    'Bounded Random Strategy' = bounded_random_strategy,
+    'Gradient Cooperation' = gradient_cooperation,
+    'Grim/Trigger' = grim_trigger,
+    Exploiter=exploiter,
+    'Periodic Defector'=periodic_defector,
+    'Adaptive Defector'=adaptive_defector,
+    'Retaliatory Defector'=retaliatory_defector,
+    Prober = prober,
+    Bully = bully,
+    'Random 10%' = random_0.1,
+    'Random 25%' = random_0.25,
+    'Random 50%' = random_0.5,
+    'Random 75%' = random_0.75
+    #'Random 90%' = random_0.9
+)
+```
 
-### 1. **Tit-for-Tat and Other Cooperative Strategies (~40%)**
-   - These strategies are designed to promote mutual cooperation but can retaliate against defectors. Including them ensures that there are opportunities for mutual benefit in the tournament.
-   - **Examples**: 
-     - Tit-for-Tat
-     - Tit-for-Two-Tats
-     - Tit-for-Tat with Forgiveness
-     - Tit-for-Tat with Randomization
-     - Pavlov (Win-Stay, Lose-Shift)
-     - Gradient Cooperation
-     - Bounded Random Strategy (if it leans towards cooperation)
 
-   - **Reasoning**: About 40% allows for a good mix of strategies that encourage cooperation but have varying levels of tolerance for defections. This way, there’s a fair chance for strategies like Tit-for-Tat to thrive if defectors don’t dominate the environment.
 
-### 2. **Defector Strategies (~40%)**
-   - Defector strategies create a more challenging environment for cooperative strategies, forcing them to prove their resilience and adaptability.
-   - **Examples**:
-     - Always Defect
-     - Grim/Trigger
-     - Periodic Defector
-     - Adaptive Defector
-     - Exploiter
-     - Retaliatory Defector
-     - Bully
-     - Prober
 
-   - **Reasoning**: This percentage allows defectors to have a significant impact, challenging nice strategies like Tit-for-Tat without dominating them completely. It ensures that the tournament is not overly skewed toward cooperation, providing a competitive landscape where cooperative strategies must adapt to survive.
+```{r}
+check<-ranking_matrix_for_sequence_p(strategies, rounds = 20, rank =TRUE)
+create_bump_chart(check)
+```
 
-### 3. **Random Strategies (~20%)**
-   - Random strategies add variability and unpredictability to the tournament, which can challenge both cooperative and defector strategies by introducing noise.
-   - **Examples**:
-     - Random 10%
-     - Random 25%
-     - Random 50%
-     - Random 75%
-     - Random with Memory (where randomness depends on past moves)
-   
-   - **Reasoning**: About 20% for random strategies creates a balanced level of unpredictability without overwhelming the tournament with noise. Random strategies can sometimes exploit deterministic strategies and provide a benchmark to see how well the others adapt to unpredictability.
 
-### Summary of Strategy Distribution
-- **Tit-for-Tat and Cooperative Strategies**: ~40%
-- **Defector Strategies**: ~40%
-- **Random Strategies**: ~20%
 
-This setup allows for a balanced tournament where:
-- **Cooperative strategies** have enough similar strategies to collaborate with and avoid being wiped out by defectors.
-- **Defectors** present a sufficient challenge to the cooperators, testing their ability to adapt and avoid being exploited.
-- **Random strategies** add an element of unpredictability that can disrupt deterministic patterns and provide additional challenges.
 
-### Adjusting for Specific Goals
-- **To Promote Tit-for-Tat**: If you want to give **Tit-for-Tat** an edge, you might slightly increase the proportion of other **nice strategies** to around **50%**, giving Tit-for-Tat more opportunities to find cooperative partners.
-- **To Challenge Tit-for-Tat More**: Increase the proportion of **defector strategies** to around **50%** and reduce the **random strategies** to **10%**. This would create a tougher environment, pushing Tit-for-Tat to rely more on its retaliatory capabilities.
 
-This setup should allow for a fair and competitive tournament where each type of strategy can thrive under the right conditions, making it possible to draw meaningful conclusions about their effectiveness.
+
+Defector Strategies
+Definition: These strategies lean towards defection more often than cooperation. They may defect unconditionally, strategically exploit others, or only cooperate under very specific conditions. Defector strategies prioritize short-term gains, aiming to maximize their own payoff without much regard for fostering mutual cooperation.
+
+
+Cooperative Strategies
+Definition: These strategies favour cooperation and are designed to foster mutual cooperation over multiple rounds. They aim to achieve better outcomes for both players through sustained cooperation, but they often include some mechanisms for retaliation to avoid being exploited.
+
 
 
 

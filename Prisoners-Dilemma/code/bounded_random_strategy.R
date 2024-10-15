@@ -1,3 +1,5 @@
+#This strategy adjusts its probability of defecting based on the opponent's history of cooperation and defection. It aims to reflect the behavior of the opponent over time.
+
 bounded_random_strategy <- function(player_history, opponent_history) {
     # Initialize defaults
     if (length(opponent_history) == 0) {

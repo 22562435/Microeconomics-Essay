@@ -1,3 +1,6 @@
+#This strategy adjusts its probability of cooperating based on recent behavior of the opponent. It emphasizes maintaining a high cooperation rate initially, but becomes more cautious if the opponent defects frequently.
+
+
 gradient_cooperation <- function(opponent_actions, my_actions) {
     cooperate_prob <- 1  # Start with full cooperation
     rounds <- length(opponent_actions)

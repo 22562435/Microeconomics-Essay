@@ -4,6 +4,11 @@ pavlov <- function(player_history, opponent_history) {
     } else if (player_history[length(player_history)] == opponent_history[length(opponent_history)]) {
         return(player_history[length(player_history)])  # Stay with the last action
     } else {
-        return("Defect")
+        # Switch to the opposite of the last action
+        if (player_history[length(player_history)] == "Cooperate") {
+            return("Defect")
+        } else {
+            return("Cooperate")
+        }
     }
 }

@@ -1,3 +1,6 @@
+#This strategy probes the opponent by responding to their defections with a series of defections, aiming to test how the opponent responds to negative behavior.
+
+
 prober <- function(opponent_actions, my_actions) {
     # Number of rounds to defect after an opponent defect
     rounds_to_defect <- 3

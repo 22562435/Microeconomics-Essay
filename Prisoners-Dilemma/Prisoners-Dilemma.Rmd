@@ -264,6 +264,36 @@ Most importantly we aim to structure our output in tables similar to @{axelrod19
 
 # Game Construction
 
+```{r}
+strategies <- list(
+    'Always Cooperate' = always_cooperate,
+    'Always Defect' = always_defect,
+    'Tit for Tat' = tit_for_tat,
+    'Tit for Two Tats' = tit_for_two_tats,
+    'Tit for Tat with Forgiveness' = tit_for_tat_forgiveness,
+    'Tit for Tat with Randomisation' = tit_for_tat_randomisation,
+    Pavlov = pavlov,
+    Bully = bully,
+    'Bounded Random Strategy' = bounded_random_strategy,
+    'Gradient Cooperation' = gradient_cooperation,
+    'Grim/Trigger' = grim_trigger,
+   'Progressive Cooperator'=gradual_adjustment_strategy_inc_200,
+   'Deminishing Cooperator'=gradual_adjustment_strategy_dec_200,
+   Prober = prober,
+   'Probing Adjuster'=probing_adjuster,
+   'Cautious Rebuilder'=cautious_rebuilder,
+   'Adaptive Peacekeep'=adaptive_peacekeeper,
+   'Forgiving Tester'=forgiving_tester,
+    'Adaptive Defector'=adaptive_defector,
+   'Retaliatory Defector'=retaliatory_defector,
+    'Random 10%' = random_0.1,
+    'Random 25%' = random_0.25,
+    'Random 50%' = random_0.5,
+    'Random 75%' = random_0.75,
+    'Random 90%' = random_0.9
+)
+```
+
 Game tournaments will take place in a round-robin format where all strategies play each other for _N_ number of games. Total utility is calculated over the whole tournament and the strategy with the greatest value will be the dominant strategy. The tournaments will not be evaluated on games won but this metric will be tracked. 
 
 We have not limited ourselves to the number of strategies just yet, but we aim to include most of the following and potentially we create more along the way. 
@@ -300,6 +330,8 @@ Any feedback would be greatly appreciated.
 
 
 
+
+
 ```{r,include=FALSE,echo=FALSE}
 # this function helps us calculate the payoffs
 calculate_payoffs <- function(p) {
@@ -322,34 +354,6 @@ payoffs_p05 <- calculate_payoffs(0.5)
 
 
 
-```{r}
-# Ensure your strategies are defined
-strategies <- list(
-    'Always Cooperate' = always_cooperate,
-    'Always Defect' = always_defect,
-    'Tit for Tat' = tit_for_tat,
-    'Tit for Two Tats' = tit_for_two_tats,
-    'Tit for Tat with Forgiveness' = tit_for_tat_forgiveness,
-  #  'Tit for Tat with Randomisation' = tit_for_tat_randomisation,
-    'Random 10%' = random_0.1,
-    #'Random 25%' = random_0.25,
-    'Random 50%' = random_0.5,
-    #'Random 75%' = random_0.75,
-    'Random 90%' = random_0.9,
-    'Grim/Trigger' = grim_trigger,
-    Pavlov = pavlov,
-    Prober = prober,
-    Bully = bully,
-    'Bounded Random Strategy' = bounded_random_strategy,
-    'Gradient Cooperation' = gradient_cooperation
-)
-
-# Run the tournament payoff matrix function
-#tournament_payoff_matrix(strategies)
-
-
-
-```
 
 
 loop for all different p values. grepple rank.
@@ -372,8 +376,8 @@ Will be powerful to give a snapshot of one turnoment
 
 
 ```{r}
-
-symmetric_results <- tournament_payoff_df(strategies,p=0)
+set.seed(100)
+symmetric_results <- tournament_payoff_df(strategies,rounds = 200)
 
 # Load required package
 library(kableExtra)
@@ -399,52 +403,37 @@ kable(symmetric_results, caption = "Tournament Payoff Matrix for p=0") %>%
 
 
 ```{r}
-# ranking_matrix_for_sequence_p(strategies,rounds = 10,rank=TRUE) %>% 
-# kable( caption = "Rankings of Strategies Across Different Values of p") %>%
-#   kable_styling(latex_options = c("scale_down", "hold_position"), full_width = FALSE) %>%
-#   column_spec(1, bold = TRUE) %>%  # Make strategy names bold for emphasis
-#   column_spec(2:length(strategies), width = "1.5cm")  # Adjust width for better readability
-
-
-```
-
-```{r}
-strategies <- list(
-    'Always Cooperate' = always_cooperate,
-    'Always Defect' = always_defect,
-    'Tit for Tat' = tit_for_tat,
-    'Random 50%' = random_0.5,
-    'Grim/Trigger' = grim_trigger,
-    Pavlov = pavlov,
-    Bully = bully
-)
-
 set.seed(100)
-result_df <- ranking_matrix_for_sequence_p(strategies, rounds = 200, rank = TRUE)
-create_bump_chart(result_df)
-```
-```{r}
-df<-ranking_matrix_for_sequence_p(strategies, rounds = 200, rank = FALSE)
+symmetric_results <- tournament_payoff_df(strategies,rounds = 2)
+
+# Load required package
+library(kableExtra)
+
+# Assuming `symmetric_results` is the output from the function
+# and the column names include the 'Total' and 'Rank' with their p values.
+total_col_name <- grep("^Total", colnames(symmetric_results), value = TRUE)
+rank_col_name <- grep("^Rank", colnames(symmetric_results), value = TRUE)
+
+# Create a kable with nice formatting
+kable(symmetric_results, caption = "Tournament Payoff Matrix for p=0") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+                latex_options = c("scale_down", "hold_position"),
+                font_size = 8) %>%
+  column_spec(1, bold = TRUE) %>%  # Bold the row names (strategy names)
+  column_spec(2:(ncol(symmetric_results) - 1), width = "1cm") %>%  # Make non-important columns equally spaced
+  column_spec(ncol(symmetric_results) , bold = TRUE, color = "blue") %>%  # Highlight Total column
+  column_spec(ncol(symmetric_results)+1, bold = TRUE, color = "red") %>%  # Highlight Rank column
+  add_header_above(c(" " = 1, "Payoff Against Other Strategies" = ncol(symmetric_results) - 2, 
+                     "Total" = 1, "Rank" = 1))  # Add a header above for better readability
+
 ```
 
 
-```{r}
-set.seed(100)
-result_df <- ranking_matrix_for_sequence_p(strategies, rounds = 20, rank = TRUE,p = seq(-0.1, 0.5, 0.010))
-create_bump_chart(result_df)
-```
-
-
-```{r}
-set.seed(9890980)
-result_df <- ranking_matrix_for_sequence_p(strategies, rounds = 20, rank = TRUE)
-create_bump_chart(result_df)
-```
 
 
 ```{r}
 set.seed(420)
-result_df <- ranking_matrix_for_sequence_p(strategies, rounds = 20, rank = TRUE)
+result_df <- ranking_matrix_for_sequence_p(strategies, rounds = 2, rank = TRUE)
 create_bump_chart(result_df)
 ```
 
@@ -468,54 +457,46 @@ create_bump_chart(result_df)
 
 ```
 ```{r}
-ranking_matrix_for_sequence_p(strategies, rounds = 10, rank = FALSE,payoffs = c())
+ranking_matrix_for_sequence_p(strategies, rounds = 10, rank = FALSE)
 ```
 
+```{r}
+ranking_matrix_for_sequence_p(strategies, rounds = 1, rank = FALSE)
+```
+
+
+```{r}
+tournament_payoff_df(strategies, rounds =1)
+```
 
 
 ```{r}
 
-df300roundsp0<-tournament_payoff_df(strategies, rounds =300)
+df200roundsp0<-tournament_payoff_df(strategies, rounds =200)
 
 
 ```
+
+```{r}
+df200roundsp0
+```
+
+
+
 
 ```{r}
 df300roundsp0reduced<-tournament_payoff_df(strategies, rounds =300)
 ```
 
 
-```{r}
-strategies <- list(
-    'Always Cooperate' = always_cooperate,
-    'Always Defect' = always_defect,
-    'Tit for Tat' = tit_for_tat,
-    'Tit for Two Tats' = tit_for_two_tats,
-    'Tit for Tat with Forgiveness' = tit_for_tat_forgiveness,
-    'Tit for Tat with Randomisation' = tit_for_tat_randomisation,
-    Pavlov = pavlov,
-    'Bounded Random Strategy' = bounded_random_strategy,
-    'Gradient Cooperation' = gradient_cooperation,
-    'Grim/Trigger' = grim_trigger,
-    Exploiter=exploiter,
-    'Periodic Defector'=periodic_defector,
-    'Adaptive Defector'=adaptive_defector,
-    'Retaliatory Defector'=retaliatory_defector,
-    Prober = prober,
-    Bully = bully,
-    'Random 10%' = random_0.1,
-    'Random 25%' = random_0.25,
-    'Random 50%' = random_0.5,
-    'Random 75%' = random_0.75
-    #'Random 90%' = random_0.9
-)
-```
+
 
 
 
 
 ```{r}
-check<-ranking_matrix_for_sequence_p(strategies, rounds = 20, rank =TRUE)
+check<-ranking_matrix_for_sequence_p(strategies, rounds = 50, rank =TRUE)
+checkvalues<-ranking_matrix_for_sequence_p(strategies, rounds = 50, rank =FALSE)
 create_bump_chart(check)
 ```
 

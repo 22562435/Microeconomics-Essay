@@ -29,3 +29,10 @@ prober <- function(opponent_actions, my_actions) {
 
     return("Cooperate")  # Default to cooperating
 }
+
+
+#The Prober initiates defections after the opponent defects and continues defecting for a fixed number of rounds (in this case, three rounds) to test how the opponent responds.
+
+
+#There’s no flexibility to return to cooperation immediately after the opponent cooperates—it has a predetermined number of defection rounds before reverting to cooperation.
+#Key aspect: This strategy probes by defecting in a fixed manner and doesn't adjust dynamically based on immediate feedback, like the "Probing Adjuster" does.

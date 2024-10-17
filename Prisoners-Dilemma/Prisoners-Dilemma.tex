@@ -616,7 +616,47 @@ Will be powerful to give a snapshot of one turnoment
 
 
 
+\begingroup\fontsize{5}{7}\selectfont
 
+\begin{longtable}[t]{>{}l>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.2cm}>{\raggedleft\arraybackslash}p{0.2cm}}
+\caption{\label{tab:unnamed-chunk-5}Tournament Payoff Matrix for p= 0}\\
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{25}{c}{Payoff Against Other Strategies} & \multicolumn{1}{c}{Total} & \multicolumn{1}{c}{Rank} \\
+\cmidrule(l{3pt}r{3pt}){2-26} \cmidrule(l{3pt}r{3pt}){27-27} \cmidrule(l{3pt}r{3pt}){28-28}
+ & AC & AD & TfT & Tf2T & TfTF & TfTR & P & G/T & B & RD & ADe & APe & PA & FT & P & CR & PC & DC & BG & RG & R0.1 & R0.25 & R0.5 & R0.75 & R0.9 &  & \\
+\midrule
+\textbf{Always Cooperate} & 600 & 0 & 600 & 600 & 600 & 600 & 600 & 600 & 147 & 600 & 600 & 501 & 3 & 453 & 600 & 483 & 291 & 261 & 600 & 600 & 69 & 156 & 300 & 420 & 519 & \textcolor{blue}{\textbf{10803}} & \textcolor{red}{\textbf{24}}\\
+\textbf{Always Defect} & 1000 & 200 & 204 & 208 & 276 & 204 & 204 & 204 & 396 & 992 & 204 & 212 & 208 & 212 & 1000 & 212 & 664 & 600 & 204 & 1000 & 276 & 392 & 648 & 792 & 896 & \textcolor{blue}{\textbf{11408}} & \textcolor{red}{\textbf{20}}\\
+\textbf{Tit for Tat} & 600 & 199 & 600 & 600 & 600 & 600 & 600 & 600 & 346 & 600 & 600 & 567 & 399 & 551 & 600 & 561 & 441 & 426 & 600 & 600 & 250 & 344 & 432 & 531 & 580 & \textcolor{blue}{\textbf{12827}} & \textcolor{red}{\textbf{4}}\\
+\textbf{Tit for Two Tats} & 600 & 198 & 600 & 600 & 600 & 600 & 600 & 600 & 296 & 600 & 600 & 501 & 298 & 453 & 600 & 483 & 372 & 370 & 600 & 600 & 244 & 288 & 394 & 480 & 548 & \textcolor{blue}{\textbf{12125}} & \textcolor{red}{\textbf{15}}\\
+\textbf{Tit for Tat with Forgiveness} & 600 & 183 & 600 & 600 & 600 & 600 & 600 & 600 & 322 & 600 & 600 & 561 & 370 & 539 & 600 & 553 & 408 & 411 & 600 & 600 & 249 & 321 & 403 & 527 & 571 & \textcolor{blue}{\textbf{12618}} & \textcolor{red}{\textbf{8}}\\
+\addlinespace
+\textbf{Tit for Tat with Randomisation} & 600 & 199 & 600 & 600 & 600 & 600 & 600 & 600 & 346 & 600 & 600 & 567 & 399 & 551 & 600 & 561 & 422 & 436 & 600 & 600 & 252 & 357 & 478 & 542 & 577 & \textcolor{blue}{\textbf{12887}} & \textcolor{red}{\textbf{2}}\\
+\textbf{Pavlov} & 600 & 199 & 600 & 600 & 600 & 600 & 600 & 600 & 346 & 600 & 600 & 567 & 399 & 551 & 600 & 561 & 453 & 434 & 600 & 600 & 243 & 325 & 442 & 519 & 582 & \textcolor{blue}{\textbf{12821}} & \textcolor{red}{\textbf{5}}\\
+\textbf{Grim/Trigger} & 600 & 199 & 600 & 600 & 600 & 600 & 600 & 600 & 395 & 600 & 600 & 223 & 205 & 219 & 600 & 221 & 607 & 575 & 600 & 600 & 263 & 399 & 551 & 823 & 933 & \textcolor{blue}{\textbf{12813}} & \textcolor{red}{\textbf{6}}\\
+\textbf{Bully} & 902 & 151 & 351 & 551 & 399 & 351 & 351 & 155 & 298 & 894 & 155 & 683 & 355 & 751 & 902 & 631 & 533 & 554 & 348 & 902 & 230 & 319 & 556 & 700 & 847 & \textcolor{blue}{\textbf{12869}} & \textcolor{red}{\textbf{3}}\\
+\textbf{Retaliatory Defector} & 600 & 2 & 600 & 600 & 600 & 600 & 600 & 600 & 149 & 600 & 600 & 505 & 9 & 457 & 600 & 487 & 263 & 283 & 600 & 600 & 74 & 122 & 319 & 463 & 541 & \textcolor{blue}{\textbf{10874}} & \textcolor{red}{\textbf{23}}\\
+\addlinespace
+\textbf{Adaptive Defector} & 600 & 199 & 600 & 600 & 600 & 600 & 600 & 600 & 395 & 600 & 600 & 501 & 205 & 453 & 600 & 483 & 448 & 420 & 600 & 600 & 276 & 387 & 457 & 487 & 548 & \textcolor{blue}{\textbf{12459}} & \textcolor{red}{\textbf{10}}\\
+\textbf{Adaptive Peacekeep} & 666 & 197 & 567 & 666 & 576 & 567 & 567 & 213 & 263 & 660 & 666 & 534 & 256 & 503 & 666 & 543 & 418 & 400 & 572 & 666 & 223 & 285 & 393 & 483 & 600 & \textcolor{blue}{\textbf{12150}} & \textcolor{red}{\textbf{14}}\\
+\textbf{Probing Adjuster} & 998 & 198 & 404 & 553 & 436 & 404 & 404 & 205 & 345 & 989 & 205 & 591 & 400 & 557 & 998 & 643 & 587 & 544 & 325 & 998 & 264 & 369 & 549 & 719 & 890 & \textcolor{blue}{\textbf{13575}} & \textcolor{red}{\textbf{1}}\\
+\textbf{Forgiving Tester} & 698 & 197 & 551 & 698 & 563 & 551 & 551 & 209 & 246 & 692 & 698 & 583 & 297 & 502 & 698 & 572 & 452 & 431 & 565 & 698 & 239 & 275 & 393 & 543 & 631 & \textcolor{blue}{\textbf{12533}} & \textcolor{red}{\textbf{9}}\\
+\textbf{Prober} & 600 & 0 & 600 & 600 & 600 & 600 & 600 & 600 & 147 & 600 & 600 & 501 & 3 & 453 & 600 & 483 & 324 & 303 & 600 & 600 & 63 & 156 & 318 & 492 & 540 & \textcolor{blue}{\textbf{10983}} & \textcolor{red}{\textbf{21}}\\
+\addlinespace
+\textbf{Cautious Rebuilder} & 678 & 197 & 561 & 678 & 576 & 561 & 561 & 211 & 276 & 672 & 678 & 573 & 238 & 522 & 678 & 522 & 413 & 385 & 554 & 678 & 229 & 270 & 402 & 541 & 641 & \textcolor{blue}{\textbf{12295}} & \textcolor{red}{\textbf{11}}\\
+\textbf{Progressive Cooperator} & 798 & 102 & 439 & 557 & 484 & 417 & 414 & 105 & 271 & 794 & 444 & 546 & 203 & 503 & 790 & 504 & 417 & 467 & 289 & 798 & 159 & 247 & 506 & 658 & 742 & \textcolor{blue}{\textbf{11654}} & \textcolor{red}{\textbf{18}}\\
+\textbf{Deminishing Cooperator} & 784 & 109 & 438 & 536 & 454 & 432 & 447 & 141 & 263 & 799 & 410 & 543 & 235 & 487 & 818 & 522 & 499 & 431 & 619 & 798 & 176 & 262 & 435 & 653 & 715 & \textcolor{blue}{\textbf{12006}} & \textcolor{red}{\textbf{16}}\\
+\textbf{Bounded Gradient} & 600 & 199 & 600 & 600 & 600 & 600 & 600 & 600 & 342 & 600 & 600 & 564 & 245 & 520 & 600 & 545 & 513 & 325 & 600 & 600 & 273 & 374 & 442 & 540 & 566 & \textcolor{blue}{\textbf{12648}} & \textcolor{red}{\textbf{7}}\\
+\textbf{Recent Gradient} & 600 & 0 & 600 & 600 & 600 & 600 & 600 & 600 & 147 & 600 & 600 & 501 & 3 & 453 & 600 & 483 & 285 & 312 & 600 & 600 & 84 & 150 & 291 & 462 & 549 & \textcolor{blue}{\textbf{10920}} & \textcolor{red}{\textbf{22}}\\
+\addlinespace
+\textbf{Random 10\%} & 960 & 184 & 255 & 340 & 354 & 251 & 267 & 182 & 381 & 966 & 184 & 325 & 266 & 375 & 938 & 351 & 589 & 560 & 242 & 976 & 238 & 381 & 542 & 812 & 882 & \textcolor{blue}{\textbf{11801}} & \textcolor{red}{\textbf{17}}\\
+\textbf{Random 25\%} & 886 & 149 & 367 & 452 & 415 & 353 & 354 & 156 & 329 & 900 & 233 & 533 & 314 & 406 & 900 & 508 & 553 & 498 & 353 & 904 & 216 & 364 & 564 & 695 & 809 & \textcolor{blue}{\textbf{12211}} & \textcolor{red}{\textbf{13}}\\
+\textbf{Random 50\%} & 794 & 100 & 428 & 654 & 497 & 460 & 469 & 105 & 260 & 803 & 480 & 634 & 259 & 576 & 806 & 565 & 427 & 467 & 448 & 806 & 188 & 257 & 445 & 625 & 710 & \textcolor{blue}{\textbf{12263}} & \textcolor{red}{\textbf{12}}\\
+\textbf{Random 75\%} & 714 & 59 & 538 & 656 & 538 & 525 & 536 & 77 & 217 & 692 & 643 & 609 & 151 & 536 & 726 & 574 & 377 & 358 & 530 & 704 & 107 & 224 & 325 & 532 & 660 & \textcolor{blue}{\textbf{11608}} & \textcolor{red}{\textbf{19}}\\
+\textbf{Random 90\%} & 630 & 21 & 570 & 634 & 581 & 572 & 577 & 64 & 169 & 628 & 631 & 541 & 94 & 471 & 620 & 517 & 319 & 324 & 555 & 634 & 76 & 147 & 329 & 460 & 591 & \textcolor{blue}{\textbf{10755}} & \textcolor{red}{\textbf{25}}\\
+\bottomrule
+\end{longtable}
+\endgroup{}
 
 
 
@@ -626,38 +666,45 @@ Will be powerful to give a snapshot of one turnoment
 \centering
 \caption{\label{tab:unnamed-chunk-6}Strategy Rankings Across Different p Values}
 \centering
-\fontsize{8}{10}\selectfont
-\begin{tabular}[t]{>{\centering\arraybackslash}p{3cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}}
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
+\fontsize{5}{7}\selectfont
+\begin{tabular}[t]{>{\centering\arraybackslash}p{4cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}}
 \toprule
+\multicolumn{1}{c}{ } & \multicolumn{13}{c}{p Values} \\
+\cmidrule(l{3pt}r{3pt}){2-14}
 Strategy & -0.1 & -0.05 & 0 & 0.05 & 0.1 & 0.15 & 0.2 & 0.25 & 0.3 & 0.35 & 0.4 & 0.45 & 0.5\\
 \midrule
-\textbf{Always Cooperate} & 61 & 58.75 & 63 & 58.5 & 60 & 61.5 & 65 & 66.25 & 69 & 66.25 & 69 & 72 & 72\\
-\textbf{Always Defect} & 115 & 110 & 105 & 103.75 & 91.5 & 90 & 85 & 82.75 & 72.5 & 65.5 & 65 & 56.5 & 55\\
-\textbf{Tit for Tat} & 57.5 & 58.75 & 60 & 58.5 & 65 & 61.5 & 63 & 66.25 & 67.5 & 68.75 & 69 & 71.25 & 73\\
-\textbf{Tit for Two Tats} & 61 & 52.25 & 54 & 58.5 & 62.5 & 66 & 65 & 66.25 & 67.5 & 68.75 & 69 & 69.75 & 72.5\\
-\textbf{Tit for Tat with Forgiveness} & 57.5 & 55.5 & 54 & 64 & 60 & 63.75 & 67 & 66.25 & 67.5 & 67.5 & 67 & 70.5 & 72\\
-\textbf{Tit for Tat with Randomisation} & 54 & 55.5 & 57 & 64 & 62.5 & 66 & 65 & 66.25 & 64.5 & 68.75 & 68 & 70.5 & 72\\
-\textbf{Pavlov} & 50.5 & 52.25 & 60 & 61.25 & 62.5 & 61.5 & 65 & 66.25 & 67.5 & 66.25 & 70 & 70.5 & 72\\
-\textbf{Grim/Trigger} & 54 & 55.5 & 60 & 55.75 & 62.5 & 63.75 & 63 & 68 & 66 & 70 & 70 & 70.5 & 72.5\\
-\textbf{Bully} & 110.5 & 110 & 105 & 100 & 95 & 83.5 & 85 & 77.25 & 75 & 70 & 61 & 56.5 & 55\\
-\textbf{Retaliatory Defector} & 57.5 & 58.75 & 57 & 64 & 57.5 & 61.5 & 63 & 62.75 & 67.5 & 70 & 70 & 71.25 & 72\\
-\textbf{Adaptive Defector} & 57.5 & 55.5 & 60 & 58.5 & 62.5 & 59.25 & 65 & 66.25 & 69 & 67.5 & 69 & 70.5 & 73\\
-\textbf{Adaptive Peacekeep} & 57.5 & 58.75 & 60 & 58.5 & 60 & 66 & 65 & 66.25 & 66 & 68.75 & 70 & 72 & 72.5\\
-\textbf{Probing Adjuster} & 61 & 62 & 60 & 61.25 & 62.5 & 66 & 67 & 68 & 67.5 & 67.5 & 69 & 70.5 & 73\\
-\textbf{Forgiving Tester} & 57.5 & 58.75 & 57 & 61.25 & 60 & 61.5 & 63 & 62.75 & 64.5 & 67.5 & 71 & 69.75 & 72\\
-\textbf{Prober} & 57.5 & 55.5 & 60 & 58.5 & 65 & 63.75 & 65 & 64.5 & 66 & 67.5 & 69 & 71.25 & 72\\
-\textbf{Cautious Rebuilder} & 54 & 58.75 & 57 & 58.5 & 60 & 63.75 & 61 & 62.75 & 66 & 67.5 & 70 & 71.25 & 71.5\\
-\textbf{Progressive Cooperator} & 115 & 110 & 101 & 96.25 & 98.5 & 86.75 & 80 & 80 & 74.5 & 67.75 & 61 & 58.25 & 56.5\\
-\textbf{Deminishing Cooperator} & 54 & 62 & 60 & 59.25 & 60 & 63.75 & 67 & 62.75 & 64.5 & 68.75 & 69 & 71.25 & 72\\
-\textbf{Bounded Gradient} & 57.5 & 58.75 & 60 & 58.5 & 62.5 & 63.75 & 63 & 64.5 & 69 & 67.5 & 69 & 72 & 72\\
-\textbf{Recent Gradient} & 54 & 58.75 & 60 & 58.5 & 62.5 & 59.25 & 69 & 64.5 & 67.5 & 67.5 & 70 & 69.75 & 72.5\\
-\textbf{Random 10\%} & 113.5 & 103.25 & 105 & 94.75 & 91.5 & 89.75 & 80 & 75 & 75.5 & 68.25 & 64 & 58.75 & 57.5\\
-\textbf{Random 25\%} & 93.5 & 98.25 & 91 & 85 & 90 & 81 & 77 & 76.25 & 73.5 & 68.25 & 69 & 62.25 & 58.5\\
-\textbf{Random 50\%} & 87.5 & 70.75 & 83 & 80.75 & 77 & 80.75 & 72 & 72.25 & 66.5 & 69 & 67 & 64.5 & 60.5\\
-\textbf{Random 75\%} & 77 & 74.75 & 69 & 69.5 & 66 & 69.5 & 67 & 69.75 & 67 & 66.5 & 69 & 68.5 & 69\\
-\textbf{Random 90\%} & 65 & 66 & 65 & 63.75 & 59 & 70.25 & 67 & 65.75 & 67.5 & 69 & 70 & 68.25 & 71.5\\
+\textbf{Always Cooperate} & 25 & 24 & 25 & 22 & 19 & 19 & 14 & 10 & 4 & 4 & 4 & 1 & 3\\
+\textbf{Always Defect} & 15 & 18 & 20 & 25 & 25 & 25 & 25 & 25 & 25 & 25 & 25 & 25 & 25\\
+\textbf{Tit for Tat} & 5 & 4 & 3 & 3 & 3 & 1 & 2 & 4 & 5 & 8 & 8 & 11 & 9\\
+\textbf{Tit for Two Tats} & 18 & 16 & 15 & 13 & 11 & 7 & 6 & 5 & 9 & 6 & 6 & 6 & 6\\
+\textbf{Tit for Tat with Forgiveness} & 10 & 8 & 7 & 5 & 4 & 4 & 4 & 3 & 6 & 7 & 7 & 7 & 8\\
+\midrule
+\textbf{Tit for Tat with Randomisation} & 4 & 6 & 5 & 4 & 1 & 2 & 1 & 2 & 7 & 9 & 10 & 8 & 11\\
+\textbf{Pavlov} & 6 & 5 & 2 & 2 & 2 & 3 & 3 & 1 & 8 & 10 & 9 & 9 & 10\\
+\textbf{Grim/Trigger} & 3 & 3 & 4 & 7 & 9 & 9 & 15 & 18 & 18 & 18 & 19 & 19 & 20\\
+\textbf{Bully} & 2 & 2 & 8 & 8 & 10 & 15 & 20 & 21 & 22 & 21 & 21 & 21 & 21\\
+\textbf{Retaliatory Defector} & 23 & 21 & 22 & 20 & 17 & 16 & 10 & 9 & 1 & 3 & 2 & 3 & 4\\
+\midrule
+\textbf{Adaptive Defector} & 12 & 10 & 11 & 9 & 7 & 8 & 7 & 11 & 13 & 13 & 13 & 13 & 14\\
+\textbf{Adaptive Peacekeep} & 17 & 14 & 13 & 14 & 13 & 10 & 12 & 13 & 15 & 14 & 14 & 14 & 13\\
+\textbf{Probing Adjuster} & 1 & 1 & 1 & 1 & 5 & 12 & 19 & 20 & 21 & 22 & 22 & 22 & 22\\
+\textbf{Forgiving Tester} & 9 & 9 & 9 & 10 & 8 & 6 & 8 & 12 & 14 & 15 & 15 & 16 & 16\\
+\textbf{Prober} & 21 & 22 & 24 & 24 & 21 & 17 & 13 & 8 & 3 & 1 & 1 & 2 & 1\\
+\midrule
+\textbf{Cautious Rebuilder} & 14 & 12 & 12 & 12 & 12 & 11 & 9 & 16 & 16 & 16 & 16 & 15 & 15\\
+\textbf{Progressive Cooperator} & 19 & 20 & 17 & 18 & 23 & 22 & 22 & 22 & 20 & 20 & 20 & 20 & 19\\
+\textbf{Deminishing Cooperator} & 16 & 17 & 16 & 15 & 16 & 20 & 21 & 19 & 19 & 19 & 18 & 18 & 18\\
+\textbf{Bounded Gradient} & 8 & 7 & 6 & 6 & 6 & 5 & 5 & 6 & 10 & 11 & 12 & 12 & 12\\
+\textbf{Recent Gradient} & 22 & 25 & 23 & 21 & 18 & 18 & 11 & 7 & 2 & 2 & 3 & 4 & 2\\
+\midrule
+\textbf{Random 10\%} & 11 & 15 & 18 & 19 & 24 & 24 & 24 & 24 & 24 & 24 & 24 & 24 & 24\\
+\textbf{Random 25\%} & 7 & 13 & 14 & 16 & 19 & 23 & 23 & 23 & 23 & 23 & 23 & 23 & 23\\
+\textbf{Random 50\%} & 13 & 11 & 10 & 11 & 14 & 13 & 18 & 17 & 17 & 17 & 17 & 17 & 17\\
+\textbf{Random 75\%} & 20 & 19 & 19 & 17 & 15 & 14 & 16 & 15 & 12 & 12 & 11 & 10 & 7\\
+\textbf{Random 90\%} & 24 & 23 & 21 & 23 & 22 & 21 & 17 & 14 & 11 & 5 & 5 & 5 & 5\\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
 
 \begin{figure}[H]
@@ -668,6 +715,51 @@ Strategy & -0.1 & -0.05 & 0 & 0.05 & 0.1 & 0.15 & 0.2 & 0.25 & 0.3 & 0.35 & 0.4 
 
 \caption{Strategy Ranks Across Different Values of p\label{pvalues}}\label{fig:unnamed-chunk-7}
 \end{figure}
+
+\begin{table}[!h]
+\centering
+\caption{\label{tab:unnamed-chunk-8}Strategy Values Across Different p Values}
+\centering
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
+\fontsize{5}{7}\selectfont
+\begin{tabular}[t]{>{\centering\arraybackslash}p{4cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{13}{c}{p Values} \\
+\cmidrule(l{3pt}r{3pt}){2-14}
+Strategy & -0.1 & -0.05 & 0 & 0.05 & 0.1 & 0.15 & 0.2 & 0.25 & 0.3 & 0.35 & 0.4 & 0.45 & 0.5\\
+\midrule
+\textbf{Always Cooperate} & 10103.5 & 10495.5 & 10881 & 11240.75 & 11585 & 11886 & 12238 & 12579.75 & 12945 & 13262.5 & 13608 & 13982.25 & 14308\\
+\textbf{Always Defect} & 12209 & 11710.75 & 11276 & 10906.25 & 10540.5 & 10180.5 & 9749 & 9391.75 & 8972.5 & 8615.75 & 8162 & 7768.5 & 7362.5\\
+\textbf{Tit for Tat} & 12824 & 12832 & 12863 & 12844.5 & 12856 & 12943.5 & 12845 & 12820.5 & 12875.5 & 12856.25 & 12891 & 12834.75 & 12908.5\\
+\textbf{Tit for Two Tats} & 11897.5 & 11983.5 & 12067 & 12221.25 & 12304 & 12453.5 & 12584 & 12701.5 & 12786.5 & 12878.25 & 13021 & 13159.75 & 13310.5\\
+\textbf{Tit for Tat with Forgiveness} & 12551 & 12573.75 & 12692 & 12711.5 & 12787.5 & 12766 & 12809 & 12878 & 12863.5 & 12874.5 & 12936 & 12926 & 13004.5\\
+\midrule
+\textbf{Tit for Tat with Randomisation} & 12883.5 & 12801.25 & 12772 & 12837.25 & 12864.5 & 12836.5 & 12884 & 12886.75 & 12854 & 12843.25 & 12806 & 12920.5 & 12813.5\\
+\textbf{Pavlov} & 12818 & 12807.5 & 12902 & 12866.5 & 12864 & 12787.25 & 12815 & 12891.5 & 12851 & 12797.25 & 12875 & 12919.5 & 12849.5\\
+\textbf{Grim/Trigger} & 13178 & 12993 & 12791 & 12613.75 & 12382 & 12289.25 & 12178 & 11850.25 & 11713.5 & 11537.75 & 11343 & 11189.75 & 10987\\
+\textbf{Bully} & 13447.5 & 13160 & 12685 & 12513.75 & 12312 & 11926.25 & 11688 & 11410 & 11103 & 10778.75 & 10552 & 10240.25 & 9950\\
+\textbf{Retaliatory Defector} & 10192.5 & 10593 & 10972 & 11274.25 & 11629.5 & 11915.75 & 12296 & 12581 & 12963.5 & 13270.25 & 13616 & 13955.5 & 14294.5\\
+\midrule
+\textbf{Adaptive Defector} & 12417.5 & 12400.25 & 12365 & 12433 & 12444.5 & 12452 & 12465 & 12511.5 & 12474.5 & 12522.75 & 12666 & 12661.75 & 12520.5\\
+\textbf{Adaptive Peacekeep} & 12071.5 & 12127 & 12145 & 12154.5 & 12277 & 12286.75 & 12271 & 12382 & 12370 & 12455.5 & 12393 & 12479.75 & 12549\\
+\textbf{Probing Adjuster} & 14349.5 & 13907 & 13434 & 13067 & 12773.5 & 12220.5 & 11878 & 11552.25 & 11306 & 10737.25 & 10455 & 10093.5 & 9762.5\\
+\textbf{Forgiving Tester} & 12574 & 12528 & 12549 & 12374.5 & 12437 & 12464.5 & 12427 & 12404 & 12399.5 & 12352.25 & 12372 & 12251.25 & 12264.5\\
+\textbf{Prober} & 10313.5 & 10580 & 10884 & 11166.5 & 11537.5 & 11910.75 & 12248 & 12593.75 & 12948 & 13302.5 & 13637 & 13962 & 14313.5\\
+\midrule
+\textbf{Cautious Rebuilder} & 12268.5 & 12276.25 & 12152 & 12263.5 & 12287 & 12258.25 & 12329 & 12265.5 & 12303.5 & 12299 & 12363 & 12403 & 12482.5\\
+\textbf{Progressive Cooperator} & 11735.5 & 11501.25 & 11803 & 11680.25 & 11437.5 & 11518.25 & 11505 & 11369 & 11387.5 & 11359.5 & 11262 & 11146.25 & 11245.5\\
+\textbf{Deminishing Cooperator} & 12135 & 11963.25 & 11882 & 12028 & 11763.5 & 11817 & 11676 & 11703 & 11622.5 & 11501.75 & 11485 & 11439 & 11315.5\\
+\textbf{Bounded Gradient} & 12641.5 & 12580.75 & 12724 & 12688.75 & 12752.5 & 12726.5 & 12737 & 12661.25 & 12728.5 & 12713.75 & 12727 & 12690 & 12741.5\\
+\textbf{Recent Gradient} & 10240 & 10414.25 & 10887 & 11246.25 & 11602.5 & 11904 & 12272 & 12642.75 & 12951 & 13291.25 & 13613 & 13953.75 & 14311\\
+\midrule
+\textbf{Random 10\%} & 12488 & 12072.5 & 11518 & 11561 & 11011 & 10884.75 & 10554 & 10170.75 & 9691.5 & 9407 & 9083 & 8798.25 & 8374.5\\
+\textbf{Random 25\%} & 12705.5 & 12206.75 & 12123 & 11906 & 11585 & 11484 & 11173 & 10777.75 & 10706 & 10359.75 & 10201 & 9980.25 & 9710\\
+\textbf{Random 50\%} & 12391.5 & 12384.25 & 12371 & 12330.25 & 12168 & 12000 & 11914 & 11968.5 & 11827.5 & 11699.25 & 11690 & 11614.5 & 11613.5\\
+\textbf{Random 75\%} & 11350 & 11521 & 11512 & 11756.75 & 11776 & 11989.25 & 12117 & 12323 & 12484 & 12661.25 & 12782 & 12911 & 13015.5\\
+\textbf{Random 90\%} & 10159.5 & 10523.5 & 10980 & 11167.75 & 11493 & 11775.25 & 12019 & 12379.75 & 12656.5 & 12909.5 & 13192 & 13475 & 13753.5\\
+\bottomrule
+\end{tabular}}
+\end{table}
 
 Defector Strategies Definition: These strategies lean towards defection
 more often than cooperation. They may defect unconditionally,

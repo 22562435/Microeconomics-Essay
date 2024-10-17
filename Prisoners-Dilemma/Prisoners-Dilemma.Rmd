@@ -109,7 +109,7 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width 
 # These should be picked up when you execute the command chunks (code sections below) in your rmd, not printed in your paper!
 
 # Lets load in example data, and see how this can be stored and later called from your 'data' folder.
-#load('data/fulldata.RData')
+load('data/fulldata.RData')
 if(!require("tidyverse")) install.packages("tidyverse")
 library(tidyverse)
 library(knitr)
@@ -351,14 +351,18 @@ strategies <- list(
 
 
 ```{r}
-set.seed(100)
-p_0_results <- tournament_payoff_df(strategies,rounds = 200)
-set.seed(100)
-fullresults_rank<- ranking_matrix_for_sequence_p(strategies, rounds = 200, rank = TRUE)
-set.seed(100)
-fullresults_total<- ranking_matrix_for_sequence_p(strategies, rounds = 200, rank = FALSE)
-save.image(file='data/fulldata.RData')
+# system.time({
+# set.seed(100)
+# p_0_results <- tournament_payoff_df(strategies,rounds = 200)
+# set.seed(100)
+# fullresults_rank<- ranking_matrix_for_sequence_p(strategies, rounds = 200, rank = TRUE)
+# set.seed(100)
+# fullresults_total<- ranking_matrix_for_sequence_p(strategies, rounds = 200, rank = FALSE)
+# #save.image(file='data/fulldata.RData')
+# 
+# })
 ```
+
 
 
 
@@ -447,7 +451,7 @@ Will be powerful to give a snapshot of one turnoment
 
 
 library(kableExtra)
-#create_tournament_table(p_0_results, p_value = 0)
+create_tournament_table(p_0_results, p_value = 0)
 
 
 ```
@@ -466,7 +470,7 @@ library(kableExtra)
 
 
 ```{r}
-fullresults_rank %>% format_table()
+fullresults_rank %>% format_table2()
 ```
 
 
@@ -485,6 +489,9 @@ fullresults_total %>% filter(  Strategy %in% highlight) %>%
 
 
 
+```{r}
+fullresults_total %>% format_table2( title = "Strategy Values Across Different p Values")
+```
 
 
 

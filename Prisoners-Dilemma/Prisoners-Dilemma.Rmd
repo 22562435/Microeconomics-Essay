@@ -109,11 +109,13 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width 
 # These should be picked up when you execute the command chunks (code sections below) in your rmd, not printed in your paper!
 
 # Lets load in example data, and see how this can be stored and later called from your 'data' folder.
+#load('data/fulldata.RData')
 if(!require("tidyverse")) install.packages("tidyverse")
 library(tidyverse)
 library(knitr)
 library(kableExtra)
 map(paste0("code/", list.files("code/", "*.R$")), source)  # source all your R scripts
+
 
 ```
 
@@ -124,6 +126,8 @@ map(paste0("code/", list.files("code/", "*.R$")), source)  # source all your R s
 <!-- ############################## -->
 
 # Introduction \label{Introduction}
+
+
 
 The phrase horses for courses alludes to the fact that a racehorse performs best on a racecourse to which it is specifically suited. More generally this idiom is used to express that certain tools and strategies are better suited over others depending on the task or situations at hand. In the context of the repeated prisoners' dilemma, the strategy of tit-for-tat, where one mimics their opponent's previous move, reigns supreme and is best suited over others for the situation at hand^[The tic-for-tat strategy is the dominant strategy in @{axelrod1980effective}]. 
 
@@ -264,6 +268,49 @@ Most importantly we aim to structure our output in tables similar to @{axelrod19
 
 # Game Construction
 
+1. Always Strategies:
+- Always Cooperate
+- Always Defect
+
+2. Tit for Tat Variants:
+- Tit for Tat
+- Tit for Two Tats
+- Tit for Tat with Forgiveness
+- Tit for Tat with Randomization
+
+3. Win-Stay/Lose-Switch Strategies:
+- Pavlov 
+
+
+4. Punishment-Based Strategies:
+- Grim Trigger
+- Bully
+- Retaliatory Defector
+
+5. Adaptive/Adjusting Strategies:
+- Adaptive Defector
+- Adaptive Peacekeeper
+- Probing Adjuster
+- Forgiving Tester
+- Prober
+- Cautious Rebuilder
+
+6. Gradient/Probability-Based Strategies:
+- Progressive Cooperator (Gradually increases cooperation)
+- Diminishing Cooperator (Gradually decreases cooperation)
+- Bounded Gradient (Probability based on the opponent’s entire history)
+- Recent Gradient (Probability based on recent actions of the opponent)
+
+7. Random Strategies:
+
+- Random 10%
+- Random 25%
+- Random 50%
+- Random 75%
+- Random 90%
+
+
+
 ```{r}
 strategies <- list(
     'Always Cooperate' = always_cooperate,
@@ -273,26 +320,47 @@ strategies <- list(
     'Tit for Tat with Forgiveness' = tit_for_tat_forgiveness,
     'Tit for Tat with Randomisation' = tit_for_tat_randomisation,
     Pavlov = pavlov,
-    Bully = bully,
-    'Bounded Random Strategy' = bounded_random_strategy,
-    'Gradient Cooperation' = gradient_cooperation,
     'Grim/Trigger' = grim_trigger,
-   'Progressive Cooperator'=gradual_adjustment_strategy_inc_200,
-   'Deminishing Cooperator'=gradual_adjustment_strategy_dec_200,
-   Prober = prober,
-   'Probing Adjuster'=probing_adjuster,
-   'Cautious Rebuilder'=cautious_rebuilder,
-   'Adaptive Peacekeep'=adaptive_peacekeeper,
-   'Forgiving Tester'=forgiving_tester,
-    'Adaptive Defector'=adaptive_defector,
-   'Retaliatory Defector'=retaliatory_defector,
+    Bully = bully,
+    'Retaliatory Defector' = retaliatory_defector,
+    
+    'Adaptive Defector' = adaptive_defector,
+    'Adaptive Peacekeep' = adaptive_peacekeeper,
+    'Probing Adjuster' = probing_adjuster,
+    'Forgiving Tester' = forgiving_tester,
+    Prober = prober,
+    'Cautious Rebuilder' = cautious_rebuilder,
+    
+    'Progressive Cooperator' = gradual_adjustment_strategy_inc_200,
+    'Deminishing Cooperator' = gradual_adjustment_strategy_dec_200,
+    'Bounded Gradient' = bounded_random_strategy,
+    'Recent Gradient' = gradient_cooperation,
+    
+    
     'Random 10%' = random_0.1,
     'Random 25%' = random_0.25,
     'Random 50%' = random_0.5,
     'Random 75%' = random_0.75,
     'Random 90%' = random_0.9
+    
+
 )
 ```
+
+
+
+
+```{r}
+set.seed(100)
+p_0_results <- tournament_payoff_df(strategies,rounds = 200)
+set.seed(100)
+fullresults_rank<- ranking_matrix_for_sequence_p(strategies, rounds = 200, rank = TRUE)
+set.seed(100)
+fullresults_total<- ranking_matrix_for_sequence_p(strategies, rounds = 200, rank = FALSE)
+save.image(file='data/fulldata.RData')
+```
+
+
 
 Game tournaments will take place in a round-robin format where all strategies play each other for _N_ number of games. Total utility is calculated over the whole tournament and the strategy with the greatest value will be the dominant strategy. The tournaments will not be evaluated on games won but this metric will be tracked. 
 
@@ -356,8 +424,7 @@ payoffs_p05 <- calculate_payoffs(0.5)
 
 
 
-loop for all different p values. grepple rank.
-create the same function that gives total compared to rank. 
+
 
 
 ```{r}
@@ -375,117 +442,44 @@ Will be powerful to give a snapshot of one turnoment
 \begin{landscape}
 
 
-```{r}
-set.seed(100)
-symmetric_results <- tournament_payoff_df(strategies,rounds = 200)
 
-# Load required package
+```{r}
+
+
 library(kableExtra)
+#create_tournament_table(p_0_results, p_value = 0)
 
-# Assuming `symmetric_results` is the output from the function
-# and the column names include the 'Total' and 'Rank' with their p values.
-total_col_name <- grep("^Total", colnames(symmetric_results), value = TRUE)
-rank_col_name <- grep("^Rank", colnames(symmetric_results), value = TRUE)
-
-# Create a kable with nice formatting
-kable(symmetric_results, caption = "Tournament Payoff Matrix for p=0") %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"),
-                latex_options = c("scale_down", "hold_position"),
-                font_size = 8) %>%
-  column_spec(1, bold = TRUE) %>%  # Bold the row names (strategy names)
-  column_spec(2:(ncol(symmetric_results) - 1), width = "1cm") %>%  # Make non-important columns equally spaced
-  column_spec(ncol(symmetric_results) , bold = TRUE, color = "blue") %>%  # Highlight Total column
-  column_spec(ncol(symmetric_results)+1, bold = TRUE, color = "red") %>%  # Highlight Rank column
-  add_header_above(c(" " = 1, "Payoff Against Other Strategies" = ncol(symmetric_results) - 2, 
-                     "Total" = 1, "Rank" = 1))  # Add a header above for better readability
 
 ```
+
+
+
+\end{landscape}
+
+
+<!-- ```{r} -->
+<!-- #delete this chunk later, just for testing kable -->
+<!-- fullresults_rank<-ranking_matrix_for_sequence_p(strategies, rounds = 1, rank = FALSE) -->
+<!-- fullresults_total<-ranking_matrix_for_sequence_p(strategies, rounds = 1, rank = FALSE) -->
+
+<!-- ``` -->
 
 
 ```{r}
-set.seed(100)
-symmetric_results <- tournament_payoff_df(strategies,rounds = 2)
-
-# Load required package
-library(kableExtra)
-
-# Assuming `symmetric_results` is the output from the function
-# and the column names include the 'Total' and 'Rank' with their p values.
-total_col_name <- grep("^Total", colnames(symmetric_results), value = TRUE)
-rank_col_name <- grep("^Rank", colnames(symmetric_results), value = TRUE)
-
-# Create a kable with nice formatting
-kable(symmetric_results, caption = "Tournament Payoff Matrix for p=0") %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"),
-                latex_options = c("scale_down", "hold_position"),
-                font_size = 8) %>%
-  column_spec(1, bold = TRUE) %>%  # Bold the row names (strategy names)
-  column_spec(2:(ncol(symmetric_results) - 1), width = "1cm") %>%  # Make non-important columns equally spaced
-  column_spec(ncol(symmetric_results) , bold = TRUE, color = "blue") %>%  # Highlight Total column
-  column_spec(ncol(symmetric_results)+1, bold = TRUE, color = "red") %>%  # Highlight Rank column
-  add_header_above(c(" " = 1, "Payoff Against Other Strategies" = ncol(symmetric_results) - 2, 
-                     "Total" = 1, "Rank" = 1))  # Add a header above for better readability
-
+fullresults_rank %>% format_table()
 ```
 
 
 
 
-```{r}
-set.seed(420)
-result_df <- ranking_matrix_for_sequence_p(strategies, rounds = 2, rank = TRUE)
-create_bump_chart(result_df)
-```
+```{r,fig.cap="Strategy Ranks Across Different Values of p\\label{pvalues}", fig.align='center'}
 
+highlight<-c(    'Always Cooperate',
+    'Always Defect',
+    'Tit for Tat' ,'Grim/Trigger' )
 
-
-
-
-```{r}
-
-
-# Example usage
-result_df <- ranking_matrix_for_sequence_p(strategies, rounds = 25, rank = TRUE)
-create_bump_chart(result_df)
-
-
-
-
-
-
-
-
-```
-```{r}
-ranking_matrix_for_sequence_p(strategies, rounds = 10, rank = FALSE)
-```
-
-```{r}
-ranking_matrix_for_sequence_p(strategies, rounds = 1, rank = FALSE)
-```
-
-
-```{r}
-tournament_payoff_df(strategies, rounds =1)
-```
-
-
-```{r}
-
-df200roundsp0<-tournament_payoff_df(strategies, rounds =200)
-
-
-```
-
-```{r}
-df200roundsp0
-```
-
-
-
-
-```{r}
-df300roundsp0reduced<-tournament_payoff_df(strategies, rounds =300)
+fullresults_total %>% filter(  Strategy %in% highlight) %>% 
+                           plot_total_utilities()
 ```
 
 
@@ -494,11 +488,7 @@ df300roundsp0reduced<-tournament_payoff_df(strategies, rounds =300)
 
 
 
-```{r}
-check<-ranking_matrix_for_sequence_p(strategies, rounds = 50, rank =TRUE)
-checkvalues<-ranking_matrix_for_sequence_p(strategies, rounds = 50, rank =FALSE)
-create_bump_chart(check)
-```
+
 
 
 
@@ -623,8 +613,6 @@ This structure will test a strategy's ability to incentivize and maintain cooper
 
 
 
-
-\end{landscape}
 
 
 # Bump Chart

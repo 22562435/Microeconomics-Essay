@@ -470,7 +470,7 @@ create_tournament_table(p_0_results, p_value = 0)
 
 
 ```{r}
-fullresults_rank %>% format_table2()
+fullresults_rank %>% format_table()
 ```
 
 
@@ -490,7 +490,7 @@ fullresults_total %>% filter(  Strategy %in% highlight) %>%
 
 
 ```{r}
-fullresults_total %>% format_table2( title = "Strategy Values Across Different p Values")
+fullresults_total %>% format_table( title = "Strategy Values Across Different p Values")
 ```
 
 

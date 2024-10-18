@@ -1,6 +1,6 @@
 library(kableExtra)
 
-format_table2 <- function(data, title = "Strategy Rankings Across Different p Values") {
+format_table <- function(data, title = "Strategy Rankings Across Different p Values") {
     data %>%
         kable("latex", align = 'c', caption = title, booktabs = TRUE, linesep = "") %>%
         kable_styling(

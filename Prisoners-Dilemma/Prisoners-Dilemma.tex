@@ -421,6 +421,10 @@ Axelrod (1980).
 
 \section{Game Construction}\label{game-construction}
 
+Notes: There are 25 strategies. Each strategy plays everyone else and
+itself once for 200 rounds. How each variable fairs against each other
+is recorded
+
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
@@ -554,72 +558,23 @@ Axelrod (1980).
   Random 90\%
 \end{itemize}
 
-Game tournaments will take place in a round-robin format where all
-strategies play each other for \emph{N} number of games. Total utility
-is calculated over the whole tournament and the strategy with the
-greatest value will be the dominant strategy. The tournaments will not
-be evaluated on games won but this metric will be tracked.
+\section{Game Results}\label{game-results}
 
-We have not limited ourselves to the number of strategies just yet, but
-we aim to include most of the following and potentially we create more
-along the way.
-
-Basic Strategies:
-
-\begin{itemize}
-\item
-  Always Cooperate: This strategy always cooperates, regardless of the
-  opponent's previous moves.
-\item
-  Always Defect: This strategy always defects, regardless of the
-  opponent's previous moves.
-\item
-  Tit-for-Tat (TFT): Cooperates on the first move, then mimics the
-  opponent's last move in subsequent rounds.
-\item
-  Grim Trigger: Cooperates until the opponent defects once, then defects
-  forever.
-\item
-  Random: Randomly chooses to cooperate or defect with some probability.
-\item
-  Tit-for-Two-Tats: Similar to Tit-for-Tat but defects only after two
-  consecutive defections by the available player.
-\item
-  Pavlov (Win-Stay, Lose-Shift): Cooperates if the last round was a
-  success (mutual cooperation or mutual defection), otherwise defects.
-\end{itemize}
-
-More Complex Strategies:
-
-\begin{itemize}
-\item
-  Generous Tit-for-Tat: Similar to Tit-for-Tat, but occasionally
-  forgives a defection.
-\item
-  Tit-for-Tat with Randomisation: A variant of Tit-for-Tat where the
-  player may defect or cooperate with a certain probability after the
-  opponent defects.
-\item
-  Tit-for-Tat with Forgiveness: Like TFT but occasionally forgives a
-  defection, returning to cooperation.
-\end{itemize}
-
-\section{Feedback}\label{feedback}
-
-Any feedback would be greatly appreciated.
-
-Will be powerful to give a snapshot of one turnoment
+Talk about game results for a single p-value being 0. Talk about how
+probing adjuster won. Yet without Adaptive/Adjusting Strategies, then
+Grim-trigger won. Game results are mostly based on what strategies are
+in
 
 \newpage
 
 \begin{landscape}
 
 
-
+\vfill
 \begingroup\fontsize{5}{7}\selectfont
 
 \begin{longtable}[t]{>{}l>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.2cm}>{\raggedleft\arraybackslash}p{0.2cm}}
-\caption{\label{tab:unnamed-chunk-5}Tournament Payoff Matrix for p= 0}\\
+\caption{\label{tab:unnamed-chunk-3}Tournament Payoff Matrix for p= 0}\\
 \toprule
 \multicolumn{1}{c}{ } & \multicolumn{25}{c}{Payoff Against Other Strategies} & \multicolumn{1}{c}{Total} & \multicolumn{1}{c}{Rank} \\
 \cmidrule(l{3pt}r{3pt}){2-26} \cmidrule(l{3pt}r{3pt}){27-27} \cmidrule(l{3pt}r{3pt}){28-28}
@@ -658,13 +613,19 @@ Will be powerful to give a snapshot of one turnoment
 \end{longtable}
 \endgroup{}
 
-
+\vfill
 
 \end{landscape}
 
+\subsection{Social preferences}\label{social-preferences}
+
+Above was all to do with a single p-value.
+
+Below is all the outcomes for when social preferences vary. We see that
+
 \begin{table}[!h]
 \centering
-\caption{\label{tab:unnamed-chunk-6}Strategy Rankings Across Different p Values}
+\caption{\label{tab:unnamed-chunk-4}Strategy Rankings Across Different p Values}
 \centering
 \resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
 \fontsize{5}{7}\selectfont
@@ -709,16 +670,16 @@ Strategy & -0.1 & -0.05 & 0 & 0.05 & 0.1 & 0.15 & 0.2 & 0.25 & 0.3 & 0.35 & 0.4 
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Prisoners-Dilemma_files/figure-latex/unnamed-chunk-7-1} 
+{\centering \includegraphics{Prisoners-Dilemma_files/figure-latex/unnamed-chunk-5-1} 
 
 }
 
-\caption{Strategy Ranks Across Different Values of p\label{pvalues}}\label{fig:unnamed-chunk-7}
+\caption{Strategies' Total Utilities for Different Strategies Accross p\label{pvalues}}\label{fig:unnamed-chunk-5}
 \end{figure}
 
 \begin{table}[!h]
 \centering
-\caption{\label{tab:unnamed-chunk-8}Strategy Values Across Different p Values}
+\caption{\label{tab:unnamed-chunk-6}Strategy Values Across Different p Values}
 \centering
 \resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
 \fontsize{5}{7}\selectfont
@@ -761,38 +722,7 @@ Strategy & -0.1 & -0.05 & 0 & 0.05 & 0.1 & 0.15 & 0.2 & 0.25 & 0.3 & 0.35 & 0.4 
 \end{tabular}}
 \end{table}
 
-Defector Strategies Definition: These strategies lean towards defection
-more often than cooperation. They may defect unconditionally,
-strategically exploit others, or only cooperate under very specific
-conditions. Defector strategies prioritize short-term gains, aiming to
-maximize their own payoff without much regard for fostering mutual
-cooperation.
-
-Cooperative Strategies Definition: These strategies favour cooperation
-and are designed to foster mutual cooperation over multiple rounds. They
-aim to achieve better outcomes for both players through sustained
-cooperation, but they often include some mechanisms for retaliation to
-avoid being exploited.
-
-Increased Temptation: c(3, 8, 0, 1) Reduced Punishment: c(3, 5, 0, 2)
-Increased Reward for Cooperation: c(5, 3, 0, 1)
-
-Increased Temptation: c(3, 8, 0, 1) This structure provides a strong
-test of a strategy's ability to resist short-term gains for long-term
-benefits. It is particularly useful for identifying strategies that are
-susceptible to exploitation.
-
-Reduced Punishment: c(3, 5, 0, 2) This structure will encourage more
-risk-taking behavior, as the consequences of mutual defection are less
-severe. It is a good way to evaluate how strategies respond to a less
-punishing environment.
-
-Increased Reward for Cooperation: c(5, 3, 0, 1) This structure will test
-a strategy's ability to incentivize and maintain cooperation, even when
-the temptation to defect remains. It is especially useful for
-identifying strategies that are effective in promoting mutual benefit.
-
-\section{Bump Chart}\label{bump-chart}
+\section{Conclusion}\label{conclusion}
 
 \newpage
 

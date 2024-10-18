@@ -268,6 +268,9 @@ Most importantly we aim to structure our output in tables similar to @{axelrod19
 
 # Game Construction
 
+
+Notes: There are 25 strategies. Each strategy plays everyone else and itself once for 200 rounds. How each variable fairs against each other is recorded 
+
 1. Always Strategies:
 - Always Cooperate
 - Always Defect
@@ -351,6 +354,8 @@ strategies <- list(
 
 
 ```{r}
+#Abdul you can ignore this, this is just how the final data was created. It took a few hours to run
+
 # system.time({
 # set.seed(100)
 # p_0_results <- tournament_payoff_df(strategies,rounds = 200)
@@ -366,62 +371,6 @@ strategies <- list(
 
 
 
-Game tournaments will take place in a round-robin format where all strategies play each other for _N_ number of games. Total utility is calculated over the whole tournament and the strategy with the greatest value will be the dominant strategy. The tournaments will not be evaluated on games won but this metric will be tracked. 
-
-We have not limited ourselves to the number of strategies just yet, but we aim to include most of the following and potentially we create more along the way. 
-
-Basic Strategies:
-
-- Always Cooperate: This strategy always cooperates, regardless of the opponent's previous moves.
-
-- Always Defect: This strategy always defects, regardless of the opponent's previous moves.
-
-- Tit-for-Tat (TFT): Cooperates on the first move, then mimics the opponent's last move in subsequent rounds.
-
-- Grim Trigger: Cooperates until the opponent defects once, then defects forever.
-
-- Random: Randomly chooses to cooperate or defect with some probability.
-
-- Tit-for-Two-Tats: Similar to Tit-for-Tat but defects only after two consecutive defections by the available player.
-
-- Pavlov (Win-Stay, Lose-Shift): Cooperates if the last round was a success (mutual cooperation or mutual defection), otherwise defects.
-
-More Complex Strategies:
-
-- Generous Tit-for-Tat: Similar to Tit-for-Tat, but occasionally forgives a defection.
-
-- Tit-for-Tat with Randomisation: A variant of Tit-for-Tat where the player may defect or cooperate with a certain probability after the opponent defects.
-
-- Tit-for-Tat with Forgiveness: Like TFT but occasionally forgives a defection, returning to cooperation.
-
-
-# Feedback
-
-Any feedback would be greatly appreciated. 
-
-
-
-
-
-
-```{r,include=FALSE,echo=FALSE}
-# this function helps us calculate the payoffs
-calculate_payoffs <- function(p) {
-  C_C <- 3*(1-p) + 3*p
-  C_D <- 0 + 5*p
-  D_C <- 5*(1-p)
-  D_D <- 1*(1-p) + p
-  
-  return(list(C_C = C_C, C_D = C_D, D_C = D_C, D_D = D_D))
-}
-
-# Calculate payoffs for p = 0, p = 0.2, and p = 0.5
-payoffs_p0 <- calculate_payoffs(0)
-payoffs_p02 <- calculate_payoffs(0.2)
-payoffs_p05 <- calculate_payoffs(0.5)
-
-
-```
 
 
 
@@ -431,22 +380,24 @@ payoffs_p05 <- calculate_payoffs(0.5)
 
 
 
-```{r}
-
-```
 
 
 
-Will be powerful to give a snapshot of one turnoment 
 
 
+
+
+# Game Results
+
+Talk about game results for a single p-value being 0. 
+Talk about how probing adjuster won. Yet without Adaptive/Adjusting Strategies, then Grim-trigger won. Game results are mostly based on what strategies are in 
 
 \newpage
 
 \begin{landscape}
 
 
-
+\vfill
 ```{r}
 
 
@@ -456,17 +407,22 @@ create_tournament_table(p_0_results, p_value = 0)
 
 ```
 
-
+\vfill
 
 \end{landscape}
 
 
-<!-- ```{r} -->
-<!-- #delete this chunk later, just for testing kable -->
-<!-- fullresults_rank<-ranking_matrix_for_sequence_p(strategies, rounds = 1, rank = FALSE) -->
-<!-- fullresults_total<-ranking_matrix_for_sequence_p(strategies, rounds = 1, rank = FALSE) -->
 
-<!-- ``` -->
+## Social preferences
+
+Above was all to do with a single p-value.
+
+Below is all the outcomes for when social preferences vary. We see that 
+
+
+
+
+
 
 
 ```{r}
@@ -476,20 +432,29 @@ fullresults_rank %>% format_table()
 
 
 
-```{r,fig.cap="Strategy Ranks Across Different Values of p\\label{pvalues}", fig.align='center'}
 
-highlight<-c(    'Always Cooperate',
-    'Always Defect',
-    'Tit for Tat' ,'Grim/Trigger' )
 
-fullresults_total %>% filter(  Strategy %in% highlight) %>% 
-                           plot_total_utilities()
+
+
+```{r, fig.cap="Strategies' Total Utilities for Different Strategies Accross p\\label{pvalues}", fig.height = 6,fig.align='center'}
+
+fullresults_total %>%   plot_total_utilities()
+
 ```
 
 
 
 
+
+
+
+
+
+
+
+
 ```{r}
+
 fullresults_total %>% format_table( title = "Strategy Values Across Different p Values")
 ```
 
@@ -499,130 +464,7 @@ fullresults_total %>% format_table( title = "Strategy Values Across Different p 
 
 
 
-
-
-
-Defector Strategies
-Definition: These strategies lean towards defection more often than cooperation. They may defect unconditionally, strategically exploit others, or only cooperate under very specific conditions. Defector strategies prioritize short-term gains, aiming to maximize their own payoff without much regard for fostering mutual cooperation.
-
-
-Cooperative Strategies
-Definition: These strategies favour cooperation and are designed to foster mutual cooperation over multiple rounds. They aim to achieve better outcomes for both players through sustained cooperation, but they often include some mechanisms for retaliation to avoid being exploited.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Increased Temptation: c(3, 8, 0, 1)
-Reduced Punishment: c(3, 5, 0, 2)
-Increased Reward for Cooperation: c(5, 3, 0, 1)
-
-
-Increased Temptation: c(3, 8, 0, 1)
-This structure provides a strong test of a strategy's ability to resist short-term gains for long-term benefits. It is particularly useful for identifying strategies that are susceptible to exploitation.
-
-
-Reduced Punishment: c(3, 5, 0, 2)
-This structure will encourage more risk-taking behavior, as the consequences of mutual defection are less severe. It is a good way to evaluate how strategies respond to a less punishing environment.
-
-
-Increased Reward for Cooperation: c(5, 3, 0, 1)
-This structure will test a strategy's ability to incentivize and maintain cooperation, even when the temptation to defect remains. It is especially useful for identifying strategies that are effective in promoting mutual benefit.
-
-
-
-
-
-# Bump Chart
+# Conclusion
 
 
 

@@ -212,7 +212,7 @@
 
 \begin{frontmatter}  %
 
-\title{Beyond Tit-for-Tat Proposal - Melt}
+\title{Beyond Tit-for-Tat Proposal}
 
 % Set to FALSE if wanting to remove title (for submission)
 
@@ -232,13 +232,6 @@
 Africa}
 
 
-\begin{abstract}
-\small{
-Beyond Tit-for-tat: Set up a repeated prisoner's dilemma computer
-tournament, in which strategies compete against each other. Write a
-report on your findings.
-}
-\end{abstract}
 
 \vspace{1cm}
 
@@ -285,8 +278,7 @@ strategies are better suited over others depending on the task or
 situations at hand. In the context of the repeated prisoners' dilemma,
 the strategy of tit-for-tat, where one mimics their opponent's previous
 move, reigns supreme and is best suited over others for the situation at
-hand\footnote{The tic-for-tat strategy is the dominant strategy in
-  Axelrod (1980)}.
+hand.
 
 The question this paper aims to answer is as to which situations is
 tit-for-tat not the dominant strategy. To do this we have to venture
@@ -419,144 +411,34 @@ Tonda (2016), García \& Veelen (2018), Embrey, Fréchette \& Yuksel
 Most importantly we aim to structure our output in tables similar to
 Axelrod (1980).
 
+In text Axelrod (1980)
+
+bracket (Axelrod, 1980)
+
 \section{Game Construction}\label{game-construction}
 
 Notes: There are 25 strategies. Each strategy plays everyone else and
 itself once for 200 rounds. How each variable fairs against each other
 is recorded
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Always Strategies:
-\end{enumerate}
-
-\begin{itemize}
-\tightlist
-\item
-  Always Cooperate
-\item
-  Always Defect
-\end{itemize}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{1}
-\tightlist
-\item
-  Tit for Tat Variants:
-\end{enumerate}
-
-\begin{itemize}
-\tightlist
-\item
-  Tit for Tat
-\item
-  Tit for Two Tats
-\item
-  Tit for Tat with Forgiveness
-\item
-  Tit for Tat with Randomization
-\end{itemize}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{2}
-\tightlist
-\item
-  Win-Stay/Lose-Switch Strategies:
-\end{enumerate}
-
-\begin{itemize}
-\tightlist
-\item
-  Pavlov
-\end{itemize}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{3}
-\tightlist
-\item
-  Punishment-Based Strategies:
-\end{enumerate}
-
-\begin{itemize}
-\tightlist
-\item
-  Grim Trigger
-\item
-  Bully
-\item
-  Retaliatory Defector
-\end{itemize}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{4}
-\tightlist
-\item
-  Adaptive/Adjusting Strategies:
-\end{enumerate}
-
-\begin{itemize}
-\tightlist
-\item
-  Adaptive Defector
-\item
-  Adaptive Peacekeeper
-\item
-  Probing Adjuster
-\item
-  Forgiving Tester
-\item
-  Prober
-\item
-  Cautious Rebuilder
-\end{itemize}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{5}
-\tightlist
-\item
-  Gradient/Probability-Based Strategies:
-\end{enumerate}
-
-\begin{itemize}
-\tightlist
-\item
-  Progressive Cooperator (Gradually increases cooperation)
-\item
-  Diminishing Cooperator (Gradually decreases cooperation)
-\item
-  Bounded Gradient (Probability based on the opponent's entire history)
-\item
-  Recent Gradient (Probability based on recent actions of the opponent)
-\end{itemize}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{6}
-\tightlist
-\item
-  Random Strategies:
-\end{enumerate}
-
-\begin{itemize}
-\tightlist
-\item
-  Random 10\%
-\item
-  Random 25\%
-\item
-  Random 50\%
-\item
-  Random 75\%
-\item
-  Random 90\%
-\end{itemize}
+\renewcommand{\arraystretch}{1.2} % Adjust row spacing
+\begin{table}[ht]
+\centering
+\tiny % Reduces font size for compactness
+\begin{tabular}{|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|}
+\hline
+\textbf{Always Strategies} & \textbf{Tit for Tat Variants} & \textbf{Win-Stay/ Lose-Switch} & \textbf{Punishment-Based} & \textbf{Adaptive/ Adjusting} & \textbf{Gradient/ Probability-Based} & \textbf{Random Strategies} \\
+\hline
+Always Cooperate & Tit for Tat & Pavlov & Grim Trigger & Adaptive Defector & Progressive Cooperator & Random 10\% \\
+Always Defect & Tit for Two Tats & & Bully & Adaptive Peacekeeper & Diminishing Cooperator & Random 25\% \\
+& Tit for Tat with Randomisation & & Retaliatory Defector & Probing Adjuster & Bounded Gradient & Random 50\% \\
+& Tit for Tat with Forgiveness & & & Forgiving Tester & Recent Gradient & Random 75\% \\
+& & & & Prober & & Random 90\% \\
+& & & & Cautious Rebuilder & & \\
+\hline
+\end{tabular}
+\caption{Categorisation of Strategy Types Used in the Prisoner's Dilemma Tournament}
+\end{table}
 
 \section{Game Results}\label{game-results}
 
@@ -667,6 +549,8 @@ Strategy & -0.1 & -0.05 & 0 & 0.05 & 0.1 & 0.15 & 0.2 & 0.25 & 0.3 & 0.35 & 0.4 
 \bottomrule
 \end{tabular}}
 \end{table}
+
+Figure \ref{pvalues}
 
 \begin{figure}[H]
 

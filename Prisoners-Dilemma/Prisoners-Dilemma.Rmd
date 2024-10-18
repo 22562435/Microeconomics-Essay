@@ -3,7 +3,7 @@
 # Remove comments and add values where applicable.
 # The descriptions below should be self-explanatory
 
-title: "Beyond Tit-for-Tat Proposal - Melt"
+title: "Beyond Tit-for-Tat Proposal"
 #subtitle: "This will appear as Right Header"
 
 documentclass: "elsarticle"
@@ -94,8 +94,7 @@ output:
     fig_height: 3.5
 header-includes:
   - \usepackage{lscape}
-abstract: |
-  Beyond Tit-for-tat: Set up a repeated prisoner's dilemma computer tournament, in which strategies compete against each other. Write a report on your findings.
+
 ---
 
 <!-- First: Set your default preferences for chunk options: -->
@@ -129,7 +128,7 @@ map(paste0("code/", list.files("code/", "*.R$")), source)  # source all your R s
 
 
 
-The phrase horses for courses alludes to the fact that a racehorse performs best on a racecourse to which it is specifically suited. More generally this idiom is used to express that certain tools and strategies are better suited over others depending on the task or situations at hand. In the context of the repeated prisoners' dilemma, the strategy of tit-for-tat, where one mimics their opponent's previous move, reigns supreme and is best suited over others for the situation at hand^[The tic-for-tat strategy is the dominant strategy in @{axelrod1980effective}]. 
+The phrase horses for courses alludes to the fact that a racehorse performs best on a racecourse to which it is specifically suited. More generally this idiom is used to express that certain tools and strategies are better suited over others depending on the task or situations at hand. In the context of the repeated prisoners' dilemma, the strategy of tit-for-tat, where one mimics their opponent's previous move, reigns supreme and is best suited over others for the situation at hand.
 
 The question this paper aims to answer is as to which situations is tit-for-tat not the dominant strategy. To do this we have to venture down two potential avenues. The first is the adjustment of pay-off values within games, and the second is adjusting pay-off values from games. Consider a standard prisoners’ dilemma pay-off table:
 
@@ -249,6 +248,7 @@ _p_ could also take a negative value, which indicates a person is status-seeking
 It would be interesting to see under which values of _p_ the dominant strategy changes.
 
 
+
 # Literature Review\label{litreview}
 
 
@@ -265,52 +265,46 @@ We aim to do a short literature review and provide insight from the following so
 
 Most importantly we aim to structure our output in tables similar to @{axelrod1980effective}. 
 
+In text @axelrod1980effective
+
+bracket [@axelrod1980effective]
 
 # Game Construction
 
 
 Notes: There are 25 strategies. Each strategy plays everyone else and itself once for 200 rounds. How each variable fairs against each other is recorded 
 
-1. Always Strategies:
-- Always Cooperate
-- Always Defect
+```{=latex}
+\renewcommand{\arraystretch}{1.2} % Adjust row spacing
+\begin{table}[ht]
+\centering
+\tiny % Reduces font size for compactness
+\begin{tabular}{|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|}
+\hline
+\textbf{Always Strategies} & \textbf{Tit for Tat Variants} & \textbf{Win-Stay/ Lose-Switch} & \textbf{Punishment-Based} & \textbf{Adaptive/ Adjusting} & \textbf{Gradient/ Probability-Based} & \textbf{Random Strategies} \\
+\hline
+Always Cooperate & Tit for Tat & Pavlov & Grim Trigger & Adaptive Defector & Progressive Cooperator & Random 10\% \\
+Always Defect & Tit for Two Tats & & Bully & Adaptive Peacekeeper & Diminishing Cooperator & Random 25\% \\
+& Tit for Tat with Randomisation & & Retaliatory Defector & Probing Adjuster & Bounded Gradient & Random 50\% \\
+& Tit for Tat with Forgiveness & & & Forgiving Tester & Recent Gradient & Random 75\% \\
+& & & & Prober & & Random 90\% \\
+& & & & Cautious Rebuilder & & \\
+\hline
+\end{tabular}
+\caption{Categorisation of Strategy Types Used in the Prisoner's Dilemma Tournament}
+\end{table}
 
-2. Tit for Tat Variants:
-- Tit for Tat
-- Tit for Two Tats
-- Tit for Tat with Forgiveness
-- Tit for Tat with Randomization
 
-3. Win-Stay/Lose-Switch Strategies:
-- Pavlov 
+```
 
 
-4. Punishment-Based Strategies:
-- Grim Trigger
-- Bully
-- Retaliatory Defector
 
-5. Adaptive/Adjusting Strategies:
-- Adaptive Defector
-- Adaptive Peacekeeper
-- Probing Adjuster
-- Forgiving Tester
-- Prober
-- Cautious Rebuilder
 
-6. Gradient/Probability-Based Strategies:
-- Progressive Cooperator (Gradually increases cooperation)
-- Diminishing Cooperator (Gradually decreases cooperation)
-- Bounded Gradient (Probability based on the opponent’s entire history)
-- Recent Gradient (Probability based on recent actions of the opponent)
 
-7. Random Strategies:
 
-- Random 10%
-- Random 25%
-- Random 50%
-- Random 75%
-- Random 90%
+
+
+
 
 
 
@@ -431,7 +425,7 @@ fullresults_rank %>% format_table()
 
 
 
-
+Figure \ref{pvalues}
 
 
 

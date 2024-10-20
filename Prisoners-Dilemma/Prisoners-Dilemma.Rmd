@@ -437,6 +437,9 @@ fullresults_total %>%   plot_total_utilities()
 ```
 
 
+```{r}
+fullresults_total %>% create_ranking_table()
+```
 
 
 

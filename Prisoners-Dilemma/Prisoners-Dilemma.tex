@@ -563,7 +563,46 @@ Figure \ref{pvalues}
 
 \begin{table}[!h]
 \centering
-\caption{\label{tab:unnamed-chunk-6}Strategy Values Across Different p Values}
+\caption{\label{tab:unnamed-chunk-6}Strategy Rankings Across All p-Values}
+\centering
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
+\fontsize{8}{10}\selectfont
+\begin{tabular}[t]{>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{5cm}>{\centering\arraybackslash}p{3cm}}
+\toprule
+Ranking & Strategy & Average\\
+\midrule
+\textbf{1} & Tit for Tat & 12861.115\\
+\textbf{2} & Pavlov & 12849.538\\
+\textbf{3} & Tit for Tat with Randomisation & 12846.385\\
+\textbf{4} & Tit for Tat with Forgiveness & 12797.942\\
+\textbf{5} & Bounded Gradient & 12701.000\\
+\textbf{6} & Tit for Two Tats & 12566.788\\
+\textbf{7} & Adaptive Defector & 12487.250\\
+\textbf{8} & Forgiving Tester & 12415.192\\
+\textbf{9} & Adaptive Peacekeep & 12304.769\\
+\textbf{10} & Cautious Rebuilder & 12303.923\\
+\textbf{11} & Retaliatory Defector & 12273.365\\
+\textbf{12} & Prober & 12261.308\\
+\textbf{13} & Recent Gradient & 12256.058\\
+\textbf{14} & Always Cooperate & 12239.635\\
+\textbf{15} & Random 75\% & 12169.135\\
+\textbf{16} & Grim/Trigger & 12080.481\\
+\textbf{17} & Random 90\% & 12037.250\\
+\textbf{18} & Random 50\% & 11997.865\\
+\textbf{19} & Probing Adjuster & 11964.308\\
+\textbf{20} & Deminishing Cooperator & 11717.808\\
+\textbf{21} & Bully & 11674.346\\
+\textbf{22} & Progressive Cooperator & 11457.731\\
+\textbf{23} & Random 25\% & 11147.538\\
+\textbf{24} & Random 10\% & 10431.865\\
+\textbf{25} & Always Defect & 9757.308\\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{table}[!h]
+\centering
+\caption{\label{tab:unnamed-chunk-7}Strategy Values Across Different p Values}
 \centering
 \resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
 \fontsize{5}{7}\selectfont

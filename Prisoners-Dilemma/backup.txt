@@ -1,0 +1,470 @@
+---
+# IMPORTANT: Change settings here, but DO NOT change the spacing.
+# Remove comments and add values where applicable.
+# The descriptions below should be self-explanatory
+
+title: "Beyond Tit-for-Tat Proposal"
+#subtitle: "This will appear as Right Header"
+
+documentclass: "elsarticle"
+
+# --------- Thesis title (Optional - set to FALSE by default).
+# You can move the details below around as you please.
+Thesis_FP: FALSE
+# Entry1: "An unbelievable study with a title spanning multiple lines."
+# Entry2: "\\textbf{Some Guy}" # textbf for bold
+# Entry3: "A thesis submitted toward the degree of Doctor of Philosophy"
+# Uni_Logo: Tex/Logo.png # Place a logo in the indicated location (from your root, e.g. defaults to ~/Tex/Logo.png) and uncomment this line. Leave uncommented for no image
+# Logo_width: 0.3 # If using a logo - use this to set width (size) of image
+# Entry4: "Under the supervision of: \\vfill Prof. Joe Smith and Dr. Frank Smith"
+# Entry5: "Stellenbosch University"
+# Entry6: April 2020
+# Entry7:
+# Entry8:
+
+# --------- Front Page
+# Comment: ----- Follow this pattern for up to 5 authors
+AddTitle: TRUE # Use FALSE when submitting to peer reviewed platform. This will remove author names.
+Author1: "Liam Andrew Beattie"  # First Author - note the thanks message displayed as an italic footnote of first page.
+Ref1: "Microeconomics 871, Stellenbosch University, South Africa" # First Author's Affiliation
+Email1: "22562435\\@sun.ac.za" # First Author's Email address
+
+Author2: "Abdul Qaadir Cassiem"
+#Ref2: "Some other Institution, Cape Town, South Africa"
+Email2: "20863667\\@sun.ac.za"
+CommonAffiliation_12: TRUE # If Author 1 and 2 have a common affiliation. Works with _13, _23, etc.
+
+# Author3: "John Doe"
+# Email3: "Joe\\@gmail.com"
+
+#CorrespAuthor_1: TRUE  # If corresponding author is author 3, e.g., use CorrespAuthor_3: TRUE
+
+# Comment out below to remove both. JEL Codes only given if keywords also given.
+# keywords: "Multivariate GARCH \\sep Kalman Filter \\sep Copula" # Use \\sep to separate
+# JELCodes: "L250 \\sep L100"
+
+# ----- Manage headers and footers:
+#BottomLFooter: $Title$
+#BottomCFooter:
+#TopLHeader: \leftmark # Adds section name at topleft. Remove comment to add it.
+BottomRFooter: "\\footnotesize Page \\thepage" # Add a '#' before this line to remove footer.
+addtoprule: TRUE
+addfootrule: TRUE               # Use if footers added. Add '#' to remove line.
+
+# --------- page margins:
+margin: 2.3 # Sides
+bottom: 2 # bottom
+top: 2.5 # Top
+HardSet_layout: TRUE # Hard-set the spacing of words in your document. This will stop LaTeX squashing text to fit on pages, e.g.
+# This is done by hard-setting the spacing dimensions. Set to FALSE if you want LaTeX to optimize this for your paper.
+
+# --------- Line numbers
+linenumbers: FALSE # Used when submitting to journal
+
+# ---------- References settings:
+# You can download cls format here: https://www.zotero.org/ - simply search for your institution. You can also edit and save cls formats here: https://editor.citationstyles.org/about/
+# Hit download, store it in Tex/ folder, and change reference below - easy.
+bibliography: Tex/ref.bib       # Do not edit: Keep this naming convention and location.
+csl: Tex/harvard-stellenbosch-university.csl # referencing format used.
+# By default, the bibliography only displays the cited references. If you want to change this, you can comment out one of the following:
+#nocite: '@*' # Add all items in bibliography, whether cited or not
+# nocite: |  # add specific references that aren't cited
+#  @grinold2000
+#  @Someoneelse2010
+
+# ---------- General:
+RemovePreprintSubmittedTo: TRUE  # Removes the 'preprint submitted to...' at bottom of titlepage
+Journal: "Journal of Finance"   # Journal that the paper will be submitting to, if RemovePreprintSubmittedTo is set to TRUE.
+toc: FALSE                       # Add a table of contents
+numbersections: TRUE             # Should sections (and thus figures and tables) be numbered?
+fontsize: 11pt                  # Set fontsize
+linestretch: 1.2                # Set distance between lines.
+link-citations: FALSE            # This creates dynamic links to the papers in reference list.
+
+### Adding additional latex packages:
+# header-includes:
+#    - \usepackage{colortbl} # Add additional packages here.
+
+output:
+  pdf_document:
+    latex_engine: pdflatex
+    keep_tex: TRUE
+    template: Tex/TexDefault.txt
+    fig_width: 3.5  # Adjust default figure sizes. This can also be done in the chunks of the text.
+    fig_height: 3.5
+header-includes:
+  - \usepackage{lscape}
+
+---
+
+<!-- First: Set your default preferences for chunk options: -->
+
+<!-- If you want a chunk's code to be printed, set echo = TRUE. message = FALSE stops R printing ugly package loading details in your final paper too. I also suggest setting warning = FALSE and checking for warnings in R, else you might find ugly warnings in your paper. -->
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width = 6, fig.height = 5, fig.pos="H", fig.pos = 'H')
+# Note: Include = FALSE implies the code is executed, but not printed in your pdf.
+# warning and message = FALSE implies ugly messages and warnings are removed from your pdf.
+# These should be picked up when you execute the command chunks (code sections below) in your rmd, not printed in your paper!
+
+# Lets load in example data, and see how this can be stored and later called from your 'data' folder.
+load('data/fulldata.RData')
+if(!require("tidyverse")) install.packages("tidyverse")
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+map(paste0("code/", list.files("code/", "*.R$")), source)  # source all your R scripts
+
+
+```
+
+
+
+<!-- ############################## -->
+<!-- # Start Writing here: -->
+<!-- ############################## -->
+
+# Introduction \label{Introduction}
+
+
+
+The phrase horses for courses alludes to the fact that a racehorse performs best on a racecourse to which it is specifically suited. More generally this idiom is used to express that certain tools and strategies are better suited over others depending on the task or situations at hand. In the context of the repeated prisoners' dilemma, the strategy of tit-for-tat, where one mimics their opponent's previous move, reigns supreme and is best suited over others for the situation at hand.
+
+The question this paper aims to answer is as to which situations is tit-for-tat not the dominant strategy. To do this we have to venture down two potential avenues. The first is the adjustment of pay-off values within games, and the second is adjusting pay-off values from games. Consider a standard prisoners’ dilemma pay-off table:
+
+
+```{=latex}
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Player 1 / Player 2} & \textbf{C (Cooperate)} & \textbf{D (Defect)} \\
+\hline
+\textbf{C (Cooperate)} & $(R, R)$ & $(S, T)$ \\
+\hline
+\textbf{D (Defect)} & $(T, S)$ & $(P, P)$ \\
+\hline
+\end{tabular}
+\caption{Prisoner's Dilemma Payoff Matrix with $R$, $P$, $S$, and $T$ Outcomes}
+\end{table}
+
+```
+
+Adjusting the values of R (Reward for mutual cooperation), P (Punishment for mutual defection), S (Sucker’s pay-off for cooperating while the other defects), and T (Temptation to defect when the other cooperates) is an example of within game pay-off adjustments. These adjustments might produce a new dominant strategy and our analysis aims to find if it does.
+
+From-game adjustments are a bit different and it considers the utility a player gets from the payoffs of its opponent. 
+
+```{=latex}
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Player 1 / Player 2} & \textbf{C (Cooperate)} & \textbf{D (Defect)} \\
+\hline
+\textbf{C (Cooperate)} & $(R(1-p) + Rp,     R(1-p) + Rp)$ & $(S(1-p) + Tp,     T(1-p)+Sp)$ \\
+\hline
+\textbf{D (Defect)} & $(T(1-p) + Sp,    S(1-p) + Tp)$ & $(P(1-p) + Pp,     P(1-p) + P)$ \\
+\hline
+\end{tabular}
+\caption{Prisoner's Dilemma Payoff Matrix}
+\end{table}
+```
+
+
+The level _p_ here is adapted from Charness & Rabin (2002) who created a utility function that captures various social preferences. In essence, _p_ is how much you care about your opponent's pay-offs as well as your own. In standard prisoners’ dilemma games, this is 0 and thus people are purely self-interested. If we let our pay-offs be R = 3, T = 5, S = 0, and P = 3, then this situation in strategic form would look like:
+
+```{=latex}
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Player 1 / Player 2} & \textbf{C (Cooperate)} & \textbf{D (Defect)} \\
+\hline
+\textbf{C (Cooperate)} & $(3, 3)$ & $(0, 5)$ \\
+\hline
+\textbf{D (Defect)} & $(5, 0)$ & $(1, 1)$ \\
+\hline
+\end{tabular}
+\caption{Prisoner's Dilemma Payoff Matrix for $p = 0$ (Self-interested person)}
+\end{table}
+```
+
+
+However we can adjust the value of _p_ for people who are partially considerate of other people's outcomes, or we can make people egalitarian who care just as much for others as they do for themselves.
+
+```{=latex}
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Player 1 / Player 2} & \textbf{C (Cooperate)} & \textbf{D (Defect)} \\
+\hline
+\textbf{C (Cooperate)} & $(3, 3)$ & $(1, 4)$ \\
+\hline
+\textbf{D (Defect)} & $(4, 1)$ & $(1, 1)$ \\
+\hline
+\end{tabular}
+\caption{Prisoner's Dilemma Payoff Matrix for $p = 0.2$ (Partially considers others' outcomes)}
+\end{table}
+```
+
+
+```{=latex}
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Player 1 / Player 2} & \textbf{C (Cooperate)} & \textbf{D (Defect)} \\
+\hline
+\textbf{C (Cooperate)} & $(3, 3)$ & $(2.5, 2.5)$ \\
+\hline
+\textbf{D (Defect)} & $(2.5, 2.5)$ & $(1, 1)$ \\
+\hline
+\end{tabular}
+\caption{Prisoner's Dilemma Payoff Matrix for $p = 0.5$ (Egalitarian person)}
+\end{table}
+```
+
+
+_p_ could also take a negative value, which indicates a person is status-seeking and actively wants to bring down their opponent. 
+
+```{=latex}
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Player 1 / Player 2} & \textbf{C (Cooperate)} & \textbf{D (Defect)} \\
+\hline
+\textbf{C (Cooperate)} & $(3.6, 3.6)$ & $(-1, 6)$ \\
+\hline
+\textbf{D (Defect)} & $(6, -1)$ & $(0.8, 0.8)$ \\
+\hline
+\end{tabular}
+\caption{Prisoner's Dilemma Payoff Matrix for $p = -0.2$ (Negative influence by others' outcomes)}
+\end{table}
+```
+
+
+It would be interesting to see under which values of _p_ the dominant strategy changes.
+
+
+
+# Literature Review\label{litreview}
+
+
+We aim to do a short literature review and provide insight from the following sources:
+@{lange2007teaching},
+@{farrell1988evolutionary},
+@{kreps1982rational},
+@{romero2018constructing},
+@{dalbo2019strategy},
+@{breitmoser2015cooperation},
+@{gaudesi2016exploiting},
+@{garcia2018no},
+@{embrey2017cooperation}.
+
+Most importantly we aim to structure our output in tables similar to @{axelrod1980effective}. 
+
+In text @axelrod1980effective
+
+bracket [@axelrod1980effective]
+
+# Game Construction
+
+
+Notes: There are 25 strategies. Each strategy plays everyone else and itself once for 200 rounds. How each variable fairs against each other is recorded 
+
+```{=latex}
+\renewcommand{\arraystretch}{1.2} % Adjust row spacing
+\begin{table}[ht]
+\centering
+\tiny % Reduces font size for compactness
+\begin{tabular}{|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|}
+\hline
+\textbf{Always Strategies} & \textbf{Tit for Tat Variants} & \textbf{Win-Stay/ Lose-Switch} & \textbf{Punishment-Based} & \textbf{Adaptive/ Adjusting} & \textbf{Gradient/ Probability-Based} & \textbf{Random Strategies} \\
+\hline
+Always Cooperate & Tit for Tat & Pavlov & Grim Trigger & Adaptive Defector & Progressive Cooperator & Random 10\% \\
+Always Defect & Tit for Two Tats & & Bully & Adaptive Peacekeeper & Diminishing Cooperator & Random 25\% \\
+& Tit for Tat with Randomisation & & Retaliatory Defector & Probing Adjuster & Bounded Gradient & Random 50\% \\
+& Tit for Tat with Forgiveness & & & Forgiving Tester & Recent Gradient & Random 75\% \\
+& & & & Prober & & Random 90\% \\
+& & & & Cautious Rebuilder & & \\
+\hline
+\end{tabular}
+\caption{Categorisation of Strategy Types Used in the Prisoner's Dilemma Tournament}
+\end{table}
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+strategies <- list(
+    'Always Cooperate' = always_cooperate,
+    'Always Defect' = always_defect,
+    'Tit for Tat' = tit_for_tat,
+    'Tit for Two Tats' = tit_for_two_tats,
+    'Tit for Tat with Forgiveness' = tit_for_tat_forgiveness,
+    'Tit for Tat with Randomisation' = tit_for_tat_randomisation,
+    Pavlov = pavlov,
+    'Grim/Trigger' = grim_trigger,
+    Bully = bully,
+    'Retaliatory Defector' = retaliatory_defector,
+    
+    'Adaptive Defector' = adaptive_defector,
+    'Adaptive Peacekeep' = adaptive_peacekeeper,
+    'Probing Adjuster' = probing_adjuster,
+    'Forgiving Tester' = forgiving_tester,
+    Prober = prober,
+    'Cautious Rebuilder' = cautious_rebuilder,
+    
+    'Progressive Cooperator' = gradual_adjustment_strategy_inc_200,
+    'Deminishing Cooperator' = gradual_adjustment_strategy_dec_200,
+    'Bounded Gradient' = bounded_random_strategy,
+    'Recent Gradient' = gradient_cooperation,
+    
+    
+    'Random 10%' = random_0.1,
+    'Random 25%' = random_0.25,
+    'Random 50%' = random_0.5,
+    'Random 75%' = random_0.75,
+    'Random 90%' = random_0.9
+    
+
+)
+```
+
+
+
+
+```{r}
+#Abdul you can ignore this, this is just how the final data was created. It took a few hours to run
+
+# system.time({
+# set.seed(100)
+# p_0_results <- tournament_payoff_df(strategies,rounds = 200)
+# set.seed(100)
+# fullresults_rank<- ranking_matrix_for_sequence_p(strategies, rounds = 200, rank = TRUE)
+# set.seed(100)
+# fullresults_total<- ranking_matrix_for_sequence_p(strategies, rounds = 200, rank = FALSE)
+# #save.image(file='data/fulldata.RData')
+# 
+# })
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Game Results
+
+Talk about game results for a single p-value being 0. 
+Talk about how probing adjuster won. Yet without Adaptive/Adjusting Strategies, then Grim-trigger won. Game results are mostly based on what strategies are in 
+
+\newpage
+
+\begin{landscape}
+
+
+\vfill
+```{r}
+
+
+library(kableExtra)
+create_tournament_table(p_0_results, p_value = 0)
+
+
+```
+
+\vfill
+
+\end{landscape}
+
+
+
+## Social preferences
+
+Above was all to do with a single p-value.
+
+Below is all the outcomes for when social preferences vary. We see that 
+
+
+
+
+
+
+
+```{r}
+fullresults_rank %>% format_table()
+```
+
+
+
+Figure \ref{pvalues}
+
+
+
+
+```{r, fig.cap="Strategies' Total Utilities for Different Strategies Accross p\\label{pvalues}", fig.height = 6,fig.align='center'}
+
+fullresults_total %>%   plot_total_utilities()
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+
+fullresults_total %>% format_table( title = "Strategy Values Across Different p Values")
+```
+
+
+
+
+
+
+
+# Conclusion
+
+
+
+
+
+\newpage
+# References
+
+

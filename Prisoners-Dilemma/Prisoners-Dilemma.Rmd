@@ -67,7 +67,7 @@ linenumbers: FALSE # Used when submitting to journal
 bibliography: Tex/ref.bib       # Do not edit: Keep this naming convention and location.
 csl: Tex/harvard-stellenbosch-university.csl # referencing format used.
 # By default, the bibliography only displays the cited references. If you want to change this, you can comment out one of the following:
-#nocite: '@*' # Add all items in bibliography, whether cited or not
+nocite: '@wedekind1996human' # Add all items in bibliography, whether cited or not
 # nocite: |  # add specific references that aren't cited
 #  @grinold2000
 #  @Someoneelse2010
@@ -126,28 +126,28 @@ map(paste0("code/", list.files("code/", "*.R$")), source)  # source all your R s
 
 # Introduction \label{Introduction}
 
-The phrase horses for courses alludes to the fact that a racehorse performs best on a racecourse to which it is specifically suited. More generally this idiom is used to express that certain tools and strategies are better suited over others depending on the task or situations at hand. In the context of the repeated prisoners' dilemma, the strategy of Tit for Tat (TfT), where one mimics their opponent's previous move, reigns supreme and is best suited over others for the situation at hand.
+The phrase horses for courses alludes to the fact that a racehorse performs best on a racecourse to which it is specifically suited. More generally this idiom is used to express that certain tools and strategies are better suited over others depending on the task or situations at hand. In the context of the repeated prisoners' dilemma, the strategy of Tit for Tat (TfT), where one mimics their opponent's previous move, reigns supreme and is best suited over others for most situations at hand.
 
-This paper investigates strategic behaviour in the repeated Prisoner's Dilemma by conducting a tournament inspired by @axelrod1980effective but expands the original framework by including distinct strategies. These strategies, categorized into cooperative, defecting, random, and adaptive types, play against each other in 200 rounds of the Prisoner’s Dilemma, allowing for a comprehensive evaluation of their performance. By considering both standard scenarios and environments with varying levels of social preferences, this study explores how different strategies fare in diverse settings, particularly focusing on the adaptability and effectiveness of Tit for Tat (TfT) variants, which have historically been prominent in such tournaments.
+This paper investigates strategic behaviour in the repeated Prisoner's Dilemma by conducting a tournament inspired by @axelrod1980effective but expands the original framework by including distinct strategies. These strategies, categorised into cooperative, defecting, random, and adaptive types, play against each other in 200 rounds of the Prisoner’s Dilemma, allowing for a comprehensive evaluation of their performance. By considering both standard scenarios and environments with varying levels of social preferences, this study explores how different strategies fare in diverse settings, particularly focusing on the adaptability and effectiveness of TfT variants, which have historically been prominent in such tournaments.
 
 
 # Literature Review\label{litreview}
 
-The exploration of strategy choices within the framework of the prisoner’s dilemma has garnered extensive attention in recent literature. @axelrod1980effective foundational work emphasized effective strategies in iterated scenarios, sparking a wealth of research on strategic behaviour in repeated interactions. His tournament studies laid the groundwork for understanding how cooperation can emerge in repeated prisoner’s dilemmas through strategies like Tit for Tat (TfT) and other forms of reciprocity. This exploration of cooperative behaviour in an inherently competitive framework has been expanded by various scholars, each contributing unique insights into how individuals and institutions behave when faced with the tension between cooperation and defection.
+The exploration of strategy choices within the framework of the prisoner’s dilemma has garnered extensive attention in recent literature. @axelrod1980effective's foundational work emphasised effective strategies in iterated scenarios, sparking a wealth of research on strategic behaviour in repeated interactions. His tournament studies laid the groundwork for understanding how cooperation can emerge in repeated prisoner’s dilemmas through strategies like TfT and other forms of reciprocity. This exploration of cooperative behaviour in an inherently competitive framework has been expanded by various scholars, each contributing unique insights into how individuals and institutions behave when faced with the tension between cooperation and defection.
 
-Recent studies, such as that by @dalbo2019strategy, have focused on the strategic complexity observed in infinitely repeated games. They provide empirical evidence that players in these settings are highly adaptive, often switching strategies depending on the payoffs and the perceived actions of their opponents. In contrast, @breitmoser2015cooperation questions the reciprocity-based models that dominate much of the literature, suggesting that while cooperation is often observed, it may not always stem from reciprocal motivations. @breitmoser2015cooperation finds that in many cases, cooperation might emerge from individual incentives structured by the game's dynamics, rather than a direct desire to reciprocate.
+Recent studies, such as @dalbo2019strategy, have focused on the strategic complexity observed in infinitely repeated games. They provide empirical evidence that players in these settings are highly adaptive, often switching strategies depending on the payoffs and the perceived actions of their opponents. In contrast, @breitmoser2015cooperation questions the reciprocity-based models that dominate much of the literature, suggesting that while cooperation is often observed, it may not always stem from reciprocal motivations. @breitmoser2015cooperation finds that in many cases, cooperation might emerge from individual incentives structured by the game's dynamics, rather than a direct desire to reciprocate.
 
 A significant portion of the literature has also addressed the challenges of finite versus infinite iterations of the dilemma. @kreps1982rational introduced the idea that even in finitely repeated games, players may behave as though they are in an infinite game, cooperating for fear of future retaliation, despite the known endpoint. This idea challenges the strict predictions of defection in the final stages of finitely repeated games and has been explored further by @embrey2017cooperation, who conducted laboratory experiments to observe how players adapt their strategies in finite games. Their findings support the hypothesis that cooperation can persist under certain conditions, even in games with a clear end.
 
-Adding to the complexity of the strategic decision-making landscape, @romero2018constructing investigated the cognitive processes behind strategy construction in indefinite games, emphasizing how players use heuristics and simplified mental models to navigate the uncertainty of the game's length. This aligns with @farrell1988evolutionary earlier work on evolutionary stability, where they explored how long-term strategies evolve to withstand deviations from equilibrium behaviours.
+@romero2018constructing investigated the cognitive processes behind strategy construction in indefinite games, emphasising how players use heuristics and simplified mental models to navigate the uncertainty of the game's length. This aligns with @farrell1988evolutionary earlier work on evolutionary stability, where they explored how long-term strategies evolve to withstand deviations from equilibrium behaviours.
 
-From a computational perspective, @garcia2018no utilized simulations to demonstrate that no single strategy could consistently dominate in the repeated prisoner’s dilemma, suggesting that adaptability and context-dependent strategy selection are key to success in such settings. Similarly, @gaudesi2016exploiting leveraged evolutionary modelling techniques to demonstrate how strategies evolve, competing in a dynamic landscape shaped by both cooperation and competition.
+From a computational perspective, @garcia2018no utilised simulations to demonstrate that no single strategy could consistently dominate in the repeated prisoner’s dilemma, suggesting that adaptability and context-dependent strategy selection are key to success in such settings. Similarly, @gaudesi2016exploiting leveraged evolutionary modelling techniques to demonstrate how strategies evolve, competing in a dynamic landscape shaped by both cooperation and competition.
 
 The link between theoretical models and real-world applications has also been a point of focus. @lange2007teaching developed computerized tournaments to teach the mechanics of the repeated prisoner’s dilemma, blending theory with practice and providing insights into how strategic choices might play out in educational settings. Such studies highlight the importance of teaching and learning mechanisms in understanding strategic behaviour in social dilemmas. Taken together, the contemporary literature on strategy selection in the prisoner’s dilemma underscores the complexity of human decision-making in repeated interactions. 
 
 # The Standard Prisoners Dilemma
 
-This paper conducts a tournament modelled after @axelrod1980effective but incorporates a wider array of strategies. A total of 25 strategies are used in this repeated Prisoner’s Dilemma tournament. These strategies are categorized in Table 3.1 according to their types. Some strategies always cooperate or always defect, while others, called random strategies, cooperate with a set probability. For example, Random 90% cooperates 90% of the time and defects 10% of the time. Strategies extracted from the literature are marked with references in brackets next to their names. Those without references are new strategies introduced in this paper, each of which will be explained in detail.
+This paper conducts a tournament modelled after @axelrod1980effective but incorporates a wider array of strategies. A total of 25 strategies are used in this repeated Prisoner’s Dilemma tournament. These strategies are categorized in Table 3.1 according to their types. Some strategies always cooperate or always defect, while others, called random strategies, cooperate with a set probability. For example, Random 90% cooperates 90% of the time and defects 10% of the time. Strategies not explained are standard in the literature.
 
 ```{=latex}
 \renewcommand{\arraystretch}{1.2} % Adjust row spacing
@@ -158,7 +158,7 @@ This paper conducts a tournament modelled after @axelrod1980effective but incorp
 \hline
 \textbf{Always Strategies} & \textbf{Tit for Tat Variants} & \textbf{Win-Stay/ Lose-Switch} & \textbf{Punishment-Based} & \textbf{Adaptive/ Adjusting} & \textbf{Gradient/ Probability-Based} & \textbf{Random Strategies} \\
 \hline
-Always Cooperate & Tit for Tat & Pavlov & Grim Trigger & Adaptive Defector & Progressive Cooperator & Random 10\% \\
+Always Cooperate & Tit for Tat & Pavlov\footnotemark & Grim Trigger & Adaptive Defector & Progressive Cooperator & Random 10\% \\
 Always Defect & Tit for Two Tats & & Bully & Adaptive Peacekeeper & Diminishing Cooperator & Random 25\% \\
 & Tit for Tat with Randomisation & & Retaliatory Defector & Probing Adjuster & Bounded Gradient & Random 50\% \\
 & Tit for Tat with Forgiveness & & & Forgiving Tester & Recent Gradient & Random 75\% \\
@@ -169,8 +169,12 @@ Always Defect & Tit for Two Tats & & Bully & Adaptive Peacekeeper & Diminishing 
 \caption{Categorisation of Strategy Types Used in the Prisoner's Dilemma Tournament}
 \end{table}
 
+\footnotetext{As found in Wedekind and Milinski (1996)}
+
 
 ```
+
+Progressive Cooperator starts with a 0% cooperation rate and gradually increases it to 100% by the end of the game, while Diminishing Cooperator does the opposite, starting with a high cooperation rate and steadily decreasing it to 0%. Bounded Gradient adjusts its probability of cooperating by considering all previous actions of the opponent. Recent Gradient, on the other hand, adjusts its cooperation probability based only on the opponent’s last 5 actions, making it more responsive to recent behaviour.
 
 One such strategy is Retaliatory Defector. It begins by cooperating but defects for two rounds if its opponent defects. After two rounds, if the opponent resumes cooperation, Retaliatory Defector will also return to cooperating. Another strategy, Adaptive Defector, also starts by cooperating, but thereafter assesses the opponent’s behaviour over the last five rounds. If the opponent has defected more than 40% of the time, Adaptive Defector will defect; otherwise, it continues to cooperate.
 Adaptive Peacekeeper focuses on maintaining cooperation while testing the opponent’s behaviour periodically. It starts by cooperating but defects every sixth round to probe the opponent's reaction. If the opponent defects more than twice consecutively after these probes, Adaptive Peacekeeper responds with defection. However, if both players defected in the previous round, the strategy returns to cooperation, signalling a willingness to restore collaboration.
@@ -298,7 +302,7 @@ strategies <- list(
 
 
 # Game Results
-## The Standard Prisoners Dilemma Tournament
+
  
 After the conclusion of the tournament, most interestingly unlike @axelrod1980effective, this paper does not find Tft as the winner in the standard Repeated Prisoners Dilemma. Table 4.1 gives the standard tournament without social preferences. The winner of the tournament was Probing Adjuster with 13575 points followed by Tft with Randomization which had 12887 points and Bully coming in third with 12869 points. In this game, Tft came fourth which leads us to believe similarly to @axelrod1980effective that Tft may have won due to the other strategies in the tournament. The winner of the Prisoners Dilemma is highly dependent on the strategies in the tournament.
 Always Cooperate and Random 90% came in second last and last respectively. This is as expected as the tournament included strategies that took advantage of other strategies which always cooperated. Most interestingly, if the adaptive strategies were removed then the Grim/Trigger strategy would have won the game. Also, even though Probing Adjuster won the tournament, the group of adaptive strategies as a whole performed worse than the group of Tit for Tat variant strategies. This result shows the robustness of Tit for Tat variants to perform well against both cooperators and defectors, maintaining high scores overall.

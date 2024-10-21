@@ -130,124 +130,6 @@ The phrase horses for courses alludes to the fact that a racehorse performs best
 
 This paper investigates strategic behaviour in the repeated Prisoner's Dilemma by conducting a tournament inspired by @axelrod1980effective but expands the original framework by including distinct strategies. These strategies, categorized into cooperative, defecting, random, and adaptive types, play against each other in 200 rounds of the Prisoner’s Dilemma, allowing for a comprehensive evaluation of their performance. By considering both standard scenarios and environments with varying levels of social preferences, this study explores how different strategies fare in diverse settings, particularly focusing on the adaptability and effectiveness of Tit for Tat (TfT) variants, which have historically been prominent in such tournaments.
 
-Consider a standard prisoners’ dilemma pay-off table:
-
-
-```{=latex}
-\begin{table}[ht]
-\centering
-\begin{tabular}{|c|c|c|}
-\hline
-\textbf{Player 1 / Player 2} & \textbf{C (Cooperate)} & \textbf{D (Defect)} \\
-\hline
-\textbf{C (Cooperate)} & $(R, R)$ & $(S, T)$ \\
-\hline
-\textbf{D (Defect)} & $(T, S)$ & $(P, P)$ \\
-\hline
-\end{tabular}
-\caption{Prisoner's Dilemma Payoff Matrix with $R$, $P$, $S$, and $T$ Outcomes}
-\end{table}
-
-```
-
-Adjusting the values of R (Reward for mutual cooperation), P (Punishment for mutual defection), S (Sucker’s pay-off for cooperating while the other defects), and T (Temptation to defect when the other cooperates) is an example of within game pay-off adjustments. These adjustments might produce a new dominant strategy and our analysis aims to find if it does.
-
-From-game adjustments are a bit different and it considers the utility a player gets from the payoffs of its opponent. 
-
-```{=latex}
-\begin{table}[ht]
-\centering
-\begin{tabular}{|c|c|c|}
-\hline
-\textbf{Player 1 / Player 2} & \textbf{C (Cooperate)} & \textbf{D (Defect)} \\
-\hline
-\textbf{C (Cooperate)} & $(R(1-p) + Rp,     R(1-p) + Rp)$ & $(S(1-p) + Tp,     T(1-p)+Sp)$ \\
-\hline
-\textbf{D (Defect)} & $(T(1-p) + Sp,    S(1-p) + Tp)$ & $(P(1-p) + Pp,     P(1-p) + P)$ \\
-\hline
-\end{tabular}
-\caption{Prisoner's Dilemma Payoff Matrix}
-\end{table}
-```
-
-
-The level _p_ here is adapted from @charness2002understanding who created a utility function that captures various social preferences. In essence, _p_ is how much you care about your opponent's pay-offs as well as your own. In standard prisoners’ dilemma games, this is 0 and thus people are purely self-interested. If we let our pay-offs be R = 3, T = 5, S = 0, and P = 3, then this situation in strategic form would look like:
-
-```{=latex}
-\begin{table}[ht]
-\centering
-\begin{tabular}{|c|c|c|}
-\hline
-\textbf{Player 1 / Player 2} & \textbf{C (Cooperate)} & \textbf{D (Defect)} \\
-\hline
-\textbf{C (Cooperate)} & $(3, 3)$ & $(0, 5)$ \\
-\hline
-\textbf{D (Defect)} & $(5, 0)$ & $(1, 1)$ \\
-\hline
-\end{tabular}
-\caption{Prisoner's Dilemma Payoff Matrix for $p = 0$ (Self-interested person)}
-\end{table}
-```
-
-
-However we can adjust the value of _p_ for people who are partially considerate of other people's outcomes, or we can make people egalitarian who care just as much for others as they do for themselves.
-
-```{=latex}
-\begin{table}[ht]
-\centering
-\begin{tabular}{|c|c|c|}
-\hline
-\textbf{Player 1 / Player 2} & \textbf{C (Cooperate)} & \textbf{D (Defect)} \\
-\hline
-\textbf{C (Cooperate)} & $(3, 3)$ & $(1, 4)$ \\
-\hline
-\textbf{D (Defect)} & $(4, 1)$ & $(1, 1)$ \\
-\hline
-\end{tabular}
-\caption{Prisoner's Dilemma Payoff Matrix for $p = 0.2$ (Partially considers others' outcomes)}
-\end{table}
-```
-
-
-```{=latex}
-\begin{table}[ht]
-\centering
-\begin{tabular}{|c|c|c|}
-\hline
-\textbf{Player 1 / Player 2} & \textbf{C (Cooperate)} & \textbf{D (Defect)} \\
-\hline
-\textbf{C (Cooperate)} & $(3, 3)$ & $(2.5, 2.5)$ \\
-\hline
-\textbf{D (Defect)} & $(2.5, 2.5)$ & $(1, 1)$ \\
-\hline
-\end{tabular}
-\caption{Prisoner's Dilemma Payoff Matrix for $p = 0.5$ (Egalitarian person)}
-\end{table}
-```
-
-
-_p_ could also take a negative value, which indicates a person is status-seeking and actively wants to bring down their opponent. 
-
-```{=latex}
-\begin{table}[ht]
-\centering
-\begin{tabular}{|c|c|c|}
-\hline
-\textbf{Player 1 / Player 2} & \textbf{C (Cooperate)} & \textbf{D (Defect)} \\
-\hline
-\textbf{C (Cooperate)} & $(3.6, 3.6)$ & $(-1, 6)$ \\
-\hline
-\textbf{D (Defect)} & $(6, -1)$ & $(0.8, 0.8)$ \\
-\hline
-\end{tabular}
-\caption{Prisoner's Dilemma Payoff Matrix for $p = -0.2$ (Negative influence by others' outcomes)}
-\end{table}
-```
-
-
-It would be interesting to see under which values of _p_ the dominant strategy changes.
-
-
 
 # Literature Review\label{litreview}
 
@@ -258,11 +140,12 @@ Recent studies, such as that by @dalbo2019strategy, have focused on the strategi
 A significant portion of the literature has also addressed the challenges of finite versus infinite iterations of the dilemma. @kreps1982rational introduced the idea that even in finitely repeated games, players may behave as though they are in an infinite game, cooperating for fear of future retaliation, despite the known endpoint. This idea challenges the strict predictions of defection in the final stages of finitely repeated games and has been explored further by @embrey2017cooperation, who conducted laboratory experiments to observe how players adapt their strategies in finite games. Their findings support the hypothesis that cooperation can persist under certain conditions, even in games with a clear end.
 
 Adding to the complexity of the strategic decision-making landscape, @romero2018constructing investigated the cognitive processes behind strategy construction in indefinite games, emphasizing how players use heuristics and simplified mental models to navigate the uncertainty of the game's length. This aligns with @farrell1988evolutionary earlier work on evolutionary stability, where they explored how long-term strategies evolve to withstand deviations from equilibrium behaviours.
-From a computational perspective, @garcia2018no utilized simulations to demonstrate that no single strategy could consistently dominate in the repeated prisoner’s dilemma, suggesting that adaptability and context-dependent strategy selection are key to success in such settings. Similarly, @gaudesi2016exploiting leveraged evolutionary modelling techniques to demonstrate how strategies evolve over time, competing in a dynamic landscape shaped by both cooperation and competition.
-The link between theoretical models and real-world application has also been a point of focus. @lange2007teaching developed computerized tournaments to teach the mechanics of the repeated prisoner’s dilemma, blending theory with practice and providing insights into how strategic choices might play out in educational settings. Such studies highlight the importance of teaching and learning mechanisms in understanding strategic behaviour in social dilemmas. Taken together, the contemporary literature on strategy selection in the prisoner’s dilemma underscores the complexity of human decision-making in repeated interactions. 
 
-# Game Construction
-## The Basic Repeated Prisoners dilemma 
+From a computational perspective, @garcia2018no utilized simulations to demonstrate that no single strategy could consistently dominate in the repeated prisoner’s dilemma, suggesting that adaptability and context-dependent strategy selection are key to success in such settings. Similarly, @gaudesi2016exploiting leveraged evolutionary modelling techniques to demonstrate how strategies evolve, competing in a dynamic landscape shaped by both cooperation and competition.
+
+The link between theoretical models and real-world applications has also been a point of focus. @lange2007teaching developed computerized tournaments to teach the mechanics of the repeated prisoner’s dilemma, blending theory with practice and providing insights into how strategic choices might play out in educational settings. Such studies highlight the importance of teaching and learning mechanisms in understanding strategic behaviour in social dilemmas. Taken together, the contemporary literature on strategy selection in the prisoner’s dilemma underscores the complexity of human decision-making in repeated interactions. 
+
+# The Standard Prisoners Dilemma
 
 This paper conducts a tournament modelled after @axelrod1980effective but incorporates a wider array of strategies. A total of 25 strategies are used in this repeated Prisoner’s Dilemma tournament. These strategies are categorized in Table 3.1 according to their types. Some strategies always cooperate or always defect, while others, called random strategies, cooperate with a set probability. For example, Random 90% cooperates 90% of the time and defects 10% of the time. Strategies extracted from the literature are marked with references in brackets next to their names. Those without references are new strategies introduced in this paper, each of which will be explained in detail.
 
@@ -294,7 +177,7 @@ Adaptive Peacekeeper focuses on maintaining cooperation while testing the oppone
 
 Probing Adjuster is another adaptive strategy. It begins by cooperating but alters its behaviour based on the opponent's past actions. If the opponent defects three times in a row, Probing Adjuster responds by defecting as well. However, if both players defected in the previous round, it tries to re-establish cooperation by cooperating again. If the opponent cooperates after the player defects, the player will continue defecting, exploiting the opponent's leniency. Additionally, if the player cooperates while the opponent cooperates, the player switches to defection to test the opponent’s reaction to a shift in strategy.
 
-Prober tests the opponent’s resilience to defection by defecting for three consecutive rounds if the opponent defects. It always begins with cooperation, but when an opponent defects, Prober immediately retaliates with three rounds of defection before returning to cooperation. This approach aims to probe the opponent's willingness to adjust their behaviour in response to repeated defection, while maintaining a cooperative default when unprovoked.
+Prober tests the opponent’s resilience to defection by defecting for three consecutive rounds if the opponent defects. It always begins with cooperation, but when an opponent defects, Prober immediately retaliates with three rounds of defection before returning to cooperation. This approach aims to probe the opponent's willingness to adjust their behaviour in response to repeated defection while maintaining a cooperative default when unprovoked.
 
 Forgiving Tester emphasizes cooperation but incorporates occasional defections to gauge the opponent's response. It begins by cooperating, but every fourth round it defects. If the opponent defects three times in a row, Forgiving Tester will retaliate by continuing to defect until the opponent cooperates again. However, if the opponent cooperates after a test defection, or if both players defect in the same round, Forgiving Tester quickly forgives and returns to cooperation. This strategy encourages long-term collaboration while punishing consistent defections.
 
@@ -317,9 +200,9 @@ In line with @axelrod1980effective, each strategy plays against itself and every
 \end{table}
 ```
 
-## The Repeated Prisoners Dilemma With Social Preferences  
+## Introducing Social Preferences
 
-This game is played exactly the same as above except now Social Preferences are taken into account. From-game adjustments are a bit different and it considers the utility a player gets from the payoffs of its opponent. The standard Prisoners Dilemma payoff Matrix with from-game adjustments is given below:
+This game is played the same as above except now Social Preferences are taken into account. From-game adjustments are a bit different and it considers the utility a player gets from the payoffs of its opponent. The standard Prisoners Dilemma payoff Matrix with from-game adjustments is given below:
 
 ```{=latex}
 \begin{table}[ht]
@@ -337,7 +220,7 @@ This game is played exactly the same as above except now Social Preferences are 
 \end{table}
 ```
 
-The level _p_ here is adapted from @charness2002understanding who created a utility function that captures various social preferences. In essence, _p_ is how much you care about your opponent's pay-offs as well as your own. This paper will conduct the tournament as above for a range of _p_ values starting from _p_ = -1 where individuals are status seeking to _p_ = 0.5 where indivduals care half as much about themselves as the do about others
+The level _p_ here is adapted from @charness2002understanding who created a utility function that captures various social preferences. In essence, _p_ is how much you care about your opponent's pay-offs as well as your own. This paper will conduct the tournament as above for a range of _p_ values starting from _p_ = -1 where individuals are status seeking to _p_ = 0.5 where individuals care half as much about themselves as they do about others
 
 
 
@@ -417,8 +300,9 @@ strategies <- list(
 # Game Results
 ## The Standard Prisoners Dilemma Tournament
  
-After the conclusion of the tournament, most interestingly unlike @axelrod1980effective, this paper does not find Tft as the winner in the standard Repeated Prisoners Dilemma. Table 4.1 gives the standard tournament without social preferences. The winner of the tournament was Probing Adjuster with 13575 points followed by Tft with Randomization which had 12887 points and Bully coming in third with 12869 points. In this game Tft came fourth which leads us to believe similarly to @axelrod1980effective that Tft may have won due to the other strategies in the tournament. The winner of the Prisoners Dilemma is highly dependent on the strategies in the tournament.
-Always Cooperate and Random 90% came in second last and last respectively. This is as expected as the tournament included strategies that took advantage of other strategies which always cooperated. Most interestingly, if the adaptive strategies are removed then the Grim/Trigger strategy would have won the game. Also, even though Probing Adjuster won the tournament, the group of adaptive strategies as a whole performed worse than the group of Tit for Tat variant strategies. This result shows the robustness of Tit for Tat variants to perform well against both cooperators and defectors, maintaining high scores overall.
+After the conclusion of the tournament, most interestingly unlike @axelrod1980effective, this paper does not find Tft as the winner in the standard Repeated Prisoners Dilemma. Table 4.1 gives the standard tournament without social preferences. The winner of the tournament was Probing Adjuster with 13575 points followed by Tft with Randomization which had 12887 points and Bully coming in third with 12869 points. In this game, Tft came fourth which leads us to believe similarly to @axelrod1980effective that Tft may have won due to the other strategies in the tournament. The winner of the Prisoners Dilemma is highly dependent on the strategies in the tournament.
+Always Cooperate and Random 90% came in second last and last respectively. This is as expected as the tournament included strategies that took advantage of other strategies which always cooperated. Most interestingly, if the adaptive strategies were removed then the Grim/Trigger strategy would have won the game. Also, even though Probing Adjuster won the tournament, the group of adaptive strategies as a whole performed worse than the group of Tit for Tat variant strategies. This result shows the robustness of Tit for Tat variants to perform well against both cooperators and defectors, maintaining high scores overall.
+
 
 \newpage
 
@@ -443,7 +327,7 @@ create_tournament_table(p_0_results, p_value = 0)
 
 ## The Prisoners Dilemma Tournament with Social Preferences
 
-Table 4.2 gives the standings of the tournament across different social preferences. The rankings of strategies change across these different values of _p_, illustrating how varying degrees of altruism or hostility affect the success of each strategy. Notably Always Cooperate improves its ranking as _p_ increases, moving from 25th at _p_ = -0.1 to 1st when _p_ = 0.45, showing that cooperative strategies perform better in environments where mutual benefit is prioritized. Always Defect, conversely, declines in rank as _p_ increases, indicating that purely selfish strategies are less effective when players care about the well-being of others. Tit for Tat maintains a relatively stable performance across various _p_ values, reflecting its robustness as a strategy that adapts well to different social preferences. This holds true for the TfT variations in general. Probing Adjuster, which ranked first when _p_ = -0.1, drops significantly as p increases, indicating that more complex strategies designed for selfish environments are less effective in altruistic settings.
+Table 4.2 gives the standings of the tournament across different social preferences. The rankings of strategies change across these different values of _p_, illustrating how varying degrees of altruism or hostility affect the success of each strategy. Notably Always Cooperate improves its ranking as _p_ increases, moving from 25th at _p_ = -0.1 to 1st when _p_ = 0.45, showing that cooperative strategies perform better in environments where mutual benefit is prioritized. Always Defect, conversely, declines in rank as _p_ increases, indicating that purely selfish strategies are less effective when players care about the well-being of others. Tit for Tat maintains a relatively stable performance across various _p_ values, reflecting its robustness as a strategy that adapts well to different social preferences. This holds for the TfT variations in general. Probing Adjuster, which ranked first when _p_ = -0.1, drops significantly as p increases, indicating that more complex strategies designed for selfish environments are less effective in altruistic settings.
  
 
 
@@ -475,7 +359,7 @@ Figure \ref{pvalues} presents a graphical representation of how the total points
 fullresults_total %>% create_ranking_table()
 ```
 
-The analysis of the tournament shows how different strategies perform in the Prisoner's Dilemma under varying levels of social preference. The findings yield that in selfish scenarios, probing and aggressive strategies tend to win but as altruism increases, these strategies struggle. TfT variant strategies have shown to be robust under varying social preferences as can be seen in Table 4.3. Tft has the highest average points across the differing p-values showing its robustness in the face of differing social preferences. These findings once again provide insight into the strength of the TfT strategy. In Prisoners Dilemma games where preferences may be hidden, TfT would according to these findings perform the best.  
+The analysis of the tournament shows how different strategies perform in the Prisoner's Dilemma under varying levels of social preference. The findings yield that in selfish scenarios, probing and aggressive strategies tend to win but as altruism increases, these strategies struggle. TfT variant strategies have shown to be robust under varying social preferences as can be seen in Table 4.3. Tft has the highest average points across the differing p-values showing its robustness in the face of differing social preferences. These findings once again provide insight into the strength of the TfT strategy. In Prisoner's Dilemma games where preferences may be hidden, TfT would according to these findings perform the best.  
 
 ```{r}
 

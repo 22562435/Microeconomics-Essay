@@ -212,7 +212,8 @@
 
 \begin{frontmatter}  %
 
-\title{Beyond Tit-for-Tat Proposal}
+\title{Beyond Tit for Tat: A Deep Dive into Strategy and Social
+Preferences}
 
 % Set to FALSE if wanting to remove title (for submission)
 
@@ -268,23 +269,32 @@ Africa}
 
 
 
+\hypertarget{introduction}{%
 \section{\texorpdfstring{Introduction
-\label{Introduction}}{Introduction }}\label{introduction}
+\label{Introduction}}{Introduction }}\label{introduction}}
 
 The phrase horses for courses alludes to the fact that a racehorse
 performs best on a racecourse to which it is specifically suited. More
 generally this idiom is used to express that certain tools and
 strategies are better suited over others depending on the task or
 situations at hand. In the context of the repeated prisoners' dilemma,
-the strategy of tit-for-tat, where one mimics their opponent's previous
-move, reigns supreme and is best suited over others for the situation at
-hand.
+the strategy of Tit for Tat (TfT), where one mimics their opponent's
+previous move, reigns supreme and is best suited over others for the
+situation at hand.
 
-The question this paper aims to answer is as to which situations is
-tit-for-tat not the dominant strategy. To do this we have to venture
-down two potential avenues. The first is the adjustment of pay-off
-values within games, and the second is adjusting pay-off values from
-games. Consider a standard prisoners' dilemma pay-off table:
+This paper investigates strategic behaviour in the repeated Prisoner's
+Dilemma by conducting a tournament inspired by Axelrod (1980) but
+expands the original framework by including distinct strategies. These
+strategies, categorized into cooperative, defecting, random, and
+adaptive types, play against each other in 200 rounds of the Prisoner's
+Dilemma, allowing for a comprehensive evaluation of their performance.
+By considering both standard scenarios and environments with varying
+levels of social preferences, this study explores how different
+strategies fare in diverse settings, particularly focusing on the
+adaptability and effectiveness of Tit for Tat (TfT) variants, which have
+historically been prominent in such tournaments.
+
+Consider a standard prisoners' dilemma pay-off table:
 
 \begin{table}[ht]
 \centering
@@ -398,28 +408,89 @@ status-seeking and actively wants to bring down their opponent.
 It would be interesting to see under which values of \emph{p} the
 dominant strategy changes.
 
+\hypertarget{literature-review}{%
 \section{\texorpdfstring{Literature
-Review\label{litreview}}{Literature Review}}\label{literature-review}
+Review\label{litreview}}{Literature Review}}\label{literature-review}}
 
-We aim to do a short literature review and provide insight from the
-following sources: Lange \& Baylor (2007), Farrell \& Ware (1989),
-Kreps, Milgrom, Roberts \& Wilson (1982), Romero \& Rosokha (2018), Bó
-\& Fréchette (2019), Breitmoser (2015), Gaudesi, Piccolo, Squillero \&
-Tonda (2016), García \& Veelen (2018), Embrey, Fréchette \& Yuksel
-(2018).
+The exploration of strategy choices within the framework of the
+prisoner's dilemma has garnered extensive attention in recent
+literature. Axelrod (1980) foundational work emphasized effective
+strategies in iterated scenarios, sparking a wealth of research on
+strategic behaviour in repeated interactions. His tournament studies
+laid the groundwork for understanding how cooperation can emerge in
+repeated prisoner's dilemmas through strategies like Tit for Tat (TfT)
+and other forms of reciprocity. This exploration of cooperative
+behaviour in an inherently competitive framework has been expanded by
+various scholars, each contributing unique insights into how individuals
+and institutions behave when faced with the tension between cooperation
+and defection.
 
-Most importantly we aim to structure our output in tables similar to
-Axelrod (1980).
+Recent studies, such as that by Bó \& Fréchette (2019), have focused on
+the strategic complexity observed in infinitely repeated games. They
+provide empirical evidence that players in these settings are highly
+adaptive, often switching strategies depending on the payoffs and the
+perceived actions of their opponents. In contrast, Breitmoser (2015)
+questions the reciprocity-based models that dominate much of the
+literature, suggesting that while cooperation is often observed, it may
+not always stem from reciprocal motivations. Breitmoser (2015) finds
+that in many cases, cooperation might emerge from individual incentives
+structured by the game's dynamics, rather than a direct desire to
+reciprocate.
 
-In text Axelrod (1980)
+A significant portion of the literature has also addressed the
+challenges of finite versus infinite iterations of the dilemma. Kreps,
+Milgrom, Roberts \& Wilson (1982) introduced the idea that even in
+finitely repeated games, players may behave as though they are in an
+infinite game, cooperating for fear of future retaliation, despite the
+known endpoint. This idea challenges the strict predictions of defection
+in the final stages of finitely repeated games and has been explored
+further by Embrey, Fréchette \& Yuksel (2018), who conducted laboratory
+experiments to observe how players adapt their strategies in finite
+games. Their findings support the hypothesis that cooperation can
+persist under certain conditions, even in games with a clear end.
 
-bracket (Axelrod, 1980)
+Adding to the complexity of the strategic decision-making landscape,
+Romero \& Rosokha (2018) investigated the cognitive processes behind
+strategy construction in indefinite games, emphasizing how players use
+heuristics and simplified mental models to navigate the uncertainty of
+the game's length. This aligns with Farrell \& Ware (1989) earlier work
+on evolutionary stability, where they explored how long-term strategies
+evolve to withstand deviations from equilibrium behaviours. From a
+computational perspective, García \& Veelen (2018) utilized simulations
+to demonstrate that no single strategy could consistently dominate in
+the repeated prisoner's dilemma, suggesting that adaptability and
+context-dependent strategy selection are key to success in such
+settings. Similarly, Gaudesi, Piccolo, Squillero \& Tonda (2016)
+leveraged evolutionary modelling techniques to demonstrate how
+strategies evolve over time, competing in a dynamic landscape shaped by
+both cooperation and competition. The link between theoretical models
+and real-world application has also been a point of focus. Lange \&
+Baylor (2007) developed computerized tournaments to teach the mechanics
+of the repeated prisoner's dilemma, blending theory with practice and
+providing insights into how strategic choices might play out in
+educational settings. Such studies highlight the importance of teaching
+and learning mechanisms in understanding strategic behaviour in social
+dilemmas. Taken together, the contemporary literature on strategy
+selection in the prisoner's dilemma underscores the complexity of human
+decision-making in repeated interactions.
 
-\section{Game Construction}\label{game-construction}
+\hypertarget{game-construction}{%
+\section{Game Construction}\label{game-construction}}
 
-Notes: There are 25 strategies. Each strategy plays everyone else and
-itself once for 200 rounds. How each variable fairs against each other
-is recorded
+\hypertarget{the-basic-repeated-prisoners-dilemma}{%
+\subsection{The Basic Repeated Prisoners
+dilemma}\label{the-basic-repeated-prisoners-dilemma}}
+
+This paper conducts a tournament modelled after Axelrod (1980) but
+incorporates a wider array of strategies. A total of 25 strategies are
+used in this repeated Prisoner's Dilemma tournament. These strategies
+are categorized in Table 3.1 according to their types. Some strategies
+always cooperate or always defect, while others, called random
+strategies, cooperate with a set probability. For example, Random 90\%
+cooperates 90\% of the time and defects 10\% of the time. Strategies
+extracted from the literature are marked with references in brackets
+next to their names. Those without references are new strategies
+introduced in this paper, each of which will be explained in detail.
 
 \renewcommand{\arraystretch}{1.2} % Adjust row spacing
 \begin{table}[ht]
@@ -440,12 +511,137 @@ Always Defect & Tit for Two Tats & & Bully & Adaptive Peacekeeper & Diminishing 
 \caption{Categorisation of Strategy Types Used in the Prisoner's Dilemma Tournament}
 \end{table}
 
-\section{Game Results}\label{game-results}
+One such strategy is Retaliatory Defector. It begins by cooperating but
+defects for two rounds if its opponent defects. After two rounds, if the
+opponent resumes cooperation, Retaliatory Defector will also return to
+cooperating. Another strategy, Adaptive Defector, also starts by
+cooperating, but thereafter assesses the opponent's behaviour over the
+last five rounds. If the opponent has defected more than 40\% of the
+time, Adaptive Defector will defect; otherwise, it continues to
+cooperate. Adaptive Peacekeeper focuses on maintaining cooperation while
+testing the opponent's behaviour periodically. It starts by cooperating
+but defects every sixth round to probe the opponent's reaction. If the
+opponent defects more than twice consecutively after these probes,
+Adaptive Peacekeeper responds with defection. However, if both players
+defected in the previous round, the strategy returns to cooperation,
+signalling a willingness to restore collaboration.
 
-Talk about game results for a single p-value being 0. Talk about how
-probing adjuster won. Yet without Adaptive/Adjusting Strategies, then
-Grim-trigger won. Game results are mostly based on what strategies are
-in
+Probing Adjuster is another adaptive strategy. It begins by cooperating
+but alters its behaviour based on the opponent's past actions. If the
+opponent defects three times in a row, Probing Adjuster responds by
+defecting as well. However, if both players defected in the previous
+round, it tries to re-establish cooperation by cooperating again. If the
+opponent cooperates after the player defects, the player will continue
+defecting, exploiting the opponent's leniency. Additionally, if the
+player cooperates while the opponent cooperates, the player switches to
+defection to test the opponent's reaction to a shift in strategy.
+
+Prober tests the opponent's resilience to defection by defecting for
+three consecutive rounds if the opponent defects. It always begins with
+cooperation, but when an opponent defects, Prober immediately retaliates
+with three rounds of defection before returning to cooperation. This
+approach aims to probe the opponent's willingness to adjust their
+behaviour in response to repeated defection, while maintaining a
+cooperative default when unprovoked.
+
+Forgiving Tester emphasizes cooperation but incorporates occasional
+defections to gauge the opponent's response. It begins by cooperating,
+but every fourth round it defects. If the opponent defects three times
+in a row, Forgiving Tester will retaliate by continuing to defect until
+the opponent cooperates again. However, if the opponent cooperates after
+a test defection, or if both players defect in the same round, Forgiving
+Tester quickly forgives and returns to cooperation. This strategy
+encourages long-term collaboration while punishing consistent
+defections.
+
+Cautious Rebuilder starts by cooperating and follows three rules in its
+decision-making. First, if the opponent defects three times in a row,
+Cautious Rebuilder will defect until the opponent cooperates again.
+Second, if the opponent's last move was a defection but the opponent has
+not defected three times consecutively, Cautious Rebuilder will
+cooperate, trying to repair relations. Third, after every five rounds,
+it will defect once to test the opponent's tolerance for defection. In
+line with Axelrod (1980), each strategy plays against itself and every
+other strategy once in the tournament. Each game consists of 200 rounds
+of the repeated Prisoner's Dilemma, and the payoffs and outcomes are
+recorded for every round. The strategy that accumulates the most points
+after 200 rounds wins the individual game. The overall winner of the
+tournament is the strategy that achieves the highest total points across
+all games. The standard Prisoners Dilemma from Axelrod (1980) will be
+played and is given in the table below:
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Player 1 / Player 2} & \textbf{C (Cooperate)} & \textbf{D (Defect)} \\
+\hline
+\textbf{C (Cooperate)} & $(3, 3)$ & $(0, 5)$ \\
+\hline
+\textbf{D (Defect)} & $(5, 0)$ & $(1, 1)$ \\
+\hline
+\end{tabular}
+\caption{Prisoner's Dilemma Payoff Matrix}
+\end{table}
+
+\hypertarget{the-repeated-prisoners-dilemma-with-social-preferences}{%
+\subsection{The Repeated Prisoners Dilemma With Social
+Preferences}\label{the-repeated-prisoners-dilemma-with-social-preferences}}
+
+This game is played exactly the same as above except now Social
+Preferences are taken into account. From-game adjustments are a bit
+different and it considers the utility a player gets from the payoffs of
+its opponent. The standard Prisoners Dilemma payoff Matrix with
+from-game adjustments is given below:
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Player 1 / Player 2} & \textbf{C (Cooperate)} & \textbf{D (Defect)} \\
+\hline
+\textbf{C (Cooperate)} & $(3(1-p) + 3p,     3(1-p) + 3p)$ & $(0(1-p) + 5p,     5(1-p)+0p)$ \\
+\hline
+\textbf{D (Defect)} & $(5(1-p) + 0p,    0(1-p) + 5p)$ & $((1-p) + p,     (1-p) + p)$ \\
+\hline
+\end{tabular}
+\caption{Prisoner's Dilemma Payoff Matrix}
+\end{table}
+
+The level \emph{p} here is adapted from Charness \& Rabin (2002) who
+created a utility function that captures various social preferences. In
+essence, \emph{p} is how much you care about your opponent's pay-offs as
+well as your own. This paper will conduct the tournament as above for a
+range of \emph{p} values starting from \emph{p} = -1 where individuals
+are status seeking to \emph{p} = 0.5 where indivduals care half as much
+about themselves as the do about others
+
+\hypertarget{game-results}{%
+\section{Game Results}\label{game-results}}
+
+\hypertarget{the-standard-prisoners-dilemma-tournament}{%
+\subsection{The Standard Prisoners Dilemma
+Tournament}\label{the-standard-prisoners-dilemma-tournament}}
+
+After the conclusion of the tournament, most interestingly unlike
+Axelrod (1980), this paper does not find Tft as the winner in the
+standard Repeated Prisoners Dilemma. Table 4.1 gives the standard
+tournament without social preferences. The winner of the tournament was
+Probing Adjuster with 13575 points followed by Tft with Randomization
+which had 12887 points and Bully coming in third with 12869 points. In
+this game Tft came fourth which leads us to believe similarly to Axelrod
+(1980) that Tft may have won due to the other strategies in the
+tournament. The winner of the Prisoners Dilemma is highly dependent on
+the strategies in the tournament. Always Cooperate and Random 90\% came
+in second last and last respectively. This is as expected as the
+tournament included strategies that took advantage of other strategies
+which always cooperated. Most interestingly, if the adaptive strategies
+are removed then the Grim/Trigger strategy would have won the game.
+Also, even though Probing Adjuster won the tournament, the group of
+adaptive strategies as a whole performed worse than the group of Tit for
+Tat variant strategies. This result shows the robustness of Tit for Tat
+variants to perform well against both cooperators and defectors,
+maintaining high scores overall.
 
 \newpage
 
@@ -453,63 +649,101 @@ in
 
 
 \vfill
-\begingroup\fontsize{5}{7}\selectfont
+\begin{table}[!h]
 
-\begin{longtable}[t]{>{}l>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.25cm}>{\raggedleft\arraybackslash}p{0.2cm}>{\raggedleft\arraybackslash}p{0.2cm}}
-\caption{\label{tab:unnamed-chunk-3}Tournament Payoff Matrix for p= 0}\\
-\toprule
-\multicolumn{1}{c}{ } & \multicolumn{25}{c}{Payoff Against Other Strategies} & \multicolumn{1}{c}{Total} & \multicolumn{1}{c}{Rank} \\
-\cmidrule(l{3pt}r{3pt}){2-26} \cmidrule(l{3pt}r{3pt}){27-27} \cmidrule(l{3pt}r{3pt}){28-28}
- & AC & AD & TfT & Tf2T & TfTF & TfTR & P & G/T & B & RD & ADe & APe & PA & FT & P & CR & PC & DC & BG & RG & R0.1 & R0.25 & R0.5 & R0.75 & R0.9 &  & \\
-\midrule
+\caption{\label{tab:unnamed-chunk-3}Tournament Payoff Matrix for p= 0}
+\centering
+\resizebox{\linewidth}{!}{
+\fontsize{5}{7}\selectfont
+\begin{tabular}[t]{>{}l|>{\raggedleft\arraybackslash}p{0.25cm}|>{\raggedleft\arraybackslash}p{0.25cm}|>{\raggedleft\arraybackslash}p{0.25cm}|>{\raggedleft\arraybackslash}p{0.25cm}|>{\raggedleft\arraybackslash}p{0.25cm}|>{\raggedleft\arraybackslash}p{0.25cm}|>{\raggedleft\arraybackslash}p{0.25cm}|>{\raggedleft\arraybackslash}p{0.25cm}|>{\raggedleft\arraybackslash}p{0.25cm}|>{\raggedleft\arraybackslash}p{0.25cm}|>{\raggedleft\arraybackslash}p{0.25cm}|>{\raggedleft\arraybackslash}p{0.25cm}|>{\raggedleft\arraybackslash}p{0.25cm}|>{\raggedleft\arraybackslash}p{0.25cm}|>{\raggedleft\arraybackslash}p{0.25cm}|>{\raggedleft\arraybackslash}p{0.25cm}|>{\raggedleft\arraybackslash}p{0.25cm}|>{\raggedleft\arraybackslash}p{0.25cm}|>{\raggedleft\arraybackslash}p{0.25cm}|>{\raggedleft\arraybackslash}p{0.25cm}|>{\raggedleft\arraybackslash}p{0.25cm}|>{\raggedleft\arraybackslash}p{0.25cm}|>{\raggedleft\arraybackslash}p{0.25cm}|>{\raggedleft\arraybackslash}p{0.25cm}|>{\raggedleft\arraybackslash}p{0.25cm}|>{\raggedleft\arraybackslash}p{0.2cm}|>{\raggedleft\arraybackslash}p{0.2cm}}
+\hline
+\multicolumn{1}{c|}{ } & \multicolumn{25}{c|}{Payoff Against Other Strategies} & \multicolumn{1}{c|}{Total} & \multicolumn{1}{c}{Rank} \\
+\cline{2-26} \cline{27-27} \cline{28-28}
+  & AC & AD & TfT & Tf2T & TfTF & TfTR & P & G/T & B & RD & ADe & APe & PA & FT & P & CR & PC & DC & BG & RG & R0.1 & R0.25 & R0.5 & R0.75 & R0.9 &   &  \\
+\hline
 \textbf{Always Cooperate} & 600 & 0 & 600 & 600 & 600 & 600 & 600 & 600 & 147 & 600 & 600 & 501 & 3 & 453 & 600 & 483 & 291 & 261 & 600 & 600 & 69 & 156 & 300 & 420 & 519 & \textcolor{blue}{\textbf{10803}} & \textcolor{red}{\textbf{24}}\\
+\hline
 \textbf{Always Defect} & 1000 & 200 & 204 & 208 & 276 & 204 & 204 & 204 & 396 & 992 & 204 & 212 & 208 & 212 & 1000 & 212 & 664 & 600 & 204 & 1000 & 276 & 392 & 648 & 792 & 896 & \textcolor{blue}{\textbf{11408}} & \textcolor{red}{\textbf{20}}\\
+\hline
 \textbf{Tit for Tat} & 600 & 199 & 600 & 600 & 600 & 600 & 600 & 600 & 346 & 600 & 600 & 567 & 399 & 551 & 600 & 561 & 441 & 426 & 600 & 600 & 250 & 344 & 432 & 531 & 580 & \textcolor{blue}{\textbf{12827}} & \textcolor{red}{\textbf{4}}\\
+\hline
 \textbf{Tit for Two Tats} & 600 & 198 & 600 & 600 & 600 & 600 & 600 & 600 & 296 & 600 & 600 & 501 & 298 & 453 & 600 & 483 & 372 & 370 & 600 & 600 & 244 & 288 & 394 & 480 & 548 & \textcolor{blue}{\textbf{12125}} & \textcolor{red}{\textbf{15}}\\
+\hline
 \textbf{Tit for Tat with Forgiveness} & 600 & 183 & 600 & 600 & 600 & 600 & 600 & 600 & 322 & 600 & 600 & 561 & 370 & 539 & 600 & 553 & 408 & 411 & 600 & 600 & 249 & 321 & 403 & 527 & 571 & \textcolor{blue}{\textbf{12618}} & \textcolor{red}{\textbf{8}}\\
-\addlinespace
+\hline
 \textbf{Tit for Tat with Randomisation} & 600 & 199 & 600 & 600 & 600 & 600 & 600 & 600 & 346 & 600 & 600 & 567 & 399 & 551 & 600 & 561 & 422 & 436 & 600 & 600 & 252 & 357 & 478 & 542 & 577 & \textcolor{blue}{\textbf{12887}} & \textcolor{red}{\textbf{2}}\\
+\hline
 \textbf{Pavlov} & 600 & 199 & 600 & 600 & 600 & 600 & 600 & 600 & 346 & 600 & 600 & 567 & 399 & 551 & 600 & 561 & 453 & 434 & 600 & 600 & 243 & 325 & 442 & 519 & 582 & \textcolor{blue}{\textbf{12821}} & \textcolor{red}{\textbf{5}}\\
+\hline
 \textbf{Grim/Trigger} & 600 & 199 & 600 & 600 & 600 & 600 & 600 & 600 & 395 & 600 & 600 & 223 & 205 & 219 & 600 & 221 & 607 & 575 & 600 & 600 & 263 & 399 & 551 & 823 & 933 & \textcolor{blue}{\textbf{12813}} & \textcolor{red}{\textbf{6}}\\
+\hline
 \textbf{Bully} & 902 & 151 & 351 & 551 & 399 & 351 & 351 & 155 & 298 & 894 & 155 & 683 & 355 & 751 & 902 & 631 & 533 & 554 & 348 & 902 & 230 & 319 & 556 & 700 & 847 & \textcolor{blue}{\textbf{12869}} & \textcolor{red}{\textbf{3}}\\
+\hline
 \textbf{Retaliatory Defector} & 600 & 2 & 600 & 600 & 600 & 600 & 600 & 600 & 149 & 600 & 600 & 505 & 9 & 457 & 600 & 487 & 263 & 283 & 600 & 600 & 74 & 122 & 319 & 463 & 541 & \textcolor{blue}{\textbf{10874}} & \textcolor{red}{\textbf{23}}\\
-\addlinespace
+\hline
 \textbf{Adaptive Defector} & 600 & 199 & 600 & 600 & 600 & 600 & 600 & 600 & 395 & 600 & 600 & 501 & 205 & 453 & 600 & 483 & 448 & 420 & 600 & 600 & 276 & 387 & 457 & 487 & 548 & \textcolor{blue}{\textbf{12459}} & \textcolor{red}{\textbf{10}}\\
+\hline
 \textbf{Adaptive Peacekeep} & 666 & 197 & 567 & 666 & 576 & 567 & 567 & 213 & 263 & 660 & 666 & 534 & 256 & 503 & 666 & 543 & 418 & 400 & 572 & 666 & 223 & 285 & 393 & 483 & 600 & \textcolor{blue}{\textbf{12150}} & \textcolor{red}{\textbf{14}}\\
+\hline
 \textbf{Probing Adjuster} & 998 & 198 & 404 & 553 & 436 & 404 & 404 & 205 & 345 & 989 & 205 & 591 & 400 & 557 & 998 & 643 & 587 & 544 & 325 & 998 & 264 & 369 & 549 & 719 & 890 & \textcolor{blue}{\textbf{13575}} & \textcolor{red}{\textbf{1}}\\
+\hline
 \textbf{Forgiving Tester} & 698 & 197 & 551 & 698 & 563 & 551 & 551 & 209 & 246 & 692 & 698 & 583 & 297 & 502 & 698 & 572 & 452 & 431 & 565 & 698 & 239 & 275 & 393 & 543 & 631 & \textcolor{blue}{\textbf{12533}} & \textcolor{red}{\textbf{9}}\\
+\hline
 \textbf{Prober} & 600 & 0 & 600 & 600 & 600 & 600 & 600 & 600 & 147 & 600 & 600 & 501 & 3 & 453 & 600 & 483 & 324 & 303 & 600 & 600 & 63 & 156 & 318 & 492 & 540 & \textcolor{blue}{\textbf{10983}} & \textcolor{red}{\textbf{21}}\\
-\addlinespace
+\hline
 \textbf{Cautious Rebuilder} & 678 & 197 & 561 & 678 & 576 & 561 & 561 & 211 & 276 & 672 & 678 & 573 & 238 & 522 & 678 & 522 & 413 & 385 & 554 & 678 & 229 & 270 & 402 & 541 & 641 & \textcolor{blue}{\textbf{12295}} & \textcolor{red}{\textbf{11}}\\
+\hline
 \textbf{Progressive Cooperator} & 798 & 102 & 439 & 557 & 484 & 417 & 414 & 105 & 271 & 794 & 444 & 546 & 203 & 503 & 790 & 504 & 417 & 467 & 289 & 798 & 159 & 247 & 506 & 658 & 742 & \textcolor{blue}{\textbf{11654}} & \textcolor{red}{\textbf{18}}\\
+\hline
 \textbf{Deminishing Cooperator} & 784 & 109 & 438 & 536 & 454 & 432 & 447 & 141 & 263 & 799 & 410 & 543 & 235 & 487 & 818 & 522 & 499 & 431 & 619 & 798 & 176 & 262 & 435 & 653 & 715 & \textcolor{blue}{\textbf{12006}} & \textcolor{red}{\textbf{16}}\\
+\hline
 \textbf{Bounded Gradient} & 600 & 199 & 600 & 600 & 600 & 600 & 600 & 600 & 342 & 600 & 600 & 564 & 245 & 520 & 600 & 545 & 513 & 325 & 600 & 600 & 273 & 374 & 442 & 540 & 566 & \textcolor{blue}{\textbf{12648}} & \textcolor{red}{\textbf{7}}\\
+\hline
 \textbf{Recent Gradient} & 600 & 0 & 600 & 600 & 600 & 600 & 600 & 600 & 147 & 600 & 600 & 501 & 3 & 453 & 600 & 483 & 285 & 312 & 600 & 600 & 84 & 150 & 291 & 462 & 549 & \textcolor{blue}{\textbf{10920}} & \textcolor{red}{\textbf{22}}\\
-\addlinespace
+\hline
 \textbf{Random 10\%} & 960 & 184 & 255 & 340 & 354 & 251 & 267 & 182 & 381 & 966 & 184 & 325 & 266 & 375 & 938 & 351 & 589 & 560 & 242 & 976 & 238 & 381 & 542 & 812 & 882 & \textcolor{blue}{\textbf{11801}} & \textcolor{red}{\textbf{17}}\\
+\hline
 \textbf{Random 25\%} & 886 & 149 & 367 & 452 & 415 & 353 & 354 & 156 & 329 & 900 & 233 & 533 & 314 & 406 & 900 & 508 & 553 & 498 & 353 & 904 & 216 & 364 & 564 & 695 & 809 & \textcolor{blue}{\textbf{12211}} & \textcolor{red}{\textbf{13}}\\
+\hline
 \textbf{Random 50\%} & 794 & 100 & 428 & 654 & 497 & 460 & 469 & 105 & 260 & 803 & 480 & 634 & 259 & 576 & 806 & 565 & 427 & 467 & 448 & 806 & 188 & 257 & 445 & 625 & 710 & \textcolor{blue}{\textbf{12263}} & \textcolor{red}{\textbf{12}}\\
+\hline
 \textbf{Random 75\%} & 714 & 59 & 538 & 656 & 538 & 525 & 536 & 77 & 217 & 692 & 643 & 609 & 151 & 536 & 726 & 574 & 377 & 358 & 530 & 704 & 107 & 224 & 325 & 532 & 660 & \textcolor{blue}{\textbf{11608}} & \textcolor{red}{\textbf{19}}\\
+\hline
 \textbf{Random 90\%} & 630 & 21 & 570 & 634 & 581 & 572 & 577 & 64 & 169 & 628 & 631 & 541 & 94 & 471 & 620 & 517 & 319 & 324 & 555 & 634 & 76 & 147 & 329 & 460 & 591 & \textcolor{blue}{\textbf{10755}} & \textcolor{red}{\textbf{25}}\\
-\bottomrule
-\end{longtable}
-\endgroup{}
+\hline
+\end{tabular}}
+\end{table}
 
 \vfill
 
 \end{landscape}
 
-\subsection{Social preferences}\label{social-preferences}
+\hypertarget{the-prisoners-dilemma-tournament-with-social-preferences}{%
+\subsection{The Prisoners Dilemma Tournament with Social
+Preferences}\label{the-prisoners-dilemma-tournament-with-social-preferences}}
 
-Above was all to do with a single p-value.
-
-Below is all the outcomes for when social preferences vary. We see that
+Table 4.2 gives the standings of the tournament across different social
+preferences. The rankings of strategies change across these different
+values of \emph{p}, illustrating how varying degrees of altruism or
+hostility affect the success of each strategy. Notably Always Cooperate
+improves its ranking as \emph{p} increases, moving from 25th at \emph{p}
+= -0.1 to 1st when \emph{p} = 0.45, showing that cooperative strategies
+perform better in environments where mutual benefit is prioritized.
+Always Defect, conversely, declines in rank as \emph{p} increases,
+indicating that purely selfish strategies are less effective when
+players care about the well-being of others. Tit for Tat maintains a
+relatively stable performance across various \emph{p} values, reflecting
+its robustness as a strategy that adapts well to different social
+preferences. This holds true for the TfT variations in general. Probing
+Adjuster, which ranked first when \emph{p} = -0.1, drops significantly
+as p increases, indicating that more complex strategies designed for
+selfish environments are less effective in altruistic settings.
 
 \begin{table}[!h]
-\centering
+
 \caption{\label{tab:unnamed-chunk-4}Strategy Rankings Across Different p Values}
 \centering
-\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
+\resizebox{\linewidth}{!}{
 \fontsize{5}{7}\selectfont
 \begin{tabular}[t]{>{\centering\arraybackslash}p{4cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}}
 \toprule
@@ -550,7 +784,21 @@ Strategy & -0.1 & -0.05 & 0 & 0.05 & 0.1 & 0.15 & 0.2 & 0.25 & 0.3 & 0.35 & 0.4 
 \end{tabular}}
 \end{table}
 
-Figure \ref{pvalues}
+Figure \ref{pvalues} presents a graphical representation of how the
+total points of different strategies change as p varies. The x-axis
+represents different \emph{p} values, while the y-axis shows the total
+points for each strategy. From the figure we observe that Always
+Cooperate shows a steady increase in total points as \emph{p} increases,
+reinforcing the observation that this strategy benefits from
+environments where players value mutual cooperation. Always Defect
+exhibits declining points as \emph{p} increases, suggesting that as
+social preferences rise, defectors are penalized for their selfishness.
+TfT maintains consistently high points across all \emph{p} values,
+further proving its adaptability and effectiveness in both selfish and
+cooperative environments. Strategies like Probing Adjuster and Bully,
+which perform well in self-interested settings, see their points drop as
+\emph{p} increases, emphasizing their reduced effectiveness in more
+cooperative contexts.
 
 \begin{figure}[H]
 
@@ -561,11 +809,27 @@ Figure \ref{pvalues}
 \caption{Strategies' Total Utilities for Different Strategies Accross p\label{pvalues}}\label{fig:unnamed-chunk-5}
 \end{figure}
 
+Figure \ref{pvalues} presents a graphical representation of how the
+total points of different strategies change as p varies. The x-axis
+represents different \emph{p} values, while the y-axis shows the total
+points for each strategy. From the figure we observe that Always
+Cooperate shows a steady increase in total points as \emph{p} increases,
+reinforcing the observation that this strategy benefits from
+environments where players value mutual cooperation. Always Defect
+exhibits declining points as \emph{p} increases, suggesting that as
+social preferences rise, defectors are penalized for their selfishness.
+TfT maintains consistently high points across all \emph{p} values,
+further proving its adaptability and effectiveness in both selfish and
+cooperative environments. Strategies like Probing Adjuster and Bully,
+which perform well in self-interested settings, see their points drop as
+\emph{p} increases, emphasizing their reduced effectiveness in more
+cooperative contexts.
+
 \begin{table}[!h]
-\centering
+
 \caption{\label{tab:unnamed-chunk-6}Strategy Rankings Across All p-Values}
 \centering
-\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
+\resizebox{\linewidth}{!}{
 \fontsize{8}{10}\selectfont
 \begin{tabular}[t]{>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{5cm}>{\centering\arraybackslash}p{3cm}}
 \toprule
@@ -600,11 +864,23 @@ Ranking & Strategy & Average\\
 \end{tabular}}
 \end{table}
 
+The analysis of the tournament shows how different strategies perform in
+the Prisoner's Dilemma under varying levels of social preference. The
+findings yield that in selfish scenarios, probing and aggressive
+strategies tend to win but as altruism increases, these strategies
+struggle. TfT variant strategies have shown to be robust under varying
+social preferences as can be seen in Table 4.3. Tft has the highest
+average points across the differing p-values showing its robustness in
+the face of differing social preferences. These findings once again
+provide insight into the strength of the TfT strategy. In Prisoners
+Dilemma games where preferences may be hidden, TfT would according to
+these findings perform the best.
+
 \begin{table}[!h]
-\centering
+
 \caption{\label{tab:unnamed-chunk-7}Strategy Values Across Different p Values}
 \centering
-\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
+\resizebox{\linewidth}{!}{
 \fontsize{5}{7}\selectfont
 \begin{tabular}[t]{>{\centering\arraybackslash}p{4cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}>{\centering\arraybackslash}p{0.7cm}}
 \toprule
@@ -645,66 +921,85 @@ Strategy & -0.1 & -0.05 & 0 & 0.05 & 0.1 & 0.15 & 0.2 & 0.25 & 0.3 & 0.35 & 0.4 
 \end{tabular}}
 \end{table}
 
-\section{Conclusion}\label{conclusion}
+\hypertarget{conclusion}{%
+\section{Conclusion}\label{conclusion}}
+
+The tournament results reveal that strategic success in the Prisoner's
+Dilemma is highly dependent on the composition of competing strategies
+and the level of social preferences. Probing Adjuster outperformed other
+strategies in the standard setting, but TfT and its variants
+demonstrated remarkable robustness across different social preference
+levels. As altruism increases, cooperative strategies gain prominence,
+while aggressive strategies struggle. The findings highlight the
+continued relevance of TfT, particularly in contexts where social
+preferences or hidden intentions influence decision-making, offering
+valuable insights into strategic adaptability in competitive
+environments.
 
 \newpage
 
-\section*{References}\label{references}
+\hypertarget{references}{%
+\section*{References}\label{references}}
 \addcontentsline{toc}{section}{References}
 
-\phantomsection\label{refs}
-\begin{CSLReferences}{1}{1}
-\bibitem[\citeproctext]{ref-axelrod1980effective}
+\hypertarget{refs}{}
+\begin{CSLReferences}{1}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-axelrod1980effective}{}}%
 Axelrod, R. 1980. Effective choice in the prisoner's dilemma. \emph{The
 Journal of Conflict Resolution}. 24(1):3--25. {[}Online{]}, Available:
 \url{http://www.jstor.org/stable/173932}.
 
-\bibitem[\citeproctext]{ref-dalbo2019strategy}
+\leavevmode\vadjust pre{\hypertarget{ref-dalbo2019strategy}{}}%
 Bó, P.D. \& Fréchette, G.R. 2019.
 \href{https://doi.org/10.1257/aer.20181480}{Strategy choice in the
 infinitely repeated prisoner's dilemma}. \emph{American Economic
 Review}. 109(11):3929--3952.
 
-\bibitem[\citeproctext]{ref-breitmoser2015cooperation}
+\leavevmode\vadjust pre{\hypertarget{ref-breitmoser2015cooperation}{}}%
 Breitmoser, Y. 2015.
 \href{https://doi.org/10.1257/aer.20130675}{Cooperation, but no
 reciprocity: Individual strategies in the repeated prisoner's dilemma}.
 \emph{American Economic Review}. 105(9):2882--2910.
 
-\bibitem[\citeproctext]{ref-embrey2017cooperation}
+\leavevmode\vadjust pre{\hypertarget{ref-charness2002understanding}{}}%
+Charness, G. \& Rabin, M. 2002. Understanding social preferences with
+simple tests. \emph{The quarterly journal of economics}.
+117(3):817--869.
+
+\leavevmode\vadjust pre{\hypertarget{ref-embrey2017cooperation}{}}%
 Embrey, M., Fréchette, G.R. \& Yuksel, S. 2018.
 \href{https://doi.org/10.1093/qje/qjx033}{Cooperation in the finitely
 repeated prisoner's dilemma}. \emph{The Quarterly Journal of Economics}.
 133(2):509--551.
 
-\bibitem[\citeproctext]{ref-farrell1988evolutionary}
+\leavevmode\vadjust pre{\hypertarget{ref-farrell1988evolutionary}{}}%
 Farrell, J. \& Ware, R. 1989. Evolutionary stability in the repeated
 prisoner's dilemma. \emph{Journal of Economic Theory}. 47(1):1--12.
 
-\bibitem[\citeproctext]{ref-garcia2018no}
+\leavevmode\vadjust pre{\hypertarget{ref-garcia2018no}{}}%
 García, J. \& Veelen, M. van. 2018.
 \href{https://doi.org/10.3389/frobt.2018.00102}{No strategy can win in
 the repeated prisoner's dilemma: Linking game theory and computer
 simulations}. \emph{Frontiers in Robotics and AI}. 5:102.
 
-\bibitem[\citeproctext]{ref-gaudesi2016exploiting}
+\leavevmode\vadjust pre{\hypertarget{ref-gaudesi2016exploiting}{}}%
 Gaudesi, M., Piccolo, E., Squillero, G. \& Tonda, A. 2016. Exploiting
 evolutionary modeling to prevail in iterated prisoner's dilemma
 tournaments. \emph{IEEE Transactions on Computational Intelligence and
 AI in Games}. 8(3):235--247.
 
-\bibitem[\citeproctext]{ref-kreps1982rational}
+\leavevmode\vadjust pre{\hypertarget{ref-kreps1982rational}{}}%
 Kreps, D.M., Milgrom, P., Roberts, J. \& Wilson, R. 1982. Rational
 cooperation in the finitely repeated prisoners' dilemma. \emph{Journal
 of Economic Theory}. 27(2):245--252.
 
-\bibitem[\citeproctext]{ref-lange2007teaching}
+\leavevmode\vadjust pre{\hypertarget{ref-lange2007teaching}{}}%
 Lange, C. \& Baylor, A.L. 2007.
 \href{https://doi.org/10.3200/JECE.38.4.407-418}{Teaching the repeated
 prisoner's dilemma with a computerized tournament}. \emph{The Journal of
 Economic Education}. 38(4):407--418.
 
-\bibitem[\citeproctext]{ref-romero2018constructing}
+\leavevmode\vadjust pre{\hypertarget{ref-romero2018constructing}{}}%
 Romero, J. \& Rosokha, Y. 2018.
 \href{https://doi.org/10.1016/j.euroecorev.2018.02.008}{Constructing
 strategies in the indefinitely repeated prisoner's dilemma game}.

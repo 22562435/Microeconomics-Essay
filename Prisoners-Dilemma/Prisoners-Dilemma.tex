@@ -296,66 +296,41 @@ been prominent in such tournaments.
 \section{\texorpdfstring{Literature
 Review\label{litreview}}{Literature Review}}\label{literature-review}
 
-The exploration of strategy choices within the framework of the
-prisoner's dilemma has garnered extensive attention in recent
-literature. Axelrod (1980)'s foundational work emphasised effective
-strategies in iterated scenarios, sparking a wealth of research on
-strategic behaviour in repeated interactions. His tournament studies
-laid the groundwork for understanding how cooperation can emerge in
-repeated prisoner's dilemmas through strategies like TfT and other forms
-of reciprocity. This exploration of cooperative behaviour in an
-inherently competitive framework has been expanded by various scholars,
-each contributing unique insights into how individuals and institutions
-behave when faced with the tension between cooperation and defection.
+The exploration of strategic choice in the repeated Prisoner's Dilemma
+has attracted significant scholarly attention. Axelrod (1980)
+foundational work demonstrated how cooperation could emerge in repeated
+interactions through strategies like TfT and reciprocity. This sparked
+further research on strategic behaviour in repeated competitive
+scenarios. Recent studies, such as Bó \& Fréchette (2019), examine the
+strategic complexity of infinitely repeated games, revealing players'
+adaptability in response to payoffs and opponents' actions. In contrast,
+Breitmoser (2015) questions the predominance of reciprocity-based
+models, arguing that cooperation may arise from the structure of
+incentives rather than direct reciprocity.
 
-Recent studies, such as Bó \& Fréchette (2019), have focused on the
-strategic complexity observed in infinitely repeated games. They provide
-empirical evidence that players in these settings are highly adaptive,
-often switching strategies depending on the payoffs and the perceived
-actions of their opponents. In contrast, Breitmoser (2015) questions the
-reciprocity-based models that dominate much of the literature,
-suggesting that while cooperation is often observed, it may not always
-stem from reciprocal motivations. Breitmoser (2015) finds that in many
-cases, cooperation might emerge from individual incentives structured by
-the game's dynamics, rather than a direct desire to reciprocate.
+A critical issue in the literature is the distinction between finite and
+infinite iterations of the dilemma. Kreps, Milgrom, Roberts \& Wilson
+(1982) demonstrated that players may behave as if in an infinite game,
+cooperating due to potential future retaliation, even in games with
+known end points. Embrey, Fréchette \& Yuksel (2018) confirmed that
+cooperation could persist in finite games under certain conditions.
 
-A significant portion of the literature has also addressed the
-challenges of finite versus infinite iterations of the dilemma. Kreps,
-Milgrom, Roberts \& Wilson (1982) introduced the idea that even in
-finitely repeated games, players may behave as though they are in an
-infinite game, cooperating for fear of future retaliation, despite the
-known endpoint. This idea challenges the strict predictions of defection
-in the final stages of finitely repeated games and has been explored
-further by Embrey, Fréchette \& Yuksel (2018), who conducted laboratory
-experiments to observe how players adapt their strategies in finite
-games. Their findings support the hypothesis that cooperation can
-persist under certain conditions, even in games with a clear end.
+Other research, such as Romero \& Rosokha (2018), focused on the
+cognitive processes underlying strategy construction in indefinite
+games, where players employ heuristics to handle uncertainty. García \&
+Veelen (2018) used simulations to show that no single strategy dominates
+consistently in the repeated Prisoner's Dilemma, highlighting
+adaptability and context-dependent strategy selection as keys to
+success. Gaudesi, Piccolo, Squillero \& Tonda (2016) used evolutionary
+models to demonstrate how strategies evolve in dynamic environments
+shaped by both cooperation and competition.
 
-Romero \& Rosokha (2018) investigated the cognitive processes behind
-strategy construction in indefinite games, emphasising how players use
-heuristics and simplified mental models to navigate the uncertainty of
-the game's length. This aligns with Farrell \& Ware (1989) earlier work
-on evolutionary stability, where they explored how long-term strategies
-evolve to withstand deviations from equilibrium behaviours.
-
-From a computational perspective, García \& Veelen (2018) utilised
-simulations to demonstrate that no single strategy could consistently
-dominate in the repeated prisoner's dilemma, suggesting that
-adaptability and context-dependent strategy selection are key to success
-in such settings. Similarly, Gaudesi, Piccolo, Squillero \& Tonda (2016)
-leveraged evolutionary modelling techniques to demonstrate how
-strategies evolve, competing in a dynamic landscape shaped by both
-cooperation and competition.
-
-The link between theoretical models and real-world applications has also
-been a point of focus. Lange \& Baylor (2007) developed computerized
-tournaments to teach the mechanics of the repeated prisoner's dilemma,
-blending theory with practice and providing insights into how strategic
-choices might play out in educational settings. Such studies highlight
-the importance of teaching and learning mechanisms in understanding
-strategic behaviour in social dilemmas. Taken together, the contemporary
-literature on strategy selection in the prisoner's dilemma underscores
-the complexity of human decision-making in repeated interactions.
+The practical application of these theories has also been explored.
+Lange \& Baylor (2007) developed computerised tournaments to teach the
+mechanics of the repeated Prisoner's Dilemma, offering insights into how
+strategic choices manifest in real-world scenarios. Overall, the
+literature underscores the complexity of human decision-making in
+repeated interactions and the nuanced nature of strategy selection.
 
 \section{The Standard Prisoners
 Dilemma}\label{the-standard-prisoners-dilemma}
@@ -399,16 +374,19 @@ Recent Gradient, on the other hand, adjusts its cooperation probability
 based only on the opponent's last 5 actions, making it more responsive
 to recent behaviour.
 
-One such strategy is Retaliatory Defector. It begins by cooperating but
+Retaliatory Defector is a strategy that begins by cooperating but
 defects for two rounds if its opponent defects. After two rounds, if the
 opponent resumes cooperation, Retaliatory Defector will also return to
-cooperating. Another strategy, Adaptive Defector, also starts by
-cooperating, but thereafter assesses the opponent's behaviour over the
-last five rounds. If the opponent has defected more than 40\% of the
-time, Adaptive Defector will defect; otherwise, it continues to
-cooperate. Adaptive Peacekeeper focuses on maintaining cooperation while
-testing the opponent's behaviour periodically. It starts by cooperating
-but defects every sixth round to probe the opponent's reaction. If the
+cooperating.
+
+Adaptive Defector, also starts by cooperating, but thereafter assesses
+the opponent's behaviour over the last five rounds. If the opponent has
+defected more than 40\% of the time, Adaptive Defector will defect;
+otherwise, it continues to cooperate.
+
+Adaptive Peacekeeper focuses on maintaining cooperation while testing
+the opponent's behaviour periodically. It starts by cooperating but
+defects every sixth round to probe the opponent's reaction. If the
 opponent defects more than twice consecutively after these probes,
 Adaptive Peacekeeper responds with defection. However, if both players
 defected in the previous round, the strategy returns to cooperation,
@@ -501,7 +479,7 @@ essence, \emph{p} is how much you care about your opponent's pay-offs as
 well as your own. This paper will conduct the tournament as above for a
 range of \emph{p} values starting from \emph{p} = -1 where individuals
 are status seeking to \emph{p} = 0.5 where individuals care half as much
-about themselves as they do about others
+about themselves as they do about others.
 
 \section{Game Results}\label{game-results}
 
@@ -667,22 +645,6 @@ cooperative contexts.
 \caption{Strategies' Total Utilities for Different Strategies Accross p\label{pvalues}}\label{fig:unnamed-chunk-5}
 \end{figure}
 
-Figure \ref{pvalues} presents a graphical representation of how the
-total points of different strategies change as p varies. The x-axis
-represents different \emph{p} values, while the y-axis shows the total
-points for each strategy. From the figure we observe that Always
-Cooperate shows a steady increase in total points as \emph{p} increases,
-reinforcing the observation that this strategy benefits from
-environments where players value mutual cooperation. Always Defect
-exhibits declining points as \emph{p} increases, suggesting that as
-social preferences rise, defectors are penalized for their selfishness.
-TfT maintains consistently high points across all \emph{p} values,
-further proving its adaptability and effectiveness in both selfish and
-cooperative environments. Strategies like Probing Adjuster and Bully,
-which perform well in self-interested settings, see their points drop as
-\emph{p} increases, emphasizing their reduced effectiveness in more
-cooperative contexts.
-
 \begin{table}[!h]
 \centering
 \caption{\label{tab:unnamed-chunk-6}Strategy Rankings Across All p-Values}
@@ -729,10 +691,10 @@ strategies tend to win but as altruism increases, these strategies
 struggle. TfT variant strategies have shown to be robust under varying
 social preferences as can be seen in Table 4.3. Tft has the highest
 average points across the differing p-values showing its robustness in
-the face of differing social preferences. These findings once again
-provide insight into the strength of the TfT strategy. In Prisoner's
-Dilemma games where preferences may be hidden, TfT would according to
-these findings perform the best.
+the face of differing social preferences which can also be seen in Table
+4.4. These findings once again provide insight into the strength of the
+TfT strategy. In Prisoner's Dilemma games where preferences may be
+hidden, TfT would according to these findings perform the best.
 
 \begin{table}[!h]
 \centering
@@ -793,6 +755,10 @@ preferences or hidden intentions influence decision-making, offering
 valuable insights into strategic adaptability in competitive
 environments.
 
+\vfill
+
+\emph{Word Count: 1979}
+
 \newpage
 
 \section*{References}\label{references}
@@ -827,10 +793,6 @@ Embrey, M., Fréchette, G.R. \& Yuksel, S. 2018.
 \href{https://doi.org/10.1093/qje/qjx033}{Cooperation in the finitely
 repeated prisoner's dilemma}. \emph{The Quarterly Journal of Economics}.
 133(2):509--551.
-
-\bibitem[\citeproctext]{ref-farrell1988evolutionary}
-Farrell, J. \& Ware, R. 1989. Evolutionary stability in the repeated
-prisoner's dilemma. \emph{Journal of Economic Theory}. 47(1):1--12.
 
 \bibitem[\citeproctext]{ref-garcia2018no}
 García, J. \& Veelen, M. van. 2018.

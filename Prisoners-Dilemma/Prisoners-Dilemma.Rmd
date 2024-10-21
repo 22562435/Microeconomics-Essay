@@ -134,7 +134,7 @@ This paper investigates strategic behaviour in the repeated Prisoner's Dilemma b
 # Literature Review\label{litreview}
 
 The exploration of strategic choice in the repeated Prisoner’s Dilemma has attracted significant scholarly attention. @axelrod1980effective foundational work demonstrated how cooperation could emerge in repeated interactions through strategies like TfT and reciprocity. This sparked further research on strategic behaviour in repeated competitive scenarios.
-Recent studies, such as @Pedro Dal Bó and Guillaume R. Fréchette, examine the strategic complexity of infinitely repeated games, revealing players’ adaptability in response to payoffs and opponents’ actions. In contrast, @breitmoser2015cooperation questions the predominance of reciprocity-based models, arguing that cooperation may arise from the structure of incentives rather than direct reciprocity.
+Recent studies, such as @dalbo2019strategy, examine the strategic complexity of infinitely repeated games, revealing players’ adaptability in response to payoffs and opponents’ actions. In contrast, @breitmoser2015cooperation questions the predominance of reciprocity-based models, arguing that cooperation may arise from the structure of incentives rather than direct reciprocity.
 
 A critical issue in the literature is the distinction between finite and infinite iterations of the dilemma. @kreps1982rational demonstrated that players may behave as if in an infinite game, cooperating due to potential future retaliation, even in games with known end points. @embrey2017cooperation confirmed that cooperation could persist in finite games under certain conditions.
 
@@ -174,7 +174,10 @@ Always Defect & Tit for Two Tats & & Bully & Adaptive Peacekeeper & Diminishing 
 
 Progressive Cooperator starts with a 0% cooperation rate and gradually increases it to 100% by the end of the game, while Diminishing Cooperator does the opposite, starting with a high cooperation rate and steadily decreasing it to 0%. Bounded Gradient adjusts its probability of cooperating by considering all previous actions of the opponent. Recent Gradient, on the other hand, adjusts its cooperation probability based only on the opponent’s last 5 actions, making it more responsive to recent behaviour.
 
-One such strategy is Retaliatory Defector. It begins by cooperating but defects for two rounds if its opponent defects. After two rounds, if the opponent resumes cooperation, Retaliatory Defector will also return to cooperating. Another strategy, Adaptive Defector, also starts by cooperating, but thereafter assesses the opponent’s behaviour over the last five rounds. If the opponent has defected more than 40% of the time, Adaptive Defector will defect; otherwise, it continues to cooperate.
+Retaliatory Defector is a strategy that begins by cooperating but defects for two rounds if its opponent defects. After two rounds, if the opponent resumes cooperation, Retaliatory Defector will also return to cooperating.  
+
+Adaptive Defector, also starts by cooperating, but thereafter assesses the opponent’s behaviour over the last five rounds. If the opponent has defected more than 40% of the time, Adaptive Defector will defect; otherwise, it continues to cooperate.
+
 Adaptive Peacekeeper focuses on maintaining cooperation while testing the opponent’s behaviour periodically. It starts by cooperating but defects every sixth round to probe the opponent's reaction. If the opponent defects more than twice consecutively after these probes, Adaptive Peacekeeper responds with defection. However, if both players defected in the previous round, the strategy returns to cooperation, signalling a willingness to restore collaboration.
 
 Probing Adjuster is another adaptive strategy. It begins by cooperating but alters its behaviour based on the opponent's past actions. If the opponent defects three times in a row, Probing Adjuster responds by defecting as well. However, if both players defected in the previous round, it tries to re-establish cooperation by cooperating again. If the opponent cooperates after the player defects, the player will continue defecting, exploiting the opponent's leniency. Additionally, if the player cooperates while the opponent cooperates, the player switches to defection to test the opponent’s reaction to a shift in strategy.
@@ -362,6 +365,11 @@ fullresults_total %>% format_table( title = "Strategy Values Across Different p 
 # Conclusion
 
 The tournament results reveal that strategic success in the Prisoner’s Dilemma is highly dependent on the composition of competing strategies and the level of social preferences. Probing Adjuster outperformed other strategies in the standard setting, but TfT and its variants demonstrated remarkable robustness across different social preference levels. As altruism increases, cooperative strategies gain prominence, while aggressive strategies struggle. The findings highlight the continued relevance of TfT, particularly in contexts where social preferences or hidden intentions influence decision-making, offering valuable insights into strategic adaptability in competitive environments.
+
+
+
+\vfill
+*Word Count: 1979*
 
 \newpage
 # References
